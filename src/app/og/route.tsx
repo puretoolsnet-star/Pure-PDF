@@ -4,7 +4,6 @@ import type { NextRequest } from "next/server";
 import { getSeoCopy } from "@/i18n/seo/copy";
 import { parseOgImageQuery } from "@/lib/seo/og";
 
-export const runtime = "edge";
 
 const WIDTH = 1200;
 const HEIGHT = 630;
