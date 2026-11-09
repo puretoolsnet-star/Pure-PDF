@@ -1,0 +1,62 @@
+@import "tailwindcss";
+@config "../../tailwind.config.ts";
+
+html {
+  touch-action: manipulation;
+  pointer-events: auto;
+}
+
+body {
+  touch-action: manipulation;
+  pointer-events: auto;
+  background-color: #090d16;
+  color: #e5e7eb;
+  position: relative;
+}
+
+#purepdf-app-root {
+  pointer-events: auto;
+  touch-action: manipulation;
+}
+
+#purepdf-portal-root:empty {
+  display: contents;
+}
+
+#purepdf-portal-root:not(:empty) {
+  pointer-events: none;
+}
+
+button,
+a,
+[role="button"],
+input,
+select,
+textarea,
+label {
+  touch-action: manipulation;
+}
+
+.glass-card {
+  background-color: rgb(17 24 39 / 0.72);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgb(255 255 255 / 0.1);
+}
+
+.purepdf-page-shell::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background: radial-gradient(
+    ellipse 80% 50% at 50% -20%,
+    rgba(59, 130, 246, 0.22),
+    transparent 70%
+  );
+}
+
+canvas {
+  touch-action: none;
+  max-width: 100%;
+}
