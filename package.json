@@ -9,6 +9,8 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@pdfsmaller/pdf-decrypt": "^1.0.1",
+    "@pdfsmaller/pdf-encrypt": "^1.2.0",
     "clsx": "^2.1.1",
     "fflate": "^0.8.3",
     "framer-motion": "^14.9.1",

@@ -80,3 +80,66 @@ export async function renderPdfPagesToImages(options: {
   await pdf.destroy();
   return images;
 }
+
+const THUMBNAIL_SCALE = 0.4;
+const THUMBNAIL_JPEG_QUALITY = 0.72;
+const PAGE_PREVIEW_SCALE = 1.35;
+
+export async function renderPdfThumbnails(options: {
+  file: File;
+  scale?: number;
+  onThumbnail?: (pageNumber: number, dataUrl: string) => void;
+  onProgress?: (current: number, total: number) => void;
+  shouldCancel?: () => boolean;
+}): Promise<void> {
+  const { file, scale = THUMBNAIL_SCALE, onThumbnail, onProgress, shouldCancel } = options;
+  const pdf = await openPdfDocument(file);
+
+  try {
+    for (let pageNumber = 1; pageNumber <= pdf.numPages; pageNumber += 1) {
+      if (shouldCancel?.()) break;
+      onProgress?.(pageNumber, pdf.numPages);
+      const page = await pdf.getPage(pageNumber);
+      const viewport = page.getViewport({ scale });
+      const canvas = document.createElement("canvas");
+      canvas.width = Math.max(1, Math.floor(viewport.width));
+      canvas.height = Math.max(1, Math.floor(viewport.height));
+      const context = canvas.getContext("2d");
+      if (!context) {
+        throw new Error("Canvas rendering is not available in this browser.");
+      }
+      await page.render({ canvas, canvasContext: context, viewport }).promise;
+      const dataUrl = canvas.toDataURL("image/jpeg", THUMBNAIL_JPEG_QUALITY);
+      onThumbnail?.(pageNumber, dataUrl);
+    }
+  } finally {
+    await pdf.destroy();
+  }
+}
+
+/** Higher-resolution single page for fullscreen preview. */
+export async function renderPdfPageDataUrl(
+  file: File,
+  pageNumber: number,
+  scale = PAGE_PREVIEW_SCALE,
+): Promise<string> {
+  const pdf = await openPdfDocument(file);
+  try {
+    if (pageNumber < 1 || pageNumber > pdf.numPages) {
+      throw new Error("Invalid page number");
+    }
+    const page = await pdf.getPage(pageNumber);
+    const viewport = page.getViewport({ scale });
+    const canvas = document.createElement("canvas");
+    canvas.width = Math.max(1, Math.floor(viewport.width));
+    canvas.height = Math.max(1, Math.floor(viewport.height));
+    const context = canvas.getContext("2d");
+    if (!context) {
+      throw new Error("Canvas rendering is not available in this browser.");
+    }
+    await page.render({ canvas, canvasContext: context, viewport }).promise;
+    return canvas.toDataURL("image/jpeg", 0.88);
+  } finally {
+    await pdf.destroy();
+  }
+}

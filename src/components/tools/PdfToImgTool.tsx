@@ -8,7 +8,7 @@ import { ToolShell } from "@/components/tools/ToolShell";
 import { useI18n } from "@/i18n/context";
 import { cn } from "@/lib/cn";
 import { useProtectedGeneration } from "@/lib/bot-protection/use-protected-generation";
-import { useRewardedDownload } from "@/lib/use-rewarded-download";
+import { useRewardedAction } from "@/lib/use-rewarded-action";
 import { downloadZip } from "@/lib/download";
 import {
   openPdfDocument,
@@ -24,7 +24,7 @@ function formatSize(bytes: number) {
 export function PdfToImgTool() {
   const { t } = useI18n();
   const { runProtected, ready } = useProtectedGeneration();
-  const { requestDownload, modal } = useRewardedDownload("pdf-to-images");
+  const { requestAction, modal } = useRewardedAction("pdf-to-images");
   const copy = t.tools["pdf-to-images"];
   const [file, setFile] = useState<File | null>(null);
   const [pageCount, setPageCount] = useState<number | null>(null);
@@ -294,7 +294,7 @@ export function PdfToImgTool() {
           <button
             type="button"
             disabled={processing || !file || !ready}
-            onClick={() => void handleExport()}
+            onClick={() => requestAction(() => void handleExport(), "process")}
             className={cn(
               "inline-flex w-full items-center justify-center gap-2 rounded-xl bg-primary px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-blue-500 disabled:cursor-not-allowed disabled:bg-primary/40 sm:w-auto",
             )}
@@ -311,7 +311,7 @@ export function PdfToImgTool() {
           <button
             type="button"
             disabled={processing || !exportReady || !ready}
-            onClick={() => requestDownload(handleRewardedDownload)}
+            onClick={() => requestAction(handleRewardedDownload, "download")}
             className={cn(
               "inline-flex w-full items-center justify-center gap-2 rounded-xl border border-white/15 bg-white/5 px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-white/10 disabled:cursor-not-allowed disabled:opacity-40 sm:w-auto",
             )}

@@ -3,7 +3,20 @@ const NATIVE_ID = process.env.NEXT_PUBLIC_ADSTERRA_NATIVE_ID?.trim() ?? "";
 const SOCIAL_SRC = process.env.NEXT_PUBLIC_ADSTERRA_SOCIAL_SRC?.trim() ?? "";
 const POPUNDER_SRC = process.env.NEXT_PUBLIC_ADSTERRA_POPUNDER_SRC?.trim() ?? "";
 
-export const ADSTERRA_WATCH_MS = 12_000;
+/** Tool rewarded flow (process / download). */
+export const ADSTERRA_WATCH_MS = 10_000;
+
+/** Footer “support by watching” — shorter voluntary view. */
+export const AD_SUPPORT_WATCH_MS = 8_000;
+
+/** PDF page tools (split, remove pages, …) — 5s rewarded view. */
+export const AD_SPLIT_TOOL_WATCH_MS = 5_000;
+export const AD_REMOVE_TOOL_WATCH_MS = 5_000;
+export const AD_ROTATE_TOOL_WATCH_MS = 5_000;
+export const AD_ORGANIZE_TOOL_WATCH_MS = 5_000;
+export const AD_PROTECT_TOOL_WATCH_MS = 5_000;
+export const AD_UNLOCK_TOOL_WATCH_MS = 5_000;
+export const AD_SIGN_TOOL_WATCH_MS = 5_000;
 
 export const adsterraNative = {
   src: NATIVE_SRC,

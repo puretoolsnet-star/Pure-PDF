@@ -9,7 +9,7 @@ import { useI18n } from "@/i18n/context";
 import { cn } from "@/lib/cn";
 import { useProtectedGeneration } from "@/lib/bot-protection/use-protected-generation";
 import { downloadBytes } from "@/lib/download";
-import { useRewardedDownload } from "@/lib/use-rewarded-download";
+import { useRewardedAction } from "@/lib/use-rewarded-action";
 import { mergePdfFiles } from "@/lib/pdf/merge-pdf";
 
 type PdfItem = {
@@ -24,7 +24,7 @@ function createPdfItem(file: File): PdfItem {
 export function MergePdfTool() {
   const { t } = useI18n();
   const { runProtected, ready } = useProtectedGeneration();
-  const { requestDownload, modal } = useRewardedDownload("merge-pdf");
+  const { requestAction, modal } = useRewardedAction("merge-pdf");
   const copy = t.tools["merge-pdf"];
   const [items, setItems] = useState<PdfItem[]>([]);
   const [processing, setProcessing] = useState(false);
@@ -189,7 +189,7 @@ export function MergePdfTool() {
           <button
             type="button"
             disabled={processing || items.length < 2 || !ready}
-            onClick={() => void handleMerge()}
+            onClick={() => requestAction(() => void handleMerge(), "process")}
             className={cn(
               "inline-flex w-full items-center justify-center gap-2 rounded-xl bg-primary px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-blue-500 disabled:cursor-not-allowed disabled:bg-primary/40 sm:w-auto",
             )}
@@ -206,7 +206,7 @@ export function MergePdfTool() {
           <button
             type="button"
             disabled={processing || !mergedReady || !ready}
-            onClick={() => requestDownload(handleRewardedDownload)}
+            onClick={() => requestAction(handleRewardedDownload, "download")}
             className={cn(
               "inline-flex w-full items-center justify-center gap-2 rounded-xl border border-white/15 bg-white/5 px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-white/10 disabled:cursor-not-allowed disabled:opacity-40 sm:w-auto",
             )}

@@ -8,13 +8,13 @@ import { useI18n } from "@/i18n/context";
 import { cn } from "@/lib/cn";
 import { useProtectedGeneration } from "@/lib/bot-protection/use-protected-generation";
 import { downloadBytes } from "@/lib/download";
-import { useRewardedDownload } from "@/lib/use-rewarded-download";
+import { useRewardedAction } from "@/lib/use-rewarded-action";
 import { convertTextToPdf } from "@/lib/pdf/text-to-pdf";
 
 export function TextToPdfTool() {
   const { t } = useI18n();
   const { runProtected, ready } = useProtectedGeneration();
-  const { requestDownload, modal } = useRewardedDownload("text-to-pdf");
+  const { requestAction, modal } = useRewardedAction("text-to-pdf");
   const copy = t.tools["text-to-pdf"];
   const [text, setText] = useState("");
   const [processing, setProcessing] = useState(false);
@@ -113,7 +113,7 @@ export function TextToPdfTool() {
           <button
             type="button"
             disabled={!canGenerate}
-            onClick={() => void handleGenerate()}
+            onClick={() => requestAction(() => void handleGenerate(), "process")}
             className={cn(
               "inline-flex w-full touch-manipulation items-center justify-center gap-2 rounded-xl bg-primary px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-blue-500 disabled:cursor-not-allowed disabled:bg-primary/40 sm:w-auto",
             )}
@@ -130,7 +130,7 @@ export function TextToPdfTool() {
           <button
             type="button"
             disabled={processing || !pdfReady || !ready}
-            onClick={() => requestDownload(handleRewardedDownload)}
+            onClick={() => requestAction(handleRewardedDownload, "download")}
             className={cn(
               "inline-flex w-full touch-manipulation items-center justify-center gap-2 rounded-xl border border-white/15 bg-white/5 px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-white/10 disabled:cursor-not-allowed disabled:opacity-40 sm:w-auto",
             )}

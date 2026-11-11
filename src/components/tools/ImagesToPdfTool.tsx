@@ -9,7 +9,7 @@ import { useI18n } from "@/i18n/context";
 import { cn } from "@/lib/cn";
 import { useProtectedGeneration } from "@/lib/bot-protection/use-protected-generation";
 import { downloadBytes } from "@/lib/download";
-import { useRewardedDownload } from "@/lib/use-rewarded-download";
+import { useRewardedAction } from "@/lib/use-rewarded-action";
 import { buildPdfFromImages } from "@/lib/pdf/images-to-pdf";
 
 type ImageItem = {
@@ -29,7 +29,7 @@ function createImageItem(file: File): ImageItem {
 export function ImagesToPdfTool() {
   const { t } = useI18n();
   const { runProtected, ready } = useProtectedGeneration();
-  const { requestDownload, modal } = useRewardedDownload("images-to-pdf");
+  const { requestAction, modal } = useRewardedAction("images-to-pdf");
   const copy = t.tools["images-to-pdf"];
   const [items, setItems] = useState<ImageItem[]>([]);
   const [processing, setProcessing] = useState(false);
@@ -214,7 +214,7 @@ export function ImagesToPdfTool() {
           <button
             type="button"
             disabled={processing || items.length === 0 || !ready}
-            onClick={() => void handleConvert()}
+            onClick={() => requestAction(() => void handleConvert(), "process")}
             className={cn(
               "inline-flex w-full items-center justify-center gap-2 rounded-xl bg-primary px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-blue-500 disabled:cursor-not-allowed disabled:bg-primary/40 sm:w-auto",
             )}
@@ -231,7 +231,7 @@ export function ImagesToPdfTool() {
           <button
             type="button"
             disabled={processing || !pdfReady || !ready}
-            onClick={() => requestDownload(handleRewardedDownload)}
+            onClick={() => requestAction(handleRewardedDownload, "download")}
             className={cn(
               "inline-flex w-full items-center justify-center gap-2 rounded-xl border border-white/15 bg-white/5 px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-white/10 disabled:cursor-not-allowed disabled:opacity-40 sm:w-auto",
             )}

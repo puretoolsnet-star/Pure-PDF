@@ -1,4 +1,5 @@
 import type { Locale, ToolId } from "@/i18n/locales";
+import { PLANNED_TOOL_SEO } from "@/i18n/seo/planned-tool-seo";
 
 export type SeoPageId = "home" | ToolId;
 
@@ -291,6 +292,7 @@ export const SEO_COPY: SeoCatalog = {
       keywords: ["texte en PDF", "PurePDF", "PDF en ligne"],
     },
   },
+  ...PLANNED_TOOL_SEO,
 };
 
 export function getSeoCopy(page: SeoPageId, locale: Locale): SeoCopy {

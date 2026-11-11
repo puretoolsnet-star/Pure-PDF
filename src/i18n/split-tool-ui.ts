@@ -1,0 +1,216 @@
+import type { Locale } from "@/i18n/locale-types";
+
+export type SplitToolUiCopy = {
+  modeAll: string;
+  modeRange: string;
+  modePick: string;
+  modeAllHint: string;
+  modeRangeHint: string;
+  modePickHint: string;
+  fromPage: string;
+  toPage: string;
+  pagesInFile: (count: number) => string;
+  removeFile: string;
+  successTitle: string;
+  successBody: string;
+  invalidRange: string;
+  errNonePicked: string;
+  rewardedTitle: string;
+  rewardedMessage: string;
+  processingSplit: string;
+  previewHint: string;
+  pagesPicked: (count: number) => string;
+  clearPick: string;
+  togglePick: (page: number) => string;
+  pageInRange: (page: number) => string;
+  loadingThumbnails: string;
+  thumbnailProgress: (current: number, total: number) => string;
+  zoomPreview: string;
+  previewTitle: (page: number) => string;
+  previewClose: string;
+  previewLoading: string;
+};
+
+export const SPLIT_TOOL_UI: Record<Locale, SplitToolUiCopy> = {
+  uk: {
+    modeAll: "Кожна сторінка — окремий PDF",
+    modeRange: "Діапазон сторінок",
+    modePick: "Окремі сторінки",
+    modeAllHint: "ZIP з одним PDF на кожну сторінку.",
+    modeRangeHint: "Один PDF — діапазон «від» і «до» (мініатюри підсвічуються).",
+    modePickHint: "Клацніть мініатюри, щоб витягнути кілька сторінок в один PDF.",
+    fromPage: "Від сторінки",
+    toPage: "До сторінки",
+    pagesInFile: (n) => `У файлі ${n} стор.`,
+    removeFile: "Прибрати файл",
+    successTitle: "PDF готово",
+    successBody: "Результат збережено локально. Завантажте файл або архів нижче.",
+    invalidRange: "Перевірте діапазон: «від» не може бути більшим за «до».",
+    errNonePicked: "Оберіть хоча б одну сторінку на мініатюрах.",
+    rewardedTitle: "Підтримайте проєкт переглядом реклами",
+    rewardedMessage:
+      "Коротке відео (5 с) — і ми одразу запустимо розділення у вашому браузері.",
+    processingSplit: "Розділяємо PDF…",
+    previewHint: "Попередній перегляд сторінок перед розділенням.",
+    pagesPicked: (n) => `${n} стор. обрано`,
+    clearPick: "Скинути вибір",
+    togglePick: (p) => `Сторінка ${p} — додати або прибрати з вибору`,
+    pageInRange: (p) => `Сторінка ${p} у діапазоні`,
+    loadingThumbnails: "Генеруємо мініатюри…",
+    thumbnailProgress: (c, t) => `Мініатюри ${c} / ${t}`,
+    zoomPreview: "Збільшити перегляд сторінки",
+    previewTitle: (p) => `Сторінка ${p} — детальний перегляд`,
+    previewClose: "Закрити",
+    previewLoading: "Завантаження чіткого перегляду…",
+  },
+  en: {
+    modeAll: "Every page as its own PDF",
+    modeRange: "Page range",
+    modePick: "Pick pages",
+    modeAllHint: "ZIP with one PDF per page.",
+    modeRangeHint: "One PDF for a from–to range (thumbnails highlight live).",
+    modePickHint: "Tap thumbnails to extract multiple pages into one PDF.",
+    fromPage: "From page",
+    toPage: "To page",
+    pagesInFile: (n) => `${n} page${n === 1 ? "" : "s"} in file`,
+    removeFile: "Remove file",
+    successTitle: "PDF ready",
+    successBody: "Result stays on your device. Download below.",
+    invalidRange: "Check the range: “from” cannot be greater than “to”.",
+    errNonePicked: "Select at least one page on the thumbnails.",
+    rewardedTitle: "Support the project by watching an ad",
+    rewardedMessage: "A 5-second video — then we split your PDF locally.",
+    processingSplit: "Splitting PDF…",
+    previewHint: "Page preview before splitting.",
+    pagesPicked: (n) => `${n} page${n === 1 ? "" : "s"} selected`,
+    clearPick: "Clear selection",
+    togglePick: (p) => `Page ${p} — toggle selection`,
+    pageInRange: (p) => `Page ${p} in range`,
+    loadingThumbnails: "Rendering thumbnails…",
+    thumbnailProgress: (c, t) => `Thumbnails ${c} / ${t}`,
+    zoomPreview: "Enlarge page preview",
+    previewTitle: (p) => `Page ${p} — detailed view`,
+    previewClose: "Close",
+    previewLoading: "Loading high-resolution preview…",
+  },
+  pl: {
+    modeAll: "Każda strona jako osobny PDF",
+    modeRange: "Zakres stron",
+    modePick: "Wybrane strony",
+    modeAllHint: "ZIP — jeden PDF na stronę.",
+    modeRangeHint: "Jeden PDF od–do (podgląd podświetla zakres).",
+    modePickHint: "Kliknij miniatury, by wyciągnąć strony do jednego PDF.",
+    fromPage: "Od strony",
+    toPage: "Do strony",
+    pagesInFile: (n) => `${n} str. w pliku`,
+    removeFile: "Usuń plik",
+    successTitle: "PDF gotowe",
+    successBody: "Wynik lokalnie — pobierz poniżej.",
+    invalidRange: "Sprawdź zakres: „od” nie może być większe niż „do”.",
+    errNonePicked: "Wybierz co najmniej jedną stronę na miniaturach.",
+    rewardedTitle: "Wesprzyj projekt, oglądając reklamę",
+    rewardedMessage: "5 sekund wideo — potem dzielimy PDF lokalnie.",
+    processingSplit: "Dzielenie PDF…",
+    previewHint: "Podgląd stron przed podziałem.",
+    pagesPicked: (n) => `${n} str. wybrane`,
+    clearPick: "Wyczyść wybór",
+    togglePick: (p) => `Strona ${p} — przełącz wybór`,
+    pageInRange: (p) => `Strona ${p} w zakresie`,
+    loadingThumbnails: "Generowanie miniaturek…",
+    thumbnailProgress: (c, t) => `Miniatury ${c} / ${t}`,
+    zoomPreview: "Powiększ podgląd strony",
+    previewTitle: (p) => `Strona ${p} — widok szczegółowy`,
+    previewClose: "Zamknij",
+    previewLoading: "Ładowanie podglądu w wysokiej jakości…",
+  },
+  de: {
+    modeAll: "Jede Seite als eigenes PDF",
+    modeRange: "Seitenbereich",
+    modePick: "Einzelne Seiten",
+    modeAllHint: "ZIP mit einem PDF pro Seite.",
+    modeRangeHint: "Ein PDF von–bis (Miniaturen zeigen den Bereich).",
+    modePickHint: "Miniaturen antippen, um Seiten in ein PDF zu extrahieren.",
+    fromPage: "Von Seite",
+    toPage: "Bis Seite",
+    pagesInFile: (n) => `${n} Seite${n === 1 ? "" : "n"} in der Datei`,
+    removeFile: "Datei entfernen",
+    successTitle: "PDF fertig",
+    successBody: "Ergebnis bleibt lokal — unten herunterladen.",
+    invalidRange: "Bereich prüfen: „Von“ darf nicht größer als „Bis“ sein.",
+    errNonePicked: "Mindestens eine Seite auf den Miniaturen wählen.",
+    rewardedTitle: "Projekt durch Werbung unterstützen",
+    rewardedMessage: "5 Sekunden Video — dann teilen wir lokal.",
+    processingSplit: "PDF wird geteilt…",
+    previewHint: "Seitenvorschau vor dem Teilen.",
+    pagesPicked: (n) => `${n} Seite${n === 1 ? "" : "n"} gewählt`,
+    clearPick: "Auswahl löschen",
+    togglePick: (p) => `Seite ${p} — Auswahl umschalten`,
+    pageInRange: (p) => `Seite ${p} im Bereich`,
+    loadingThumbnails: "Miniaturen werden erstellt…",
+    thumbnailProgress: (c, t) => `Miniaturen ${c} / ${t}`,
+    zoomPreview: "Seite vergrößern",
+    previewTitle: (p) => `Seite ${p} — Detailansicht`,
+    previewClose: "Schließen",
+    previewLoading: "Scharfe Vorschau wird geladen…",
+  },
+  es: {
+    modeAll: "Cada página en su PDF",
+    modeRange: "Rango de páginas",
+    modePick: "Páginas sueltas",
+    modeAllHint: "ZIP con un PDF por página.",
+    modeRangeHint: "Un PDF desde–hasta (miniaturas resaltadas).",
+    modePickHint: "Toca miniaturas para extraer páginas a un solo PDF.",
+    fromPage: "Desde página",
+    toPage: "Hasta página",
+    pagesInFile: (n) => `${n} pág. en el archivo`,
+    removeFile: "Quitar archivo",
+    successTitle: "PDF listo",
+    successBody: "El resultado es local — descarga abajo.",
+    invalidRange: "Revisa el rango: «desde» no puede ser mayor que «hasta».",
+    errNonePicked: "Elige al menos una página en las miniaturas.",
+    rewardedTitle: "Apoya el proyecto viendo un anuncio",
+    rewardedMessage: "Vídeo de 5 s — luego dividimos el PDF en local.",
+    processingSplit: "Dividiendo PDF…",
+    previewHint: "Vista previa antes de dividir.",
+    pagesPicked: (n) => `${n} pág. seleccionadas`,
+    clearPick: "Borrar selección",
+    togglePick: (p) => `Página ${p} — alternar selección`,
+    pageInRange: (p) => `Página ${p} en el rango`,
+    loadingThumbnails: "Generando miniaturas…",
+    thumbnailProgress: (c, t) => `Miniaturas ${c} / ${t}`,
+    zoomPreview: "Ampliar vista de página",
+    previewTitle: (p) => `Página ${p} — vista detallada`,
+    previewClose: "Cerrar",
+    previewLoading: "Cargando vista en alta resolución…",
+  },
+  fr: {
+    modeAll: "Chaque page en PDF séparé",
+    modeRange: "Plage de pages",
+    modePick: "Pages au choix",
+    modeAllHint: "ZIP avec un PDF par page.",
+    modeRangeHint: "Un PDF de–à (miniatures mises en évidence).",
+    modePickHint: "Touchez les miniatures pour extraire plusieurs pages.",
+    fromPage: "De la page",
+    toPage: "À la page",
+    pagesInFile: (n) => `${n} p. dans le fichier`,
+    removeFile: "Retirer le fichier",
+    successTitle: "PDF prêt",
+    successBody: "Résultat local — téléchargez ci-dessous.",
+    invalidRange: "Vérifiez la plage : « de » ne peut pas dépasser « à ».",
+    errNonePicked: "Sélectionnez au moins une page sur les miniatures.",
+    rewardedTitle: "Soutenir le projet en regardant une pub",
+    rewardedMessage: "Vidéo de 5 s — puis nous scindons le PDF en local.",
+    processingSplit: "Scission du PDF…",
+    previewHint: "Aperçu des pages avant la scission.",
+    pagesPicked: (n) => `${n} p. sélectionnée${n === 1 ? "" : "s"}`,
+    clearPick: "Effacer la sélection",
+    togglePick: (p) => `Page ${p} — basculer la sélection`,
+    pageInRange: (p) => `Page ${p} dans la plage`,
+    loadingThumbnails: "Génération des miniatures…",
+    thumbnailProgress: (c, t) => `Miniatures ${c} / ${t}`,
+    zoomPreview: "Agrandir l’aperçu",
+    previewTitle: (p) => `Page ${p} — vue détaillée`,
+    previewClose: "Fermer",
+    previewLoading: "Chargement de l’aperçu haute résolution…",
+  },
+};

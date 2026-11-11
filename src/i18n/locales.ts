@@ -1,27 +1,67 @@
 import type { EcosystemProjectId } from "@/lib/ecosystem";
+import {
+  CATALOG_UI_COPY,
+  PLANNED_TOOL_COPY,
+  TOOL_CATEGORY_COPY,
+  type ToolCategoryCopy,
+} from "@/i18n/planned-tools";
+import { REWARDED_AD_PROCESS_COPY } from "@/i18n/rewarded-ad-extensions";
+import { REMOVE_TOOL_UI, type RemoveToolUiCopy } from "@/i18n/remove-tool-ui";
+import { ORGANIZE_TOOL_UI, type OrganizeToolUiCopy } from "@/i18n/organize-tool-ui";
+import { PROTECT_TOOL_UI, type ProtectToolUiCopy } from "@/i18n/protect-tool-ui";
+import { SIGN_TOOL_UI, type SignToolUiCopy } from "@/i18n/sign-tool-ui";
+import { UNLOCK_TOOL_UI, type UnlockToolUiCopy } from "@/i18n/unlock-tool-ui";
+import { ROTATE_TOOL_UI, type RotateToolUiCopy } from "@/i18n/rotate-tool-ui";
+import { SPLIT_TOOL_UI, type SplitToolUiCopy } from "@/i18n/split-tool-ui";
+import { SUPPORT_COPY, type SupportCopy } from "@/i18n/support-copy";
+import type { ToolCategoryId } from "@/lib/tools/catalog";
 
-export const LOCALES = ["uk", "en", "pl", "de", "es", "fr"] as const;
-
-export type Locale = (typeof LOCALES)[number];
+export { LOCALES, type Locale } from "@/i18n/locale-types";
+import { LOCALES, type Locale } from "@/i18n/locale-types";
 
 export const DEFAULT_LOCALE = "uk" satisfies Locale;
 
 export const TOOL_IDS = [
+  "merge-pdf",
+  "split-pdf",
+  "remove-pages",
+  "organize-pdf",
+  "compress-pdf",
+  "images-to-pdf",
+  "pdf-to-images",
+  "rotate-pdf",
+  "word-to-pdf",
+  "text-to-pdf",
+  "protect-pdf",
+  "unlock-pdf",
+  "sign-pdf",
+] as const satisfies readonly ToolId[];
+
+export type ToolId =
+  | "merge-pdf"
+  | "split-pdf"
+  | "remove-pages"
+  | "organize-pdf"
+  | "compress-pdf"
+  | "images-to-pdf"
+  | "pdf-to-images"
+  | "rotate-pdf"
+  | "word-to-pdf"
+  | "text-to-pdf"
+  | "protect-pdf"
+  | "unlock-pdf"
+  | "sign-pdf";
+
+export const LIVE_TOOL_IDS = [
   "images-to-pdf",
   "pdf-to-images",
   "merge-pdf",
   "compress-pdf",
   "word-to-pdf",
   "text-to-pdf",
-] as const satisfies readonly ToolId[];
+] as const;
 
-export type ToolId =
-  | "images-to-pdf"
-  | "pdf-to-images"
-  | "merge-pdf"
-  | "compress-pdf"
-  | "word-to-pdf"
-  | "text-to-pdf";
+export type LiveToolId = (typeof LIVE_TOOL_IDS)[number];
 
 export type Dictionary = {
   brand: {
@@ -60,6 +100,8 @@ export type Dictionary = {
     toolsAria: string;
     openTool: string;
   };
+  toolCategories: Record<ToolCategoryId, ToolCategoryCopy>;
+  catalogUi: (typeof CATALOG_UI_COPY)[Locale];
   ad: {
     sponsored: string;
     titleBefore: string;
@@ -78,6 +120,10 @@ export type Dictionary = {
     sponsored: string;
     title: string;
     message: string;
+    titleProcess: string;
+    messageProcess: string;
+    continueProcess: string;
+    thanksProcess: string;
     watch: string;
     watching: string;
     download: string;
@@ -87,6 +133,14 @@ export type Dictionary = {
     close: string;
     slotLabel: string;
   };
+  support: SupportCopy;
+  splitUi: SplitToolUiCopy;
+  removeUi: RemoveToolUiCopy;
+  rotateUi: RotateToolUiCopy;
+  organizeUi: OrganizeToolUiCopy;
+  protectUi: ProtectToolUiCopy;
+  unlockUi: UnlockToolUiCopy;
+  signUi: SignToolUiCopy;
   toolAd: {
     sponsored: string;
     slotTitle: string;
@@ -160,7 +214,29 @@ export type Dictionary = {
   };
 };
 
-const uk: Dictionary = {
+export type LocaleDictionaryDraft = Omit<
+  Dictionary,
+  | "toolCategories"
+  | "catalogUi"
+  | "tools"
+  | "support"
+  | "splitUi"
+  | "removeUi"
+  | "rotateUi"
+  | "organizeUi"
+  | "protectUi"
+  | "unlockUi"
+  | "signUi"
+  | "rewardedAd"
+> & {
+  tools: Record<LiveToolId, Dictionary["tools"][LiveToolId]>;
+  rewardedAd: Omit<
+    Dictionary["rewardedAd"],
+    "titleProcess" | "messageProcess" | "continueProcess" | "thanksProcess"
+  >;
+};
+
+const uk: LocaleDictionaryDraft = {
   brand: { name: "PurePDF", tagline: "Швидкі інструменти. Без зайвого." },
   nav: {
     selectLanguage: "Мова",
@@ -209,9 +285,9 @@ const uk: Dictionary = {
   home: {
     heroTitle: "Усі PDF-інструменти в одному темному робочому просторі.",
     heroSubtitle:
-      "Оберіть інструмент нижче, щоб конвертувати, об’єднувати чи стискати файли приватно у браузері.",
-    toolsHeading: "PDF-інструменти",
-    toolsAria: "PDF-інструменти",
+      "Інструменти згруповано в три категорії — розгорніть блок, оберіть дію. Усе локально у браузері.",
+    toolsHeading: "Каталог інструментів",
+    toolsAria: "Каталог інструментів",
     openTool: "Відкрити →",
   },
   ad: {
@@ -381,7 +457,7 @@ const uk: Dictionary = {
   },
 };
 
-const en: Dictionary = {
+const en: LocaleDictionaryDraft = {
   brand: { name: "PurePDF", tagline: "Fast tools. Zero clutter." },
   nav: {
     selectLanguage: "Language",
@@ -430,9 +506,9 @@ const en: Dictionary = {
   home: {
     heroTitle: "Every PDF tool you need, in one dark workspace.",
     heroSubtitle:
-      "Pick a tool below to convert, merge, or compress files privately in your browser.",
-    toolsHeading: "PDF tools",
-    toolsAria: "PDF tools",
+      "Tools are grouped in three categories — expand a section and pick an action. Everything runs locally in your browser.",
+    toolsHeading: "Tool catalog",
+    toolsAria: "Tool catalog",
     openTool: "Open tool →",
   },
   ad: {
@@ -600,7 +676,7 @@ const en: Dictionary = {
   },
 };
 
-const pl: Dictionary = {
+const pl: LocaleDictionaryDraft = {
   ...en,
   brand: { name: "PurePDF", tagline: "Szybkie narzędzia. Bez zbędnego bałaganu." },
   nav: {
@@ -650,9 +726,9 @@ const pl: Dictionary = {
   home: {
     heroTitle: "Wszystkie narzędzia PDF w jednym ciemnym workspace.",
     heroSubtitle:
-      "Wybierz narzędzie poniżej, aby konwertować, łączyć lub kompresować pliki prywatnie w przeglądarce.",
-    toolsHeading: "Narzędzia PDF",
-    toolsAria: "Narzędzia PDF",
+      "Narzędzia w trzech kategoriach — rozwiń sekcję i wybierz akcję. Wszystko lokalnie w przeglądarce.",
+    toolsHeading: "Katalog narzędzi",
+    toolsAria: "Katalog narzędzi",
     openTool: "Otwórz →",
   },
   ad: {
@@ -818,7 +894,7 @@ const pl: Dictionary = {
   },
 };
 
-const de: Dictionary = {
+const de: LocaleDictionaryDraft = {
   ...en,
   brand: { name: "PurePDF", tagline: "Schnelle Tools. Kein Ballast." },
   nav: {
@@ -868,9 +944,9 @@ const de: Dictionary = {
   home: {
     heroTitle: "Alle PDF-Tools in einem dunklen Workspace.",
     heroSubtitle:
-      "Wählen Sie unten ein Tool, um Dateien privat im Browser zu konvertieren, zusammenzuführen oder zu komprimieren.",
-    toolsHeading: "PDF-Tools",
-    toolsAria: "PDF-Tools",
+      "Tools in drei Kategorien — Bereich öffnen und Aktion wählen. Alles lokal im Browser.",
+    toolsHeading: "Tool-Katalog",
+    toolsAria: "Tool-Katalog",
     openTool: "Tool öffnen →",
   },
   ad: {
@@ -1035,7 +1111,7 @@ const de: Dictionary = {
   },
 };
 
-const es: Dictionary = {
+const es: LocaleDictionaryDraft = {
   ...en,
   brand: { name: "PurePDF", tagline: "Herramientas rápidas. Sin ruido." },
   nav: {
@@ -1085,9 +1161,9 @@ const es: Dictionary = {
   home: {
     heroTitle: "Todas las herramientas PDF en un espacio oscuro.",
     heroSubtitle:
-      "Elige una herramienta para convertir, unir o comprimir archivos de forma privada en el navegador.",
-    toolsHeading: "Herramientas PDF",
-    toolsAria: "Herramientas PDF",
+      "Herramientas en tres categorías — abre una sección y elige una acción. Todo en local en el navegador.",
+    toolsHeading: "Catálogo de herramientas",
+    toolsAria: "Catálogo de herramientas",
     openTool: "Abrir →",
   },
   ad: {
@@ -1252,7 +1328,7 @@ const es: Dictionary = {
   },
 };
 
-const fr: Dictionary = {
+const fr: LocaleDictionaryDraft = {
   ...en,
   brand: { name: "PurePDF", tagline: "Outils rapides. Zéro superflu." },
   nav: {
@@ -1302,9 +1378,9 @@ const fr: Dictionary = {
   home: {
     heroTitle: "Tous les outils PDF dans un espace sombre.",
     heroSubtitle:
-      "Choisissez un outil pour convertir, fusionner ou compresser vos fichiers en privé dans le navigateur.",
-    toolsHeading: "Outils PDF",
-    toolsAria: "Outils PDF",
+      "Outils regroupés en trois catégories — dépliez une section et choisissez une action. Tout reste local dans le navigateur.",
+    toolsHeading: "Catalogue d’outils",
+    toolsAria: "Catalogue d’outils",
     openTool: "Ouvrir →",
   },
   ad: {
@@ -1469,13 +1545,37 @@ const fr: Dictionary = {
   },
 };
 
+function finalizeLocale(locale: Locale, base: LocaleDictionaryDraft): Dictionary {
+  return {
+    ...base,
+    toolCategories: TOOL_CATEGORY_COPY[locale],
+    catalogUi: CATALOG_UI_COPY[locale],
+    support: SUPPORT_COPY[locale],
+    splitUi: SPLIT_TOOL_UI[locale],
+    removeUi: REMOVE_TOOL_UI[locale],
+    rotateUi: ROTATE_TOOL_UI[locale],
+    organizeUi: ORGANIZE_TOOL_UI[locale],
+    protectUi: PROTECT_TOOL_UI[locale],
+    unlockUi: UNLOCK_TOOL_UI[locale],
+    signUi: SIGN_TOOL_UI[locale],
+    rewardedAd: {
+      ...base.rewardedAd,
+      ...REWARDED_AD_PROCESS_COPY[locale],
+    },
+    tools: {
+      ...base.tools,
+      ...PLANNED_TOOL_COPY[locale],
+    },
+  };
+}
+
 export const dictionaries: Record<Locale, Dictionary> = {
-  uk,
-  en,
-  pl,
-  de,
-  es,
-  fr,
+  uk: finalizeLocale("uk", uk),
+  en: finalizeLocale("en", en),
+  pl: finalizeLocale("pl", pl),
+  de: finalizeLocale("de", de),
+  es: finalizeLocale("es", es),
+  fr: finalizeLocale("fr", fr),
 };
 
 export const LOCALE_LABELS: Record<
