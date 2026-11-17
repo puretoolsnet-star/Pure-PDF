@@ -31,7 +31,7 @@ export function ToolShell({
   const copy = t.tools[toolId];
 
   return (
-    <div className="purepdf-page-shell relative flex min-h-full flex-1 flex-col bg-background font-sans text-gray-100">
+    <div className="purepdf-page-shell purepdf-mobile-interactive relative flex min-h-full flex-1 flex-col bg-background font-sans text-gray-100">
       <SiteHeader maxWidth="4xl" />
 
       <div className="relative z-10 mx-auto w-full min-w-0 max-w-4xl px-4 sm:px-6 md:px-8">

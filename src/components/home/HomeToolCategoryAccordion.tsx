@@ -3,9 +3,12 @@
 import { ChevronDown, Layers, RefreshCw, Shield } from "lucide-react";
 
 import { HomeToolCard } from "@/components/home/HomeToolCard";
+import { PdfSubdomainHub } from "@/components/subdomains/PdfSubdomainHub";
 import { useI18n } from "@/i18n/context";
 import { cn } from "@/lib/cn";
 import { TOUCH_TARGET_CLASS } from "@/lib/touch-target";
+import { useClientMounted } from "@/lib/use-client-mounted";
+import { useIsMdViewport } from "@/lib/use-md-viewport";
 import {
   TOOL_CATEGORIES,
   type ToolCategoryId,
@@ -20,6 +23,9 @@ const CATEGORY_ICON: Record<ToolCategoryId, typeof Layers> = {
 /** Native `<details>` / `<Link>` catalog — same interaction model as subdomain hubs. */
 export function HomeToolCategoryAccordion() {
   const { t } = useI18n();
+  const mounted = useClientMounted();
+  const isMd = useIsMdViewport();
+  const showMobileHub = !mounted || !isMd;
 
   return (
     <div
@@ -32,6 +38,16 @@ export function HomeToolCategoryAccordion() {
       >
         {t.home.toolsHeading}
       </h2>
+      {showMobileHub ? (
+        <div
+          role="region"
+          aria-labelledby="purepdf-tools-heading"
+          aria-label={t.home.toolsAria}
+          className={cn(TOUCH_TARGET_CLASS, "min-w-0")}
+        >
+          <PdfSubdomainHub />
+        </div>
+      ) : (
       <div
         role="region"
         aria-labelledby="purepdf-tools-heading"
@@ -93,6 +109,7 @@ export function HomeToolCategoryAccordion() {
           );
         })}
       </div>
+      )}
     </div>
   );
 }

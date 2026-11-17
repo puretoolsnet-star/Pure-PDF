@@ -109,6 +109,7 @@ canvas {
   #purepdf-app-root.purepdf-mobile-ui textarea,
   #purepdf-app-root.purepdf-mobile-ui [role="button"] {
     pointer-events: auto !important;
+    cursor: pointer;
     touch-action: manipulation !important;
     position: relative;
     z-index: 100;

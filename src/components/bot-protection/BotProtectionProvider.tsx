@@ -202,7 +202,7 @@ export function BotProtectionProvider({ children }: { children: ReactNode }) {
       <div
         ref={widgetHostRef}
         aria-hidden
-        className="fixed left-0 top-0 h-px w-px overflow-hidden opacity-0"
+        className="pointer-events-none fixed left-0 top-0 z-0 h-px w-px overflow-hidden opacity-0"
         data-purepdf-turnstile-host
       />
     </BotProtectionContext.Provider>

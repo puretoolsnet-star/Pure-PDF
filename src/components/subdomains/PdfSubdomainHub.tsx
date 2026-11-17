@@ -6,6 +6,7 @@ import { useI18n } from "@/i18n/context";
 import { toolRoute } from "@/lib/i18n/routing";
 import { TOOL_CATEGORIES } from "@/lib/tools/catalog";
 import { cn } from "@/lib/cn";
+import { TOUCH_TARGET_CLASS } from "@/lib/touch-target";
 
 export function PdfSubdomainHub() {
   const { t, locale } = useI18n();
@@ -31,7 +32,8 @@ export function PdfSubdomainHub() {
                     <Link
                       href={href}
                       className={cn(
-                        "glass-card flex min-h-[4.5rem] items-start gap-3 rounded-xl border border-white/10 p-4 transition hover:border-cyan-400/30 hover:bg-white/5",
+                        TOUCH_TARGET_CLASS,
+                        "glass-card flex min-h-[4.5rem] cursor-pointer items-start gap-3 rounded-xl border border-white/10 p-4 transition hover:border-cyan-400/30 hover:bg-white/5",
                         soon && "opacity-75",
                       )}
                     >

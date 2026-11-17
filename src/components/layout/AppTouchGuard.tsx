@@ -4,6 +4,7 @@ import { usePathname } from "next/navigation";
 import { useEffect } from "react";
 
 import { releaseInteractionLocks } from "@/lib/release-interaction-locks";
+import { scrubOrphanedBlockers } from "@/lib/tame-third-party-overlays";
 
 /** Clears stuck scroll locks and orphaned overlays after navigation. */
 export function AppTouchGuard() {
@@ -38,6 +39,31 @@ export function AppTouchGuard() {
       window.removeEventListener("resize", onResize);
       window.removeEventListener("pageshow", onPageShow);
       document.removeEventListener("visibilitychange", onVisibility);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (typeof window === "undefined" || window.innerWidth >= 768) return;
+
+    const runScrub = () => scrubOrphanedBlockers();
+    runScrub();
+
+    const observer = new MutationObserver(runScrub);
+    observer.observe(document.body, { childList: true });
+
+    const onTouchStart = () => {
+      runScrub();
+    };
+    document.addEventListener("touchstart", onTouchStart, {
+      capture: true,
+      passive: true,
+    });
+
+    return () => {
+      observer.disconnect();
+      document.removeEventListener("touchstart", onTouchStart, {
+        capture: true,
+      });
     };
   }, []);
 
