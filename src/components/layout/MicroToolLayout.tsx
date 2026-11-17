@@ -34,7 +34,7 @@ export function MicroToolLayout({
   return (
     <div
       className={cn(
-        "purepdf-page-shell relative flex min-h-dvh flex-1 flex-col bg-background font-sans text-gray-100",
+        "purepdf-page-shell purepdf-mobile-interactive relative flex min-h-dvh flex-1 flex-col bg-background font-sans text-gray-100",
         className,
       )}
     >

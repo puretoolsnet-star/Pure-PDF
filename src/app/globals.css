@@ -90,12 +90,16 @@ canvas {
     isolation: isolate;
   }
 
+  #purepdf-app-root.purepdf-mobile-ui .purepdf-page-shell,
+  #purepdf-app-root.purepdf-mobile-ui .purepdf-main-workspace,
+  #purepdf-app-root.purepdf-mobile-ui .purepdf-mobile-interactive,
   #purepdf-app-root.purepdf-mobile-ui main,
   #purepdf-app-root.purepdf-mobile-ui header,
   #purepdf-app-root.purepdf-mobile-ui footer,
   #purepdf-app-root.purepdf-mobile-ui section,
   #purepdf-app-root.purepdf-mobile-ui nav,
-  #purepdf-app-root.purepdf-mobile-ui .purepdf-mobile-interactive,
+  #purepdf-app-root.purepdf-mobile-ui details,
+  #purepdf-app-root.purepdf-mobile-ui summary,
   #purepdf-app-root.purepdf-mobile-ui .purepdf-touch-target,
   #purepdf-app-root.purepdf-mobile-ui button,
   #purepdf-app-root.purepdf-mobile-ui a[href],
@@ -107,13 +111,11 @@ canvas {
     pointer-events: auto !important;
     touch-action: manipulation !important;
     position: relative;
-    z-index: 2;
+    z-index: 100;
   }
 
-  #purepdf-tool-catalog,
-  #purepdf-tool-catalog * {
-    pointer-events: auto !important;
-    touch-action: manipulation !important;
+  #purepdf-tool-catalog a[href] {
+    z-index: 101;
   }
 
   /* iOS: backdrop-filter on glass cards steals taps */

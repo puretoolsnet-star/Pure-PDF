@@ -1,27 +1,14 @@
 "use client";
 
-import { useRouter } from "next/navigation";
-import { useCallback } from "react";
-
 import { HomeToolCategoryAccordion } from "@/components/home/HomeToolCategoryAccordion";
 import { AdBanner } from "@/components/ads/AdBanner";
 import { PrivacyBanner } from "@/components/layout/PrivacyBanner";
 import { SiteHeader } from "@/components/layout/SiteHeader";
 import { SupportBlock } from "@/components/layout/SupportBlock";
 import { useI18n } from "@/i18n/context";
-import type { ToolId } from "@/i18n/locales";
-import { toolRoute } from "@/lib/i18n/routing";
 
 export function HomePage() {
-  const router = useRouter();
-  const { t, locale } = useI18n();
-
-  const openTool = useCallback(
-    (toolId: ToolId) => {
-      router.push(toolRoute(locale, toolId));
-    },
-    [locale, router],
-  );
+  const { t } = useI18n();
 
   return (
     <div className="purepdf-page-shell purepdf-mobile-interactive relative flex min-h-dvh w-full flex-1 flex-col overflow-x-hidden bg-background font-sans text-gray-100">
@@ -40,8 +27,8 @@ export function HomePage() {
         </section>
 
         <div className="grid w-full min-w-0 gap-8 lg:grid-cols-[minmax(0,1fr)_min(100%,17rem)] lg:items-start">
-          <div className="min-w-0">
-            <HomeToolCategoryAccordion onOpenTool={openTool} />
+          <div className="relative z-20 min-w-0">
+            <HomeToolCategoryAccordion />
             <SupportBlock />
           </div>
           <AdBanner
