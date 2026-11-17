@@ -62,7 +62,7 @@ export function ToolShell({
 
       <main
         className={cn(
-          "relative z-10 mx-auto w-full max-w-4xl flex-1 px-4 pb-[max(4rem,env(safe-area-inset-bottom))] pt-8 sm:px-8 sm:pb-16",
+          "purepdf-main-workspace relative z-10 mx-auto w-full max-w-4xl flex-1 px-4 pb-[max(4rem,env(safe-area-inset-bottom))] pt-8 sm:px-8 sm:pb-16",
           className,
         )}
       >

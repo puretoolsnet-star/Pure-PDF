@@ -10,6 +10,7 @@ import {
 } from "react";
 
 import { cn } from "@/lib/cn";
+import { TOUCH_TARGET_CLASS } from "@/lib/touch-target";
 
 type FileDropzoneProps = {
   accept: string;
@@ -61,7 +62,8 @@ export function FileDropzone({
   };
 
   const zoneClassName = cn(
-    "glass-card flex touch-manipulation flex-col items-center justify-center rounded-2xl border border-dashed px-4 py-10 text-center transition-colors sm:px-6 sm:py-12",
+    TOUCH_TARGET_CLASS,
+    "glass-card flex flex-col items-center justify-center rounded-2xl border border-dashed px-4 py-10 text-center transition-colors sm:px-6 sm:py-12",
     disabled ? "cursor-not-allowed opacity-60" : "cursor-pointer",
     dragging
       ? "border-primary/60 bg-primary/10"

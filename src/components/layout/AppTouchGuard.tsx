@@ -17,6 +17,7 @@ export function AppTouchGuard() {
 
   useEffect(() => {
     releaseInteractionLocks();
+    const mobileTidy = window.setTimeout(releaseInteractionLocks, 100);
 
     const onPageShow = (event: PageTransitionEvent) => {
       if (event.persisted) releaseInteractionLocks();
@@ -29,6 +30,7 @@ export function AppTouchGuard() {
     document.addEventListener("visibilitychange", onVisibility);
 
     return () => {
+      window.clearTimeout(mobileTidy);
       window.removeEventListener("pageshow", onPageShow);
       document.removeEventListener("visibilitychange", onVisibility);
     };

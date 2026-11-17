@@ -4,6 +4,7 @@ import { AdsterraRectangleBanner } from "@/components/ads/AdsterraRectangleBanne
 import { useI18n } from "@/i18n/context";
 import { adsterraRectangleBanner } from "@/lib/ads/adsterra";
 import { cn } from "@/lib/cn";
+import { useIsMdViewport } from "@/lib/use-md-viewport";
 
 export type AdBannerLayout = "sidebar" | "inline";
 
@@ -16,8 +17,8 @@ type AdBannerProps = {
 };
 
 /**
- * Standard PurePDF ad placeholder — i18n labels, safe on touch devices
- * (no overlay; lives in document flow).
+ * Sponsored rectangle — desktop/tablet only (md+). Not mounted below 768px
+ * so Adsterra scripts cannot block mobile taps.
  */
 export function AdBanner({
   className,
@@ -25,19 +26,24 @@ export function AdBanner({
   slot = "tool-sidebar",
 }: AdBannerProps) {
   const { t } = useI18n();
+  const isMd = useIsMdViewport();
   const isSidebar = layout === "sidebar";
   const hasLiveBanner = Boolean(
     adsterraRectangleBanner.key && adsterraRectangleBanner.src,
   );
+
+  if (!isMd) {
+    return null;
+  }
 
   return (
     <aside
       aria-label={t.toolAd.sponsored}
       data-ad-slot={slot}
       className={cn(
-        "relative z-0 min-w-0 w-full max-w-full shrink-0",
+        "purepdf-ad-desktop relative z-0 hidden min-w-0 w-full max-w-full shrink-0 md:block",
         isSidebar &&
-          "order-2 border-t border-white/10 pt-6 lg:order-none lg:border-t-0 lg:pt-0",
+          "lg:order-none lg:border-t-0 lg:pt-0",
         className,
       )}
     >

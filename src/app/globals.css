@@ -69,18 +69,51 @@ body > iframe,
   pointer-events: auto;
 }
 
-/* Home catalog + tool cards — must receive taps on touch devices */
-.purepdf-touch-target,
-#purepdf-tool-catalog button {
-  pointer-events: auto !important;
-  touch-action: manipulation;
-  position: relative;
-  z-index: 2;
+/* Desktop: sponsored blocks visible from md */
+.purepdf-ad-desktop {
+  display: none;
 }
 
-#purepdf-tool-catalog {
-  position: relative;
-  z-index: 10;
-  pointer-events: auto;
-  isolation: isolate;
+@media (min-width: 768px) {
+  .purepdf-ad-desktop {
+    display: block;
+  }
+}
+
+/* --- Mobile-only: no banner DOM, reliable taps on catalog & tools --- */
+@media (max-width: 767px) {
+  .purepdf-ad-desktop,
+  aside[data-ad-slot] {
+    display: none !important;
+    pointer-events: none !important;
+    visibility: hidden !important;
+    height: 0 !important;
+    overflow: hidden !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  #purepdf-app-root main.purepdf-main-workspace {
+    position: relative;
+    z-index: 30;
+    isolation: isolate;
+    pointer-events: auto;
+  }
+
+  .purepdf-touch-target,
+  #purepdf-tool-catalog,
+  #purepdf-tool-catalog button,
+  #purepdf-app-root main.purepdf-main-workspace button,
+  #purepdf-app-root main.purepdf-main-workspace a[href],
+  #purepdf-app-root main.purepdf-main-workspace label,
+  #purepdf-app-root main.purepdf-main-workspace [role="button"] {
+    pointer-events: auto !important;
+    touch-action: manipulation !important;
+    position: relative;
+    z-index: 100;
+  }
+
+  body > iframe:not([data-purepdf-ad-hit="true"]) {
+    pointer-events: none !important;
+  }
 }

@@ -27,7 +27,7 @@ export function HomePage() {
     <div className="purepdf-page-shell relative flex min-h-dvh w-full flex-1 flex-col overflow-x-hidden bg-background font-sans text-gray-100">
       <SiteHeader />
 
-      <main className="relative z-10 mx-auto flex w-full min-w-0 max-w-6xl flex-1 flex-col px-4 pb-[max(4rem,env(safe-area-inset-bottom))] pt-2 sm:px-6 md:px-8 md:pb-16 [&_button]:touch-manipulation [&_a]:touch-manipulation">
+      <main className="purepdf-main-workspace relative z-10 mx-auto flex w-full min-w-0 max-w-6xl flex-1 flex-col px-4 pb-[max(4rem,env(safe-area-inset-bottom))] pt-2 sm:px-6 md:px-8 md:pb-16">
         <PrivacyBanner className="mb-8" />
 
         <section className="mb-8 max-w-2xl min-w-0">
@@ -39,15 +39,15 @@ export function HomePage() {
           </p>
         </section>
 
-        <div className="relative z-10 grid w-full min-w-0 gap-8 lg:grid-cols-[minmax(0,1fr)_min(100%,17rem)] lg:items-start">
-          <div className="relative z-20 min-w-0">
+        <div className="grid w-full min-w-0 gap-8 lg:grid-cols-[minmax(0,1fr)_min(100%,17rem)] lg:items-start">
+          <div className="min-w-0">
             <HomeToolCategoryAccordion onOpenTool={openTool} />
             <SupportBlock />
           </div>
           <AdBanner
             layout="sidebar"
             slot="home-sidebar"
-            className="relative z-0 lg:sticky lg:top-6"
+            className="lg:sticky lg:top-6"
           />
         </div>
       </main>
