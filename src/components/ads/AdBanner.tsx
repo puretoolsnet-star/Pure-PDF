@@ -1,6 +1,8 @@
 "use client";
 
+import { AdsterraRectangleBanner } from "@/components/ads/AdsterraRectangleBanner";
 import { useI18n } from "@/i18n/context";
+import { adsterraRectangleBanner } from "@/lib/ads/adsterra";
 import { cn } from "@/lib/cn";
 
 export type AdBannerLayout = "sidebar" | "inline";
@@ -24,6 +26,9 @@ export function AdBanner({
 }: AdBannerProps) {
   const { t } = useI18n();
   const isSidebar = layout === "sidebar";
+  const hasLiveBanner = Boolean(
+    adsterraRectangleBanner.key && adsterraRectangleBanner.src,
+  );
 
   return (
     <aside
@@ -46,16 +51,29 @@ export function AdBanner({
       </p>
       <div
         className={cn(
-          "glass-card flex w-full max-w-full flex-col items-center justify-center rounded-xl border border-dashed border-white/15 bg-surface/30 px-4 py-5 text-center",
-          isSidebar
-            ? "min-h-[6.5rem] sm:min-h-[7.5rem] lg:min-h-[8rem]"
-            : "min-h-[5.5rem]",
+          "glass-card w-full max-w-full rounded-xl bg-surface/30",
+          hasLiveBanner
+            ? "flex flex-col items-center border border-white/10 px-2 py-3 sm:px-3"
+            : cn(
+                "flex flex-col items-center justify-center border border-dashed border-white/15 px-4 py-5 text-center",
+                isSidebar
+                  ? "min-h-[6.5rem] sm:min-h-[7.5rem] lg:min-h-[8rem]"
+                  : "min-h-[5.5rem]",
+              ),
         )}
       >
-        <p className="text-sm font-medium text-gray-300">{t.toolAd.slotTitle}</p>
-        <p className="mt-2 max-w-xs text-xs leading-relaxed text-gray-500">
-          {t.toolAd.slotHint}
-        </p>
+        {hasLiveBanner ? (
+          <AdsterraRectangleBanner slot={slot} layout={layout} />
+        ) : (
+          <>
+            <p className="text-sm font-medium text-gray-300">
+              {t.toolAd.slotTitle}
+            </p>
+            <p className="mt-2 max-w-xs text-center text-xs leading-relaxed text-gray-500">
+              {t.toolAd.slotHint}
+            </p>
+          </>
+        )}
       </div>
     </aside>
   );

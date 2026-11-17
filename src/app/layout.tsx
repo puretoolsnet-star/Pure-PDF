@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import Script from "next/script";
 
 import { Providers } from "@/app/providers";
+import { adsterraSocialBar } from "@/lib/ads/adsterra";
 import { siteMetadataBase } from "@/lib/seo/metadata";
 import "./globals.css";
 
@@ -37,6 +39,14 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           aria-hidden
           className="pointer-events-none fixed inset-0 z-[100] [&>*]:pointer-events-auto"
         />
+        {adsterraSocialBar.src ? (
+          <Script
+            id="adsterra-social-bar"
+            src={adsterraSocialBar.src}
+            strategy="afterInteractive"
+            data-cfasync="false"
+          />
+        ) : null}
       </body>
     </html>
   );

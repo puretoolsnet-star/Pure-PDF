@@ -1,6 +1,8 @@
 const NATIVE_SRC = process.env.NEXT_PUBLIC_ADSTERRA_NATIVE_SRC?.trim() ?? "";
 const NATIVE_ID = process.env.NEXT_PUBLIC_ADSTERRA_NATIVE_ID?.trim() ?? "";
-const SOCIAL_SRC = process.env.NEXT_PUBLIC_ADSTERRA_SOCIAL_SRC?.trim() ?? "";
+const SOCIAL_SRC =
+  process.env.NEXT_PUBLIC_ADSTERRA_SOCIAL_SRC?.trim() ??
+  "https://bauval.org/14/8cc419c72887c043207d271ed49d67ef";
 const POPUNDER_SRC = process.env.NEXT_PUBLIC_ADSTERRA_POPUNDER_SRC?.trim() ?? "";
 
 /** Tool rewarded flow (process / download). */
@@ -23,6 +25,61 @@ export const adsterraNative = {
   containerId: NATIVE_ID,
 };
 
+/** Site-wide Adsterra Social Bar — loaded from root layout. */
+export const adsterraSocialBar = {
+  src: SOCIAL_SRC,
+};
+
+const BANNER_KEY =
+  process.env.NEXT_PUBLIC_ADSTERRA_BANNER_KEY?.trim() ??
+  "7e8b48e3a5a395d2c396b6e98f8e0196";
+const BANNER_SRC =
+  process.env.NEXT_PUBLIC_ADSTERRA_BANNER_SRC?.trim() ??
+  "https://bauval.org/22/7e8b48e3a5a395d2c396b6e98f8e0196";
+
+/** Tool sidebar / inline rectangle (300×250). */
+export const adsterraRectangleBanner = {
+  key: BANNER_KEY,
+  src: BANNER_SRC,
+  width: 300,
+  height: 250,
+};
+
+/** Inject Adsterra 300×250 iframe bundle into `host` (client-only). */
+export function mountAdsterraRectangleBanner(
+  host: HTMLElement,
+  instanceId: string,
+): () => void {
+  const cfg = adsterraRectangleBanner;
+  if (!cfg.src || !cfg.key) return () => {};
+
+  const safeId = instanceId.replace(/[^\w-]/g, "-");
+  host.replaceChildren();
+
+  const optionsScript = document.createElement("script");
+  optionsScript.type = "text/javascript";
+  optionsScript.text = `atOptions = {
+    'key' : '${cfg.key}',
+    'format' : 'iframe',
+    'height' : ${cfg.height},
+    'width' : ${cfg.width},
+    'params' : {}
+  };`;
+
+  const loader = document.createElement("script");
+  loader.id = `adsterra-rect-${safeId}`;
+  loader.async = true;
+  loader.setAttribute("data-cfasync", "false");
+  loader.src = cfg.src;
+
+  host.appendChild(optionsScript);
+  host.appendChild(loader);
+
+  return () => {
+    host.replaceChildren();
+  };
+}
+
 function ensureScript(src: string, id: string) {
   if (!src || typeof document === "undefined") return;
   if (document.getElementById(id)) return;
@@ -41,8 +98,7 @@ export function loadAdsterraNative() {
 
 export function triggerAdsterraReward() {
   if (typeof window === "undefined") return;
-  const popunder = POPUNDER_SRC || SOCIAL_SRC;
-  if (popunder) ensureScript(popunder, "adsterra-reward-trigger");
+  if (POPUNDER_SRC) ensureScript(POPUNDER_SRC, "adsterra-reward-trigger");
   const invoke = (window as Window & { invoke?: () => void }).invoke;
   if (typeof invoke === "function") invoke();
 }
