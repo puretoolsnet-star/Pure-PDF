@@ -29,7 +29,12 @@ import { useRewardedAction } from "@/lib/use-rewarded-action";
 type SignMode = "draw" | "text";
 type ColorKey = keyof typeof SIGN_STROKE_COLORS;
 
-export function SignPdfTool() {
+type SignPdfToolProps = {
+  /** When true, render only the workspace (for subdomain `MicroToolLayout`). */
+  embedded?: boolean;
+};
+
+export function SignPdfTool({ embedded = false }: SignPdfToolProps) {
   const { t } = useI18n();
   const { runProtected, ready } = useProtectedGeneration();
   const { requestAction, modal } = useRewardedAction("sign-pdf", {
@@ -227,8 +232,7 @@ export function SignPdfTool() {
 
   const canProcess = file && selectedPage && hasSignature && !thumbsLoading;
 
-  return (
-    <ToolShell toolId="sign-pdf" icon={FileSignature}>
+  const workspace = (
       <div className="flex min-w-0 flex-col gap-6">
         {!file ? (
           <FileDropzone
@@ -459,6 +463,15 @@ export function SignPdfTool() {
         </div>
         {modal}
       </div>
+  );
+
+  if (embedded) {
+    return workspace;
+  }
+
+  return (
+    <ToolShell toolId="sign-pdf" icon={FileSignature}>
+      {workspace}
     </ToolShell>
   );
 }

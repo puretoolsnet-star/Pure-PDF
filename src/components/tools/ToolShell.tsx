@@ -7,7 +7,7 @@ import type { ReactNode } from "react";
 
 import { PrivacyBanner } from "@/components/layout/PrivacyBanner";
 import { SiteHeader } from "@/components/layout/SiteHeader";
-import { AdBanner } from "@/components/ads/AdBanner";
+import { ToolWorkspaceLayout } from "@/components/layout/ToolWorkspaceLayout";
 import { useI18n } from "@/i18n/context";
 import type { ToolId } from "@/i18n/locales";
 import { useLocalizedPath } from "@/lib/i18n/use-localized-path";
@@ -66,16 +66,7 @@ export function ToolShell({
           className,
         )}
       >
-        <div className="grid grid-cols-1 gap-6 lg:grid-cols-[minmax(0,1fr)_min(100%,17.5rem)] lg:items-start lg:gap-8">
-          <div className="relative z-10 min-w-0 order-1 lg:order-none">
-            {children}
-          </div>
-          <AdBanner
-            layout="sidebar"
-            slot="tool-sidebar"
-            className="lg:sticky lg:top-6 lg:self-start"
-          />
-        </div>
+        <ToolWorkspaceLayout adSlot="tool-sidebar">{children}</ToolWorkspaceLayout>
       </main>
     </div>
   );
