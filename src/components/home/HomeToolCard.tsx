@@ -7,6 +7,7 @@ import { useI18n } from "@/i18n/context";
 import type { ToolId } from "@/i18n/locales";
 import { cn } from "@/lib/cn";
 import type { ToolCatalogStatus } from "@/lib/tools/catalog";
+import { TOUCH_TARGET_CLASS } from "@/lib/touch-target";
 import { useTapHandler } from "@/lib/use-tap-handler";
 
 type HomeToolCardProps = {
@@ -41,7 +42,8 @@ export function HomeToolCard({
       aria-label={`${copy.title}. ${copy.hint}`}
       onClick={handleActivate.onClick}
       className={cn(
-        "glass-card group relative z-10 flex h-full touch-manipulation flex-col rounded-xl text-left transition-all duration-300",
+        TOUCH_TARGET_CLASS,
+        "glass-card group relative z-10 flex h-full flex-col rounded-xl text-left transition-all duration-300",
         compact ? "p-3.5 sm:p-4" : "rounded-2xl p-5",
         isSoon
           ? "cursor-not-allowed opacity-75"

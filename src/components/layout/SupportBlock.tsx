@@ -5,6 +5,7 @@ import { useState } from "react";
 
 import { SupportWatchModal } from "@/components/ads/SupportWatchModal";
 import { useI18n } from "@/i18n/context";
+import { TOUCH_TARGET_CLASS } from "@/lib/touch-target";
 
 export function SupportBlock() {
   const { t } = useI18n();
@@ -35,7 +36,7 @@ export function SupportBlock() {
               setSessionKey((k) => k + 1);
               setOpen(true);
             }}
-            className="inline-flex shrink-0 touch-manipulation items-center justify-center gap-2 rounded-lg border border-cyan-500/30 bg-gradient-to-r from-cyan-500/15 to-emerald-500/15 px-4 py-2.5 text-sm font-medium text-cyan-100 transition hover:border-cyan-400/40 hover:brightness-110 active:scale-[0.98]"
+            className={`${TOUCH_TARGET_CLASS} inline-flex shrink-0 items-center justify-center gap-2 rounded-lg border border-cyan-500/30 bg-gradient-to-r from-cyan-500/15 to-emerald-500/15 px-4 py-2.5 text-sm font-medium text-cyan-100 transition hover:border-cyan-400/40 hover:brightness-110 active:scale-[0.98]`}
           >
             <Play className="h-4 w-4 fill-current" aria-hidden />
             {t.support.watchCta}

@@ -68,3 +68,19 @@ body > iframe,
 #purepdf-portal-root > [data-purepdf-overlay][data-open="true"] {
   pointer-events: auto;
 }
+
+/* Home catalog + tool cards — must receive taps on touch devices */
+.purepdf-touch-target,
+#purepdf-tool-catalog button {
+  pointer-events: auto !important;
+  touch-action: manipulation;
+  position: relative;
+  z-index: 2;
+}
+
+#purepdf-tool-catalog {
+  position: relative;
+  z-index: 10;
+  pointer-events: auto;
+  isolation: isolate;
+}

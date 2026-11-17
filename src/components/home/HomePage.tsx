@@ -39,12 +39,16 @@ export function HomePage() {
           </p>
         </section>
 
-        <div className="grid w-full min-w-0 gap-8 lg:grid-cols-[minmax(0,1fr)_min(100%,17rem)] lg:items-start">
-          <div className="min-w-0">
+        <div className="relative z-10 grid w-full min-w-0 gap-8 lg:grid-cols-[minmax(0,1fr)_min(100%,17rem)] lg:items-start">
+          <div className="relative z-20 min-w-0">
             <HomeToolCategoryAccordion onOpenTool={openTool} />
             <SupportBlock />
           </div>
-          <AdBanner layout="sidebar" slot="home-sidebar" className="lg:sticky lg:top-6" />
+          <AdBanner
+            layout="sidebar"
+            slot="home-sidebar"
+            className="relative z-0 lg:sticky lg:top-6"
+          />
         </div>
       </main>
     </div>
