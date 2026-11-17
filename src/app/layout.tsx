@@ -23,7 +23,12 @@ export const viewport = {
   maximumScale: 5,
 };
 
-export const metadata: Metadata = siteMetadataBase();
+export const metadata: Metadata = {
+  ...siteMetadataBase(),
+  verification: {
+    google: "NdLL2m61xfnzABPwz5qAmkk0vhEL4f_5eVvJjZynJ5U",
+  },
+};
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
