@@ -4,6 +4,7 @@
 html,
 body {
   touch-action: manipulation;
+  pointer-events: auto;
   background-color: #090d16;
   color: #e5e7eb;
 }
@@ -18,8 +19,8 @@ body {
 
 #purepdf-app-root {
   position: relative;
-  z-index: 2147483000;
-  isolation: isolate;
+  z-index: 1;
+  pointer-events: auto;
   touch-action: manipulation;
 }
 
@@ -34,44 +35,13 @@ body {
   position: absolute;
   inset: 0;
   z-index: -1;
+  pointer-events: none;
   background: radial-gradient(
     ellipse 80% 50% at 50% -20%,
     rgba(6, 182, 212, 0.2),
     rgba(16, 185, 129, 0.12),
     transparent 70%
   );
-}
-
-canvas {
-  touch-action: none;
-  max-width: 100%;
-}
-
-/* --- Force-enable interaction on the whole document (highest priority) --- */
-*,
-*::before,
-*::after {
-  pointer-events: auto !important;
-}
-
-/* Background / ad shells — clicks pass through to the app */
-.purepdf-page-shell::before,
-[data-purepdf-ad-pass-through="true"],
-.purepdf-ad-shell,
-body > iframe,
-iframe[src*="challenges.cloudflare.com"],
-iframe[src*="turnstile"],
-[data-purepdf-turnstile-host] {
-  pointer-events: none !important;
-}
-
-/* Ad widgets & open modals stay clickable where intended */
-.purepdf-ad-shell .purepdf-ad-slot,
-.purepdf-ad-shell .purepdf-ad-slot *,
-[data-purepdf-ad-hit="true"],
-#purepdf-portal-root > [data-purepdf-overlay][data-open="true"],
-#purepdf-portal-root > [data-purepdf-overlay][data-open="true"] * {
-  pointer-events: auto !important;
 }
 
 button,
@@ -81,23 +51,20 @@ select,
 textarea,
 label,
 [role="button"] {
-  cursor: pointer;
-  position: relative;
-  z-index: 9999;
+  touch-action: manipulation;
 }
 
-input[type="text"],
-input[type="email"],
-input[type="password"],
-input[type="search"],
-input[type="number"],
-textarea,
-select {
-  cursor: text;
+canvas {
+  touch-action: none;
+  max-width: 100%;
 }
 
-button:disabled,
-[role="button"][aria-disabled="true"],
-a[aria-disabled="true"] {
-  cursor: not-allowed;
+/* Third-party full-page overlays only — never block the app root */
+body > iframe,
+[data-purepdf-ad-pass-through="true"]:not(#purepdf-app-root) {
+  pointer-events: none !important;
+}
+
+#purepdf-portal-root > [data-purepdf-overlay][data-open="true"] {
+  pointer-events: auto;
 }

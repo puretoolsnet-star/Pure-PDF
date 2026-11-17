@@ -35,7 +35,7 @@ export function AdBanner({
       aria-label={t.toolAd.sponsored}
       data-ad-slot={slot}
       className={cn(
-        "purepdf-ad-shell relative z-0 min-w-0 w-full max-w-full shrink-0",
+        "relative z-0 min-w-0 w-full max-w-full shrink-0",
         isSidebar &&
           "order-2 border-t border-white/10 pt-6 lg:order-none lg:border-t-0 lg:pt-0",
         className,
@@ -51,7 +51,7 @@ export function AdBanner({
       </p>
       <div
         className={cn(
-          "purepdf-ad-slot glass-card w-full max-w-full rounded-xl bg-surface/30",
+          "glass-card w-full max-w-full rounded-xl bg-surface/30",
           hasLiveBanner
             ? "flex flex-col items-center border border-white/10 px-2 py-3 sm:px-3"
             : cn(
