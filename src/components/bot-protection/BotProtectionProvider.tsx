@@ -20,7 +20,6 @@ import {
   storeSessionToken,
 } from "@/lib/bot-protection/session-client";
 import { loadTurnstileScript } from "@/lib/bot-protection/turnstile-loader";
-import { useIsMdViewport } from "@/lib/use-md-viewport";
 
 export type BotGuardFailureCode = "rate_limit" | "session";
 
@@ -38,6 +37,13 @@ const BotProtectionContext = createContext<BotProtectionContextValue | null>(
 );
 
 const siteKey = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY?.trim() ?? "";
+
+/** Stable value for SSR / static prerender — no `window`, storage, or Turnstile. */
+const PRERENDER_BOT_VALUE: BotProtectionContextValue = {
+  ready: !siteKey,
+  guardGeneration: async () =>
+    siteKey ? { ok: false, code: "session" } : { ok: true },
+};
 
 async function exchangeTurnstileForSession(turnstileToken: string) {
   const response = await fetch("/api/bot/session", {
@@ -59,15 +65,14 @@ async function exchangeTurnstileForSession(turnstileToken: string) {
   return data.sessionToken;
 }
 
-export function BotProtectionProvider({ children }: { children: ReactNode }) {
-  const isMd = useIsMdViewport();
+function BotProtectionProviderMounted({ children }: { children: ReactNode }) {
   const widgetHostRef = useRef<HTMLDivElement>(null);
   const widgetIdRef = useRef<string | null>(null);
   const pendingResolveRef = useRef<((token: string) => void) | null>(null);
   const pendingRejectRef = useRef<((reason?: unknown) => void) | null>(null);
   const lastGenerationAtRef = useRef(0);
-  /** With Turnstile configured: true only after first successful session exchange. */
   const [ready, setReady] = useState(!siteKey);
+  const [turnstileHostVisible, setTurnstileHostVisible] = useState(false);
 
   const resolveTurnstile = useCallback((token: string) => {
     pendingResolveRef.current?.(token);
@@ -117,7 +122,8 @@ export function BotProtectionProvider({ children }: { children: ReactNode }) {
       return;
     }
 
-    if (!isMd) {
+    const isMdViewport = window.matchMedia("(min-width: 768px)").matches;
+    if (!isMdViewport) {
       storeSessionToken(issueDevSessionToken());
       setReady(true);
       return;
@@ -125,47 +131,51 @@ export function BotProtectionProvider({ children }: { children: ReactNode }) {
 
     let cancelled = false;
     setReady(false);
+    setTurnstileHostVisible(true);
+
+    const initTurnstile = () => {
+      if (cancelled || !widgetHostRef.current || !window.turnstile) {
+        if (!cancelled) setReady(false);
+        return;
+      }
+
+      widgetIdRef.current = window.turnstile.render(widgetHostRef.current, {
+        sitekey: siteKey,
+        size: "invisible",
+        appearance: "execute",
+        callback: (token) => {
+          void exchangeTurnstileForSession(token)
+            .then(() => resolveTurnstile(token))
+            .catch(() => rejectTurnstile());
+        },
+        "error-callback": () => rejectTurnstile(),
+        "expired-callback": () => rejectTurnstile(),
+      });
+
+      void ensureSession()
+        .then(() => {
+          if (!cancelled) setReady(true);
+        })
+        .catch(() => {
+          if (!cancelled) setReady(false);
+        });
+    };
 
     loadTurnstileScript()
-      .then(() => {
-        if (cancelled || !widgetHostRef.current || !window.turnstile) {
-          if (!cancelled) setReady(false);
-          return;
-        }
-
-        widgetIdRef.current = window.turnstile.render(widgetHostRef.current, {
-          sitekey: siteKey,
-          size: "invisible",
-          appearance: "execute",
-          callback: (token) => {
-            void exchangeTurnstileForSession(token)
-              .then(() => resolveTurnstile(token))
-              .catch(() => rejectTurnstile());
-          },
-          "error-callback": () => rejectTurnstile(),
-          "expired-callback": () => rejectTurnstile(),
-        });
-
-        void ensureSession()
-          .then(() => {
-            if (!cancelled) setReady(true);
-          })
-          .catch(() => {
-            if (!cancelled) setReady(false);
-          });
-      })
+      .then(initTurnstile)
       .catch(() => {
         if (!cancelled) setReady(false);
       });
 
     return () => {
       cancelled = true;
+      setTurnstileHostVisible(false);
       if (widgetIdRef.current && window.turnstile) {
         window.turnstile.remove(widgetIdRef.current);
         widgetIdRef.current = null;
       }
     };
-  }, [ensureSession, isMd, rejectTurnstile, resolveTurnstile]);
+  }, [ensureSession, rejectTurnstile, resolveTurnstile]);
 
   const guardGeneration = useCallback(async (): Promise<BotGuardResult> => {
     const now = Date.now();
@@ -207,7 +217,7 @@ export function BotProtectionProvider({ children }: { children: ReactNode }) {
   return (
     <BotProtectionContext.Provider value={value}>
       {children}
-      {siteKey && isMd ? (
+      {turnstileHostVisible && siteKey ? (
         <div
           ref={widgetHostRef}
           aria-hidden
@@ -217,6 +227,24 @@ export function BotProtectionProvider({ children }: { children: ReactNode }) {
       ) : null}
     </BotProtectionContext.Provider>
   );
+}
+
+export function BotProtectionProvider({ children }: { children: ReactNode }) {
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) {
+    return (
+      <BotProtectionContext.Provider value={PRERENDER_BOT_VALUE}>
+        {children}
+      </BotProtectionContext.Provider>
+    );
+  }
+
+  return <BotProtectionProviderMounted>{children}</BotProtectionProviderMounted>;
 }
 
 export function useBotProtection() {
