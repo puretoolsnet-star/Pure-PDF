@@ -33,9 +33,9 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     <html
       lang="uk"
       suppressHydrationWarning
-      className={`${geistSans.variable} ${geistMono.variable} dark min-h-dvh antialiased`}
+      className={`${geistSans.variable} ${geistMono.variable} dark pointer-events-auto min-h-dvh antialiased`}
     >
-      <body className="pointer-events-auto touch-manipulation flex min-h-dvh flex-col antialiased">
+      <body className="touch-manipulation flex min-h-dvh flex-col antialiased">
         <Providers>{children}</Providers>
         {/* Portal host: display:contents in globals.css — no full-screen hit layer */}
         <div id="purepdf-portal-root" />

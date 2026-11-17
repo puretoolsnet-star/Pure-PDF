@@ -35,7 +35,7 @@ export function AdBanner({
       aria-label={t.toolAd.sponsored}
       data-ad-slot={slot}
       className={cn(
-        "purepdf-ad-shell pointer-events-none relative z-0 min-w-0 w-full max-w-full shrink-0",
+        "purepdf-ad-shell relative z-0 min-w-0 w-full max-w-full shrink-0",
         isSidebar &&
           "order-2 border-t border-white/10 pt-6 lg:order-none lg:border-t-0 lg:pt-0",
         className,

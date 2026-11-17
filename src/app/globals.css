@@ -1,16 +1,14 @@
 @import "tailwindcss";
 @config "../../tailwind.config.ts";
 
-html {
+html,
+body {
   touch-action: manipulation;
-  pointer-events: auto !important;
+  background-color: #090d16;
+  color: #e5e7eb;
 }
 
 body {
-  touch-action: manipulation;
-  pointer-events: auto !important;
-  background-color: #090d16;
-  color: #e5e7eb;
   position: relative;
 }
 
@@ -18,46 +16,11 @@ body {
   display: contents;
 }
 
-#purepdf-portal-root > [data-purepdf-overlay][data-open="true"] {
-  pointer-events: auto;
-}
-
 #purepdf-app-root {
   position: relative;
   z-index: 2147483000;
   isolation: isolate;
-  pointer-events: auto !important;
   touch-action: manipulation;
-}
-
-/* In-page ad slots: shell ignores clicks; slot content receives them */
-.purepdf-ad-shell {
-  pointer-events: none !important;
-}
-
-.purepdf-ad-shell .purepdf-ad-slot,
-.purepdf-ad-shell .purepdf-ad-slot * {
-  pointer-events: auto !important;
-}
-
-.purepdf-ad-slot {
-  position: relative;
-  z-index: 1;
-  pointer-events: auto !important;
-}
-
-/* Third-party injectors on <body> — never steal the viewport (shell only, no descendant *) */
-[data-purepdf-ad-pass-through="true"] {
-  pointer-events: none !important;
-}
-
-[data-purepdf-ad-hit="true"] {
-  pointer-events: auto !important;
-}
-
-/* Rogue full-page iframes injected by ad scripts */
-body > iframe {
-  pointer-events: none !important;
 }
 
 .glass-card {
@@ -71,7 +34,6 @@ body > iframe {
   position: absolute;
   inset: 0;
   z-index: -1;
-  pointer-events: none;
   background: radial-gradient(
     ellipse 80% 50% at 50% -20%,
     rgba(6, 182, 212, 0.2),
@@ -85,7 +47,33 @@ canvas {
   max-width: 100%;
 }
 
-/* --- Global interaction shield (highest priority) --- */
+/* --- Force-enable interaction on the whole document (highest priority) --- */
+*,
+*::before,
+*::after {
+  pointer-events: auto !important;
+}
+
+/* Background / ad shells — clicks pass through to the app */
+.purepdf-page-shell::before,
+[data-purepdf-ad-pass-through="true"],
+.purepdf-ad-shell,
+body > iframe,
+iframe[src*="challenges.cloudflare.com"],
+iframe[src*="turnstile"],
+[data-purepdf-turnstile-host] {
+  pointer-events: none !important;
+}
+
+/* Ad widgets & open modals stay clickable where intended */
+.purepdf-ad-shell .purepdf-ad-slot,
+.purepdf-ad-shell .purepdf-ad-slot *,
+[data-purepdf-ad-hit="true"],
+#purepdf-portal-root > [data-purepdf-overlay][data-open="true"],
+#purepdf-portal-root > [data-purepdf-overlay][data-open="true"] * {
+  pointer-events: auto !important;
+}
+
 button,
 a,
 input,
@@ -93,7 +81,6 @@ select,
 textarea,
 label,
 [role="button"] {
-  pointer-events: auto !important;
   cursor: pointer;
   position: relative;
   z-index: 9999;

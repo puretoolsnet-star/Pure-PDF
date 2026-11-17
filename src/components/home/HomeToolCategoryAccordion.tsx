@@ -77,14 +77,14 @@ function CategoryPanel({
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
             transition={{ duration: 0.28, ease: [0.4, 0, 0.2, 1] }}
-            className="overflow-hidden"
+            className="pointer-events-auto overflow-hidden"
           >
             <motion.div
               initial={{ y: -4 }}
               animate={{ y: 0 }}
               exit={{ y: -4 }}
               transition={{ duration: 0.22 }}
-              className="grid grid-cols-1 gap-2 border-t border-white/10 bg-black/20 p-3 sm:grid-cols-2 sm:gap-3 sm:p-4 lg:grid-cols-2"
+              className="pointer-events-auto grid grid-cols-1 gap-2 border-t border-white/10 bg-black/20 p-3 sm:grid-cols-2 sm:gap-3 sm:p-4 lg:grid-cols-2"
             >
               {category.tools.map((tool) => (
                 <HomeToolCard

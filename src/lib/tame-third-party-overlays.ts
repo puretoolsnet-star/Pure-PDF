@@ -1,9 +1,5 @@
 const EXEMPT_BODY_IDS = new Set(["purepdf-portal-root", "purepdf-app-root"]);
 const AD_PASS_THROUGH_ATTR = "data-purepdf-ad-pass-through";
-const AD_HIT_ATTR = "data-purepdf-ad-hit";
-
-const AD_INTERACTIVE_SELECTOR =
-  "a, button, img, video, input, [role='button'], [onclick], svg";
 
 function isOpenPurepdfOverlay(node: HTMLElement): boolean {
   return (
@@ -43,52 +39,13 @@ export function coversSignificantViewport(node: HTMLElement): boolean {
   );
 }
 
-function isCompactAdControl(node: HTMLElement): boolean {
-  if (coversSignificantViewport(node)) return false;
-  const rect = node.getBoundingClientRect();
-  return rect.width >= 4 && rect.height >= 4;
-}
-
-function markCompactClickTargets(shell: HTMLElement) {
-  shell.querySelectorAll<HTMLElement>(AD_INTERACTIVE_SELECTOR).forEach((el) => {
-    if (el.closest("#purepdf-app-root")) return;
-    el.removeAttribute(AD_HIT_ATTR);
-    el.style.removeProperty("pointer-events");
-
-    if (!isCompactAdControl(el)) {
-      el.style.pointerEvents = "none";
-      return;
-    }
-
-    el.setAttribute(AD_HIT_ATTR, "true");
-    el.style.pointerEvents = "auto";
-  });
-}
-
-function neuterPassThrough(node: HTMLElement) {
-  if (containsAppRoot(node)) {
-    node.style.pointerEvents = "none";
-    return;
-  }
-
-  if (node.hasAttribute(AD_PASS_THROUGH_ATTR)) {
-    markCompactClickTargets(node);
-    return;
-  }
-
-  node.style.pointerEvents = "none";
+function tagPassThrough(node: HTMLElement) {
+  if (shouldExemptOverlay(node)) return;
   node.setAttribute(AD_PASS_THROUGH_ATTR, "true");
-  markCompactClickTargets(node);
-
-  node.querySelectorAll<HTMLElement>("iframe").forEach((frame) => {
-    if (coversSignificantViewport(frame) || coversSignificantViewport(node)) {
-      frame.style.pointerEvents = "none";
-      frame.removeAttribute(AD_HIT_ATTR);
-    }
-  });
+  node.style.removeProperty("pointer-events");
 }
 
-/** Removes stray full-screen blockers that are not marked as open app overlays. */
+/** Removes stale full-screen overlays and tags ad shells for CSS pass-through. */
 export function scrubOrphanedBlockers() {
   if (typeof document === "undefined") return;
 
@@ -100,7 +57,7 @@ export function scrubOrphanedBlockers() {
 
   document.querySelectorAll<HTMLElement>("body > iframe").forEach((frame) => {
     if (coversSignificantViewport(frame)) {
-      frame.style.pointerEvents = "none";
+      tagPassThrough(frame);
     }
   });
 
@@ -118,27 +75,11 @@ export function scrubOrphanedBlockers() {
       continue;
     }
 
-    neuterPassThrough(child);
+    tagPassThrough(child);
   }
 }
 
 export function tameThirdPartyOverlays() {
   if (typeof document === "undefined" || typeof window === "undefined") return;
-
   scrubOrphanedBlockers();
-
-  document.body.querySelectorAll<HTMLElement>("div, iframe").forEach((node) => {
-    if (shouldExemptOverlay(node)) return;
-    if (isOpenPurepdfOverlay(node)) return;
-
-    const position = getComputedStyle(node).position;
-    if (position !== "fixed" && position !== "absolute") return;
-    if (!coversSignificantViewport(node)) return;
-
-    neuterPassThrough(node);
-  });
-
-  document
-    .querySelectorAll<HTMLElement>(`[${AD_PASS_THROUGH_ATTR}]`)
-    .forEach((node) => markCompactClickTargets(node));
 }

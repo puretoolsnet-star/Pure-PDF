@@ -3,8 +3,10 @@
 import { usePathname } from "next/navigation";
 import { useEffect } from "react";
 
-import { releaseInteractionLocks } from "@/lib/release-interaction-locks";
-import { tameThirdPartyOverlays } from "@/lib/tame-third-party-overlays";
+import {
+  clearInlinePointerLocks,
+  releaseInteractionLocks,
+} from "@/lib/release-interaction-locks";
 
 /** Clears stuck scroll/pointer locks and orphaned overlays after navigation. */
 export function AppTouchGuard() {
@@ -36,7 +38,8 @@ export function AppTouchGuard() {
       tameScheduled = true;
       window.requestAnimationFrame(() => {
         tameScheduled = false;
-        tameThirdPartyOverlays();
+        clearInlinePointerLocks();
+        releaseInteractionLocks();
       });
     };
 
@@ -44,7 +47,7 @@ export function AppTouchGuard() {
     adObserver.observe(document.body, { childList: true, subtree: true });
     scheduleTameAds();
 
-    const adInterval = window.setInterval(tameThirdPartyOverlays, 3000);
+    const adInterval = window.setInterval(releaseInteractionLocks, 3000);
 
     return () => {
       window.clearTimeout(t);
