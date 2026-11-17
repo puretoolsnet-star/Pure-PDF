@@ -1,7 +1,13 @@
-import { dictionaries, type Locale, type ToolId } from "@/i18n/locales";
+import {
+  DEFAULT_LOCALE,
+  LOCALES,
+  dictionaries,
+  type Locale,
+  type ToolId,
+} from "@/i18n/locales";
 import { getSeoCopy } from "@/i18n/seo/copy";
 import { homeRoute, localizedPath, toolRoute } from "@/lib/i18n/routing";
-import { DEFAULT_LOCALE, LOCALES } from "@/i18n/locales";
+import { buildHreflangAlternates } from "@/lib/seo/hreflang";
 import { absoluteUrl, HREFLANG_MAP } from "@/lib/seo/site";
 
 function ecosystemRelatedUrls(): string[] {
@@ -28,7 +34,7 @@ export function buildHomeStructuredData(locale: Locale) {
       name: "PurePDF",
       url,
       description: copy.description,
-      inLanguage: locale,
+      inLanguage: HREFLANG_MAP[locale],
       ...(related.length > 0 ? { sameAs: related } : {}),
     },
     {
@@ -98,15 +104,9 @@ export function buildToolStructuredData(toolId: ToolId, locale: Locale) {
   ];
 }
 
+/** @deprecated Import `buildHreflangAlternates` from `@/lib/seo/hreflang`. */
 export function buildSitemapLanguageAlternates(path: string) {
-  const languages: Record<string, string> = {};
-  for (const locale of LOCALES) {
-    languages[HREFLANG_MAP[locale]] = absoluteUrl(localizedPath(locale, path));
-  }
-  languages["x-default"] = absoluteUrl(
-    localizedPath(DEFAULT_LOCALE, path),
-  );
-  return languages;
+  return buildHreflangAlternates(path);
 }
 
 /**

@@ -16,7 +16,7 @@ export const SEO_COPY: SeoCatalog = {
     uk: {
       title: "PurePDF — безкоштовні PDF-інструменти в браузері",
       description:
-        "Конвертуйте, об’єднуйте та стискайте PDF локально. 6 приватних інструментів без завантаження файлів на сервер — швидко та безкоштовно.",
+        "13 безкоштовних PDF-інструментів у браузері: об’єднання, розділення, стиснення, конвертація, підпис і захист. Локальна обробка — файли не завантажуються на сервер.",
       keywords: [
         "PDF онлайн",
         "конвертер PDF",
@@ -29,7 +29,7 @@ export const SEO_COPY: SeoCatalog = {
     en: {
       title: "PurePDF — Free private PDF tools in your browser",
       description:
-        "Convert, merge, compress, and export PDFs locally in your browser. Six free tools, no server uploads, privacy-first processing.",
+        "13 free PDF tools in your browser: merge, split, compress, convert, sign, protect, and more. Local processing with six language versions — no server uploads.",
       keywords: [
         "PDF tools online",
         "merge PDF",
@@ -42,25 +42,25 @@ export const SEO_COPY: SeoCatalog = {
     pl: {
       title: "PurePDF — darmowe narzędzia PDF w przeglądarce",
       description:
-        "Konwertuj, łącz i kompresuj PDF lokalnie w przeglądarce. Sześć darmowych narzędzi bez wysyłania plików na serwer.",
+        "13 darmowych narzędzi PDF w przeglądarce: łączenie, dzielenie, kompresja, konwersja i więcej. Przetwarzanie lokalne — bez wysyłania plików na serwer.",
       keywords: ["PDF online", "łączenie PDF", "kompresja PDF", "PurePDF", "darmowe PDF"],
     },
     de: {
       title: "PurePDF — Kostenlose PDF-Tools im Browser",
       description:
-        "PDFs lokal konvertieren, zusammenführen und komprimieren. Sechs kostenlose Tools ohne Server-Upload — privat und schnell.",
+        "13 kostenlose PDF-Tools im Browser: zusammenführen, teilen, komprimieren, konvertieren, signieren und mehr. Lokal und ohne Server-Upload.",
       keywords: ["PDF online", "PDF zusammenführen", "PDF komprimieren", "PurePDF", "kostenlos"],
     },
     es: {
       title: "PurePDF — Herramientas PDF gratis en el navegador",
       description:
-        "Convierte, une y comprime PDF en local. Seis herramientas gratuitas sin subir archivos al servidor — rápido y privado.",
+        "13 herramientas PDF gratis en el navegador: unir, dividir, comprimir, convertir, firmar y más. Procesamiento local — sin subir archivos al servidor.",
       keywords: ["PDF online", "unir PDF", "comprimir PDF", "PurePDF", "PDF gratis"],
     },
     fr: {
       title: "PurePDF — Outils PDF gratuits dans le navigateur",
       description:
-        "Convertissez, fusionnez et compressez des PDF localement. Six outils gratuits sans envoi de fichiers — rapide et privé.",
+        "13 outils PDF gratuits dans le navigateur : fusion, découpe, compression, conversion, signature et plus. Traitement local — sans envoi de fichiers.",
       keywords: ["PDF en ligne", "fusionner PDF", "compresser PDF", "PurePDF", "gratuit"],
     },
   },

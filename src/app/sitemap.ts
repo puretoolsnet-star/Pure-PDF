@@ -2,13 +2,13 @@ import type { MetadataRoute } from "next";
 
 import { LOCALES, TOOL_IDS } from "@/i18n/locales";
 import { localizedPath } from "@/lib/i18n/routing";
-import {
-  buildExternalEcosystemAlternates,
-  buildSitemapLanguageAlternates,
-} from "@/lib/seo/structured-data";
+import { buildHreflangAlternates } from "@/lib/seo/hreflang";
+import { buildExternalEcosystemAlternates } from "@/lib/seo/structured-data";
 import { absoluteUrl } from "@/lib/seo/site";
 
-const LAST_MODIFIED = new Date("2026-11-05");
+function sitemapLastModified(): Date {
+  return new Date();
+}
 
 function stripTrailingSlash(url: string): string {
   return url.replace(/\/$/, "");
@@ -20,11 +20,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
   for (const locale of LOCALES) {
     entries.push({
       url: absoluteUrl(localizedPath(locale, "/")),
-      lastModified: LAST_MODIFIED,
+      lastModified: sitemapLastModified(),
       changeFrequency: "weekly",
       priority: 1,
       alternates: {
-        languages: buildSitemapLanguageAlternates("/"),
+        languages: buildHreflangAlternates("/"),
       },
     });
   }
@@ -34,11 +34,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
     for (const locale of LOCALES) {
       entries.push({
         url: absoluteUrl(localizedPath(locale, path)),
-        lastModified: LAST_MODIFIED,
+        lastModified: sitemapLastModified(),
         changeFrequency: "monthly",
         priority: 0.9,
         alternates: {
-          languages: buildSitemapLanguageAlternates(path),
+          languages: buildHreflangAlternates(path),
         },
       });
     }
@@ -53,7 +53,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       const path = localizedPath(locale, "/");
       entries.push({
         url: `${base}${path}`,
-        lastModified: LAST_MODIFIED,
+        lastModified: sitemapLastModified(),
         changeFrequency: "weekly",
         priority: 0.6,
         alternates: {
@@ -69,7 +69,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       const path = localizedPath(locale, "/");
       entries.push({
         url: `${base}${path}`,
-        lastModified: LAST_MODIFIED,
+        lastModified: sitemapLastModified(),
         changeFrequency: "weekly",
         priority: 0.6,
         alternates: {

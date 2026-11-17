@@ -3,6 +3,7 @@ import { NextResponse } from "next/server";
 
 import { DEFAULT_LOCALE, LOCALES } from "@/i18n/locales";
 import { localizedPath } from "@/lib/i18n/routing";
+import { applyMiddlewareRateLimit } from "@/lib/bot-protection/middleware-rate-limit";
 import {
   getSubdomainFromHost,
   normalizeSubdomainSlug,
@@ -32,7 +33,16 @@ export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
   if (shouldBypass(pathname)) {
+    if (pathname.startsWith("/api")) {
+      const apiLimit = applyMiddlewareRateLimit(request);
+      if (apiLimit) return apiLimit;
+    }
     return NextResponse.next();
+  }
+
+  const rateLimitResponse = applyMiddlewareRateLimit(request);
+  if (rateLimitResponse) {
+    return rateLimitResponse;
   }
 
   const host =

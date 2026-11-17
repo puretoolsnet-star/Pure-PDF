@@ -2,6 +2,7 @@ import { DEFAULT_LOCALE, type Locale } from "@/i18n/locales";
 
 export { DEFAULT_LOCALE };
 
+/** Canonical base URL for metadata, hreflang, sitemap, and Open Graph (`NEXT_PUBLIC_SITE_URL`). */
 export function getSiteUrl(): string {
   const fromEnv = process.env.NEXT_PUBLIC_SITE_URL?.trim();
   if (fromEnv) return fromEnv.replace(/\/$/, "");
@@ -23,10 +24,10 @@ export function absoluteUrl(path: string): string {
 export const HREFLANG_MAP: Record<Locale, string> = {
   uk: "uk-UA",
   en: "en",
-  pl: "pl",
-  de: "de",
-  es: "es",
-  fr: "fr",
+  pl: "pl-PL",
+  de: "de-DE",
+  es: "es-ES",
+  fr: "fr-FR",
 };
 
 export const OPEN_GRAPH_LOCALE: Record<Locale, string> = {
@@ -36,4 +37,14 @@ export const OPEN_GRAPH_LOCALE: Record<Locale, string> = {
   de: "de_DE",
   es: "es_ES",
   fr: "fr_FR",
+};
+
+/** BCP 47 language tags for `<html lang>` (and accessibility). */
+export const HTML_LANG: Record<Locale, string> = {
+  uk: "uk",
+  en: "en",
+  pl: "pl",
+  de: "de",
+  es: "es",
+  fr: "fr",
 };
