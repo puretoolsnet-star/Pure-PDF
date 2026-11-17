@@ -27,6 +27,28 @@ body {
   pointer-events: none;
 }
 
+#purepdf-portal-root:not(:empty) > * {
+  pointer-events: auto;
+}
+
+/* Third-party ad stacks (Social Bar, etc.): never block the whole viewport. */
+body > [data-purepdf-ad-pass-through="true"] {
+  pointer-events: none !important;
+}
+
+body > [data-purepdf-ad-pass-through="true"] iframe,
+body > [data-purepdf-ad-pass-through="true"] a,
+body > [data-purepdf-ad-pass-through="true"] button,
+body > [data-purepdf-ad-pass-through="true"] img {
+  pointer-events: auto !important;
+}
+
+.purepdf-ad-slot {
+  pointer-events: auto;
+  position: relative;
+  z-index: 0;
+}
+
 button,
 a,
 [role="button"],

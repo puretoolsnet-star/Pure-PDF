@@ -1,3 +1,5 @@
+import { tameThirdPartyOverlays } from "@/lib/tame-third-party-overlays";
+
 const PORTAL_ROOT_ID = "purepdf-portal-root";
 
 /** Clears inline locks and orphaned full-screen layers that block mobile taps. */
@@ -7,6 +9,7 @@ export function releaseInteractionLocks() {
   document.body.style.overflow = "";
   document.body.style.pointerEvents = "";
   document.documentElement.style.pointerEvents = "";
+  tameThirdPartyOverlays();
 
   document
     .querySelectorAll<HTMLElement>("[data-purepdf-overlay]")

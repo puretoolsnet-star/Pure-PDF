@@ -60,7 +60,7 @@ export function AdsterraRectangleBanner({
       >
         <div
           ref={hostRef}
-          className="absolute top-0 left-1/2"
+          className="purepdf-ad-slot pointer-events-auto absolute top-0 left-1/2"
           style={{
             width: designWidth,
             height: designHeight,

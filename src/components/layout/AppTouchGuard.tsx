@@ -4,6 +4,7 @@ import { usePathname } from "next/navigation";
 import { useEffect } from "react";
 
 import { releaseInteractionLocks } from "@/lib/release-interaction-locks";
+import { tameThirdPartyOverlays } from "@/lib/tame-third-party-overlays";
 
 /** Clears stuck scroll/pointer locks and orphaned overlays after navigation. */
 export function AppTouchGuard() {
@@ -29,8 +30,26 @@ export function AppTouchGuard() {
     window.addEventListener("pageshow", onPageShow);
     document.addEventListener("visibilitychange", onVisibility);
 
+    let tameScheduled = false;
+    const scheduleTameAds = () => {
+      if (tameScheduled) return;
+      tameScheduled = true;
+      window.requestAnimationFrame(() => {
+        tameScheduled = false;
+        tameThirdPartyOverlays();
+      });
+    };
+
+    const adObserver = new MutationObserver(scheduleTameAds);
+    adObserver.observe(document.body, { childList: true, subtree: true });
+    scheduleTameAds();
+
+    const adInterval = window.setInterval(tameThirdPartyOverlays, 3000);
+
     return () => {
       window.clearTimeout(t);
+      window.clearInterval(adInterval);
+      adObserver.disconnect();
       window.removeEventListener("pageshow", onPageShow);
       document.removeEventListener("visibilitychange", onVisibility);
     };
