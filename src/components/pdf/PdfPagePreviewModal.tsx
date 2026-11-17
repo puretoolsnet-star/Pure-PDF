@@ -4,6 +4,7 @@ import { Loader2, X, ZoomIn } from "lucide-react";
 import { useEffect } from "react";
 
 import { BodyPortal } from "@/components/layout/BodyPortal";
+import { acquireBodyScrollLock } from "@/lib/body-scroll-lock";
 import { Z } from "@/lib/layer-stack";
 import { cn } from "@/lib/cn";
 
@@ -28,11 +29,7 @@ export function PdfPagePreviewModal({
 }: PdfPagePreviewModalProps) {
   useEffect(() => {
     if (!open) return;
-    const prev = document.body.style.overflow;
-    document.body.style.overflow = "hidden";
-    return () => {
-      document.body.style.overflow = prev;
-    };
+    return acquireBodyScrollLock();
   }, [open]);
 
   useEffect(() => {

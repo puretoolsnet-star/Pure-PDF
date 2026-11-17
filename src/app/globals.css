@@ -14,32 +14,46 @@ body {
   position: relative;
 }
 
+#purepdf-portal-root {
+  display: contents;
+}
+
+#purepdf-portal-root > [data-purepdf-overlay][data-open="true"] {
+  pointer-events: auto;
+}
+
 #purepdf-app-root {
+  position: relative;
+  z-index: 100;
+  isolation: isolate;
   pointer-events: auto;
   touch-action: manipulation;
 }
 
-#purepdf-portal-root:empty {
-  display: contents;
+#purepdf-app-root :where(
+  a,
+  button,
+  input,
+  select,
+  textarea,
+  label,
+  summary,
+  [role="button"],
+  [tabindex]:not([tabindex="-1"])
+) {
+  position: relative;
+  z-index: 2;
+  pointer-events: auto !important;
+  touch-action: manipulation;
 }
 
-#purepdf-portal-root:not(:empty) {
-  pointer-events: none;
-}
-
-#purepdf-portal-root:not(:empty) > * {
-  pointer-events: auto;
-}
-
-/* Third-party ad stacks (Social Bar, etc.): never block the whole viewport. */
-body > [data-purepdf-ad-pass-through="true"] {
+[data-purepdf-ad-pass-through="true"],
+[data-purepdf-ad-pass-through="true"] * {
   pointer-events: none !important;
 }
 
-body > [data-purepdf-ad-pass-through="true"] iframe,
-body > [data-purepdf-ad-pass-through="true"] a,
-body > [data-purepdf-ad-pass-through="true"] button,
-body > [data-purepdf-ad-pass-through="true"] img {
+/* Only compact ad controls (marked in tame-third-party-overlays.ts) stay clickable */
+[data-purepdf-ad-hit="true"] {
   pointer-events: auto !important;
 }
 

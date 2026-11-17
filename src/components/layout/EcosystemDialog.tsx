@@ -6,6 +6,7 @@ import { useEffect } from "react";
 import { BodyPortal } from "@/components/layout/BodyPortal";
 import { EcosystemProjectList } from "@/components/layout/EcosystemProjectList";
 import { useI18n } from "@/i18n/context";
+import { acquireBodyScrollLock } from "@/lib/body-scroll-lock";
 import { cn } from "@/lib/cn";
 import { Z } from "@/lib/layer-stack";
 
@@ -36,11 +37,7 @@ export function EcosystemDialog({
 
   useEffect(() => {
     if (!open || !isCentered) return;
-    const prev = document.body.style.overflow;
-    document.body.style.overflow = "hidden";
-    return () => {
-      document.body.style.overflow = prev;
-    };
+    return acquireBodyScrollLock();
   }, [open, isCentered]);
 
   if (!open) {

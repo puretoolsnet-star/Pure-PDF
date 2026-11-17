@@ -13,6 +13,7 @@ import {
   triggerAdsterraReward,
 } from "@/lib/ads/adsterra";
 import type { ToolId } from "@/i18n/locales";
+import { acquireBodyScrollLock } from "@/lib/body-scroll-lock";
 import { cn } from "@/lib/cn";
 import { Z } from "@/lib/layer-stack";
 import type { RewardedIntent } from "@/lib/use-rewarded-action";
@@ -107,13 +108,7 @@ function RewardedActionPanel({
     loadAdsterraNative();
   }, [sessionKey]);
 
-  useEffect(() => {
-    const prev = document.body.style.overflow;
-    document.body.style.overflow = "hidden";
-    return () => {
-      document.body.style.overflow = prev;
-    };
-  }, []);
+  useEffect(() => acquireBodyScrollLock(), []);
 
   useEffect(() => {
     if (phase !== "watching") return;

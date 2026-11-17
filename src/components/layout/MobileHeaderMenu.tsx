@@ -8,6 +8,7 @@ import { EcosystemDialog } from "@/components/layout/EcosystemDialog";
 import { MobileNavOverlay } from "@/components/layout/MobileNavOverlay";
 import { useI18n } from "@/i18n/context";
 import type { Locale } from "@/i18n/locales";
+import { acquireBodyScrollLock } from "@/lib/body-scroll-lock";
 import { useTapHandler } from "@/lib/use-tap-handler";
 
 export function MobileHeaderMenu() {
@@ -30,16 +31,7 @@ export function MobileHeaderMenu() {
 
   useEffect(() => {
     if (!isMobileMenuOpen && !isEcosystemOpen) return;
-    const prev = document.body.style.overflow;
-    document.body.style.overflow = "hidden";
-    return () => {
-      document.body.style.overflow = prev;
-    };
-  }, [isMobileMenuOpen, isEcosystemOpen]);
-
-  useEffect(() => {
-    if (isMobileMenuOpen || isEcosystemOpen) return;
-    document.body.style.overflow = "";
+    return acquireBodyScrollLock();
   }, [isMobileMenuOpen, isEcosystemOpen]);
 
   useEffect(() => {

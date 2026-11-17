@@ -12,6 +12,7 @@ import {
   loadAdsterraNative,
   triggerAdsterraReward,
 } from "@/lib/ads/adsterra";
+import { acquireBodyScrollLock } from "@/lib/body-scroll-lock";
 import { cn } from "@/lib/cn";
 import { Z } from "@/lib/layer-stack";
 
@@ -40,13 +41,7 @@ function SupportWatchPanel({
     loadAdsterraNative();
   }, [sessionKey]);
 
-  useEffect(() => {
-    const prev = document.body.style.overflow;
-    document.body.style.overflow = "hidden";
-    return () => {
-      document.body.style.overflow = prev;
-    };
-  }, []);
+  useEffect(() => acquireBodyScrollLock(), []);
 
   useEffect(() => {
     if (phase !== "watching") return;
