@@ -105,10 +105,14 @@ export function getSubdomainFromHost(host: string): string | null {
 
   if (hostname.endsWith(`.${ROOT_DOMAIN}`)) {
     const sub = hostname.slice(0, -(ROOT_DOMAIN.length + 1));
-    if (sub && !sub.includes(".")) {
-      return sub;
+    if (!sub || sub.includes(".")) {
+      return null;
     }
-    return null;
+    /** `pdf.*` serves the localized PurePDF catalog (same as apex), not `/subdomains/pdf`. */
+    if (sub === "pdf" || sub === "www") {
+      return null;
+    }
+    return sub;
   }
 
   if (hostname.endsWith(".localhost")) {

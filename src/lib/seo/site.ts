@@ -10,7 +10,8 @@ export function getSiteUrl(): string {
   const vercel = process.env.VERCEL_URL?.trim();
   if (vercel) return `https://${vercel.replace(/\/$/, "")}`;
 
-  return "https://purepdf.app";
+  const root = process.env.NEXT_PUBLIC_ROOT_DOMAIN?.trim() || "kixt.net";
+  return `https://pdf.${root}`;
 }
 
 /** Legacy static preview (optional); primary social images use `/og` (see `buildOgImageUrl`). */

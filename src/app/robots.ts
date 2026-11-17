@@ -1,8 +1,9 @@
 import type { MetadataRoute } from "next";
 
 import { LOCALES } from "@/i18n/locales";
+import { getSiteUrl } from "@/lib/seo/site";
 
-const baseUrl = "https://pdf.kixt.net";
+const baseUrl = getSiteUrl();
 
 export default function robots(): MetadataRoute.Robots {
   const localizedAllow = LOCALES.map((locale) => `/${locale}/`);

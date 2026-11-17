@@ -3,6 +3,7 @@ import type { NextRequest } from "next/server";
 
 import { getSeoCopy } from "@/i18n/seo/copy";
 import { parseOgImageQuery } from "@/lib/seo/og";
+import { ROOT_DOMAIN } from "@/lib/subdomains";
 
 
 const WIDTH = 1200;
@@ -96,7 +97,7 @@ export async function GET(request: NextRequest) {
             color: "#64748b",
           }}
         >
-          <span>purepdf.app</span>
+          <span>{`pdf.${ROOT_DOMAIN}`}</span>
           <span style={{ textTransform: "uppercase", letterSpacing: "0.12em" }}>
             {locale} · client-side PDF
           </span>

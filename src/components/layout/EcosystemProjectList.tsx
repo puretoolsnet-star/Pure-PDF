@@ -1,15 +1,16 @@
 "use client";
 
 import { PenLine, QrCode, Sparkles, Table2 } from "lucide-react";
-import Link from "next/link";
-
 import { useI18n } from "@/i18n/context";
 import { useLocalizedPath } from "@/lib/i18n/use-localized-path";
 import {
   ECOSYSTEM_PROJECTS,
   type EcosystemProjectId,
 } from "@/lib/ecosystem";
-import { ecosystemExternalUrl } from "@/lib/ecosystem-urls";
+import {
+  ecosystemExternalUrl,
+  ecosystemPurePdfUrl,
+} from "@/lib/ecosystem-urls";
 import { cn } from "@/lib/cn";
 
 const PROJECT_ICONS: Record<EcosystemProjectId, typeof Sparkles> = {
@@ -134,36 +135,29 @@ export function EcosystemProjectList({
           </>
         );
 
-        const externalHref =
-          isActive && project.external
+        const publicHref = !isActive
+          ? null
+          : project.external
             ? ecosystemExternalUrl(project.external, locale)
-            : null;
-        const internalHref =
-          isActive && project.href ? toHref(project.href) : null;
+            : project.id === "purepdf"
+              ? ecosystemPurePdfUrl(locale, "/")
+              : project.href
+                ? toHref(project.href)
+                : null;
 
         return (
           <li key={project.id} role="none" className="min-w-0 max-w-full">
-            {externalHref ? (
+            {publicHref ? (
               <a
                 role="menuitem"
-                href={externalHref}
-                target="_blank"
+                href={publicHref}
                 rel="noopener noreferrer"
-                className={rowClass}
-                onClick={onNavigate}
-              >
-                {inner}
-              </a>
-            ) : internalHref ? (
-              <Link
-                role="menuitem"
-                href={internalHref}
                 aria-current={project.id === "purepdf" ? "page" : undefined}
                 className={rowClass}
                 onClick={onNavigate}
               >
                 {inner}
-              </Link>
+              </a>
             ) : (
               <div
                 role="menuitem"

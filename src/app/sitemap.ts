@@ -3,9 +3,9 @@ import type { MetadataRoute } from "next";
 import { DEFAULT_LOCALE, LOCALES, TOOL_IDS } from "@/i18n/locales";
 import { localizedPath } from "@/lib/i18n/routing";
 import { buildExternalEcosystemAlternates } from "@/lib/seo/structured-data";
-import { HREFLANG_MAP } from "@/lib/seo/site";
+import { getSiteUrl, HREFLANG_MAP } from "@/lib/seo/site";
 
-const baseUrl = "https://pdf.kixt.net";
+const baseUrl = getSiteUrl();
 
 function sitemapAbsoluteUrl(path: string): string {
   const normalized = path.startsWith("/") ? path : `/${path}`;

@@ -10,16 +10,15 @@ import { homeRoute, localizedPath, toolRoute } from "@/lib/i18n/routing";
 import { buildHreflangAlternates } from "@/lib/seo/hreflang";
 import { absoluteUrl, HREFLANG_MAP } from "@/lib/seo/site";
 
+import { ecosystemLocalizedUrl, ecosystemSiblingOrigins } from "@/lib/ecosystem-urls";
+
 function ecosystemRelatedUrls(): string[] {
-  const urls: string[] = [];
-  const pureQr = process.env.NEXT_PUBLIC_PUREQR_URL?.trim().replace(/\/$/, "");
-  const pureSign = process.env.NEXT_PUBLIC_PURESIGN_URL?.trim().replace(
-    /\/$/,
-    "",
-  );
-  if (pureQr) urls.push(`${pureQr}${localizedPath(DEFAULT_LOCALE, "/")}`);
-  if (pureSign) urls.push(`${pureSign}${localizedPath(DEFAULT_LOCALE, "/")}`);
-  return urls;
+  return [
+    ...ecosystemSiblingOrigins().map((origin) =>
+      `${origin}${localizedPath(DEFAULT_LOCALE, "/")}`,
+    ),
+    ecosystemLocalizedUrl("pdf", DEFAULT_LOCALE, "/"),
+  ];
 }
 
 export function buildHomeStructuredData(locale: Locale) {
