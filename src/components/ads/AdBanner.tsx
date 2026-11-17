@@ -10,16 +10,11 @@ export type AdBannerLayout = "sidebar" | "inline";
 
 type AdBannerProps = {
   className?: string;
-  /** Sidebar: sticky column on lg; stacks under tool form on mobile. */
   layout?: AdBannerLayout;
-  /** Value for `data-ad-slot` (analytics / ad network hooks). */
   slot?: string;
 };
 
-/**
- * Sponsored rectangle — desktop/tablet only (md+). Not mounted below 768px
- * so Adsterra scripts cannot block mobile taps.
- */
+/** Rectangle sponsor — not mounted below 768px (no DOM, no Adsterra injection). */
 export function AdBanner({
   className,
   layout = "sidebar",
@@ -27,23 +22,23 @@ export function AdBanner({
 }: AdBannerProps) {
   const { t } = useI18n();
   const isMd = useIsMdViewport();
-  const isSidebar = layout === "sidebar";
-  const hasLiveBanner = Boolean(
-    adsterraRectangleBanner.key && adsterraRectangleBanner.src,
-  );
 
   if (!isMd) {
     return null;
   }
+
+  const isSidebar = layout === "sidebar";
+  const hasLiveBanner = Boolean(
+    adsterraRectangleBanner.key && adsterraRectangleBanner.src,
+  );
 
   return (
     <aside
       aria-label={t.toolAd.sponsored}
       data-ad-slot={slot}
       className={cn(
-        "purepdf-ad-desktop relative z-0 hidden min-w-0 w-full max-w-full shrink-0 md:block",
-        isSidebar &&
-          "lg:order-none lg:border-t-0 lg:pt-0",
+        "relative z-0 min-w-0 w-full max-w-full shrink-0 md:block",
+        isSidebar && "lg:order-none lg:border-t-0 lg:pt-0",
         className,
       )}
     >

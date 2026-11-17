@@ -11,7 +11,7 @@ export function Providers({ children }: { children: ReactNode }) {
       <AppTouchGuard />
       <div
         id="purepdf-app-root"
-        className="relative flex min-h-dvh min-w-0 flex-1 flex-col overflow-x-hidden touch-manipulation"
+        className="purepdf-mobile-ui relative flex min-h-dvh min-w-0 flex-1 flex-col overflow-x-hidden touch-manipulation"
       >
         {children}
       </div>

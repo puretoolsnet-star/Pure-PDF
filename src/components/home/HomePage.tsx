@@ -24,7 +24,7 @@ export function HomePage() {
   );
 
   return (
-    <div className="purepdf-page-shell relative flex min-h-dvh w-full flex-1 flex-col overflow-x-hidden bg-background font-sans text-gray-100">
+    <div className="purepdf-page-shell purepdf-mobile-interactive relative flex min-h-dvh w-full flex-1 flex-col overflow-x-hidden bg-background font-sans text-gray-100">
       <SiteHeader />
 
       <main className="purepdf-main-workspace relative z-10 mx-auto flex w-full min-w-0 max-w-6xl flex-1 flex-col px-4 pb-[max(4rem,env(safe-area-inset-bottom))] pt-2 sm:px-6 md:px-8 md:pb-16">

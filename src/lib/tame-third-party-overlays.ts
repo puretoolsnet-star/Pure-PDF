@@ -1,4 +1,6 @@
-const AD_PASS_THROUGH_ATTR = "data-purepdf-ad-pass-through";
+function isMobileViewport(): boolean {
+  return typeof window !== "undefined" && window.innerWidth < 768;
+}
 
 function coversSignificantViewport(node: HTMLElement): boolean {
   const rect = node.getBoundingClientRect();
@@ -8,7 +10,14 @@ function coversSignificantViewport(node: HTMLElement): boolean {
   return rect.width * rect.height >= vw * vh * 0.35;
 }
 
-/** Removes stale overlays and marks full-page third-party layers as click-through. */
+function isExemptBodyNode(node: HTMLElement): boolean {
+  if (node.id === "purepdf-app-root" || node.id === "purepdf-portal-root") return true;
+  if (node.hasAttribute("data-purepdf-overlay") && node.dataset.open === "true") return true;
+  if (node.querySelector("#purepdf-app-root")) return true;
+  return false;
+}
+
+/** Removes stale overlays and full-screen third-party blockers (mobile-first). */
 export function scrubOrphanedBlockers() {
   if (typeof document === "undefined") return;
 
@@ -18,27 +27,34 @@ export function scrubOrphanedBlockers() {
     }
   });
 
+  const mobile = isMobileViewport();
+
   for (const child of document.body.children) {
     if (!(child instanceof HTMLElement)) continue;
-    if (child.id === "purepdf-app-root" || child.id === "purepdf-portal-root") continue;
-    if (child.hasAttribute("data-purepdf-overlay")) continue;
+    if (isExemptBodyNode(child)) continue;
 
     const position = getComputedStyle(child).position;
     if (position !== "fixed" && position !== "absolute") continue;
     if (!coversSignificantViewport(child)) continue;
-    if (child.querySelector("#purepdf-app-root")) continue;
 
-    child.setAttribute(AD_PASS_THROUGH_ATTR, "true");
+    if (mobile) {
+      child.remove();
+      continue;
+    }
+
+    child.setAttribute("data-purepdf-ad-pass-through", "true");
   }
 
   document.querySelectorAll<HTMLElement>("body > iframe").forEach((frame) => {
-    if (coversSignificantViewport(frame)) {
-      frame.setAttribute(AD_PASS_THROUGH_ATTR, "true");
+    if (!coversSignificantViewport(frame)) return;
+    if (mobile) {
+      frame.remove();
+    } else {
+      frame.setAttribute("data-purepdf-ad-pass-through", "true");
     }
   });
 }
 
-/** @deprecated Use scrubOrphanedBlockers — kept for any stale imports */
 export function tameThirdPartyOverlays() {
   scrubOrphanedBlockers();
 }

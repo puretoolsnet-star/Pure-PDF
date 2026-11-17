@@ -22,7 +22,7 @@ export function SiteHeader({ className, maxWidth = "6xl" }: SiteHeaderProps) {
   return (
     <header
       className={cn(
-        "relative z-20 mx-auto w-full shrink-0 px-4 py-3 sm:px-6 sm:py-5 md:px-8 md:py-6",
+        "purepdf-mobile-interactive relative z-20 mx-auto w-full shrink-0 px-4 py-3 sm:px-6 sm:py-5 md:px-8 md:py-6",
         maxWidth === "6xl" ? "max-w-6xl" : "max-w-4xl",
         className,
       )}

@@ -18,6 +18,10 @@ export function AppTouchGuard() {
   useEffect(() => {
     releaseInteractionLocks();
     const mobileTidy = window.setTimeout(releaseInteractionLocks, 100);
+    const onResize = () => {
+      if (window.innerWidth < 768) releaseInteractionLocks();
+    };
+    window.addEventListener("resize", onResize);
 
     const onPageShow = (event: PageTransitionEvent) => {
       if (event.persisted) releaseInteractionLocks();
@@ -31,6 +35,7 @@ export function AppTouchGuard() {
 
     return () => {
       window.clearTimeout(mobileTidy);
+      window.removeEventListener("resize", onResize);
       window.removeEventListener("pageshow", onPageShow);
       document.removeEventListener("visibilitychange", onVisibility);
     };

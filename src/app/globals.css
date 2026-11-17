@@ -59,61 +59,87 @@ canvas {
   max-width: 100%;
 }
 
-/* Third-party full-page overlays only — never block the app root */
-body > iframe,
-[data-purepdf-ad-pass-through="true"]:not(#purepdf-app-root) {
-  pointer-events: none !important;
-}
-
+/* Open modals only */
 #purepdf-portal-root > [data-purepdf-overlay][data-open="true"] {
   pointer-events: auto;
 }
 
-/* Desktop: sponsored blocks visible from md */
-.purepdf-ad-desktop {
-  display: none;
-}
-
+/* Desktop: rectangle banners from md */
 @media (min-width: 768px) {
-  .purepdf-ad-desktop {
-    display: block;
-  }
-}
-
-/* --- Mobile-only: no banner DOM, reliable taps on catalog & tools --- */
-@media (max-width: 767px) {
-  .purepdf-ad-desktop,
-  aside[data-ad-slot] {
-    display: none !important;
-    pointer-events: none !important;
-    visibility: hidden !important;
-    height: 0 !important;
-    overflow: hidden !important;
-    margin: 0 !important;
-    padding: 0 !important;
-  }
-
-  #purepdf-app-root main.purepdf-main-workspace {
-    position: relative;
-    z-index: 30;
-    isolation: isolate;
+  body > iframe {
     pointer-events: auto;
   }
 
-  .purepdf-touch-target,
-  #purepdf-tool-catalog,
-  #purepdf-tool-catalog button,
-  #purepdf-app-root main.purepdf-main-workspace button,
-  #purepdf-app-root main.purepdf-main-workspace a[href],
-  #purepdf-app-root main.purepdf-main-workspace label,
-  #purepdf-app-root main.purepdf-main-workspace [role="button"] {
+  [data-purepdf-ad-pass-through="true"]:not(#purepdf-app-root) {
+    pointer-events: none !important;
+  }
+}
+
+/* --- Mobile (<768px): full UI must receive taps; no banner DOM --- */
+@media (max-width: 767px) {
+  html,
+  body,
+  #purepdf-app-root.purepdf-mobile-ui {
+    pointer-events: auto !important;
+    touch-action: manipulation !important;
+  }
+
+  #purepdf-app-root.purepdf-mobile-ui {
+    position: relative;
+    z-index: 2147483000;
+    isolation: isolate;
+  }
+
+  #purepdf-app-root.purepdf-mobile-ui main,
+  #purepdf-app-root.purepdf-mobile-ui header,
+  #purepdf-app-root.purepdf-mobile-ui footer,
+  #purepdf-app-root.purepdf-mobile-ui section,
+  #purepdf-app-root.purepdf-mobile-ui nav,
+  #purepdf-app-root.purepdf-mobile-ui .purepdf-mobile-interactive,
+  #purepdf-app-root.purepdf-mobile-ui .purepdf-touch-target,
+  #purepdf-app-root.purepdf-mobile-ui button,
+  #purepdf-app-root.purepdf-mobile-ui a[href],
+  #purepdf-app-root.purepdf-mobile-ui label,
+  #purepdf-app-root.purepdf-mobile-ui input,
+  #purepdf-app-root.purepdf-mobile-ui select,
+  #purepdf-app-root.purepdf-mobile-ui textarea,
+  #purepdf-app-root.purepdf-mobile-ui [role="button"] {
     pointer-events: auto !important;
     touch-action: manipulation !important;
     position: relative;
-    z-index: 100;
+    z-index: 2;
   }
 
-  body > iframe:not([data-purepdf-ad-hit="true"]) {
+  #purepdf-tool-catalog,
+  #purepdf-tool-catalog * {
+    pointer-events: auto !important;
+    touch-action: manipulation !important;
+  }
+
+  /* iOS: backdrop-filter on glass cards steals taps */
+  #purepdf-app-root .glass-card {
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+
+  /* Third-party layers must not cover the app (remove hit target, not layout ghost) */
+  body > iframe,
+  body > div:not(#purepdf-app-root):not(#purepdf-portal-root):not(
+      [data-purepdf-overlay][data-open="true"]
+    ) {
     pointer-events: none !important;
+  }
+
+  body > iframe {
+    position: absolute !important;
+    width: 0 !important;
+    height: 0 !important;
+    overflow: hidden !important;
+    opacity: 0 !important;
+  }
+
+  #purepdf-portal-root > [data-purepdf-overlay][data-open="true"] {
+    pointer-events: auto !important;
+    z-index: 2147483646;
   }
 }
