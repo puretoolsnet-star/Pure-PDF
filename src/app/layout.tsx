@@ -37,8 +37,6 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     >
       <body className="touch-manipulation flex min-h-dvh flex-col antialiased">
         <Providers>{children}</Providers>
-        {/* Portal host: display:contents in globals.css — no full-screen hit layer */}
-        <div id="purepdf-portal-root" />
       </body>
     </html>
   );

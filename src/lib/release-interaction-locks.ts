@@ -24,6 +24,11 @@ export function getPortalRoot(): HTMLElement {
 
   const created = document.createElement("div");
   created.id = PORTAL_ROOT_ID;
-  document.body.appendChild(created);
+  const appRoot = document.getElementById("purepdf-app-root");
+  if (appRoot) {
+    appRoot.appendChild(created);
+  } else {
+    document.body.appendChild(created);
+  }
   return created;
 }

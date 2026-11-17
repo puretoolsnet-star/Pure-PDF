@@ -20,6 +20,7 @@ import {
   storeSessionToken,
 } from "@/lib/bot-protection/session-client";
 import { loadTurnstileScript } from "@/lib/bot-protection/turnstile-loader";
+import { useIsMdViewport } from "@/lib/use-md-viewport";
 
 export type BotGuardFailureCode = "rate_limit" | "session";
 
@@ -59,6 +60,7 @@ async function exchangeTurnstileForSession(turnstileToken: string) {
 }
 
 export function BotProtectionProvider({ children }: { children: ReactNode }) {
+  const isMd = useIsMdViewport();
   const widgetHostRef = useRef<HTMLDivElement>(null);
   const widgetIdRef = useRef<string | null>(null);
   const pendingResolveRef = useRef<((token: string) => void) | null>(null);
@@ -115,6 +117,12 @@ export function BotProtectionProvider({ children }: { children: ReactNode }) {
       return;
     }
 
+    if (!isMd) {
+      storeSessionToken(issueDevSessionToken());
+      setReady(true);
+      return;
+    }
+
     let cancelled = false;
     setReady(false);
 
@@ -157,7 +165,7 @@ export function BotProtectionProvider({ children }: { children: ReactNode }) {
         widgetIdRef.current = null;
       }
     };
-  }, [ensureSession, rejectTurnstile, resolveTurnstile]);
+  }, [ensureSession, isMd, rejectTurnstile, resolveTurnstile]);
 
   const guardGeneration = useCallback(async (): Promise<BotGuardResult> => {
     const now = Date.now();
@@ -199,12 +207,14 @@ export function BotProtectionProvider({ children }: { children: ReactNode }) {
   return (
     <BotProtectionContext.Provider value={value}>
       {children}
-      <div
-        ref={widgetHostRef}
-        aria-hidden
-        className="pointer-events-none fixed left-0 top-0 z-0 h-px w-px overflow-hidden opacity-0"
-        data-purepdf-turnstile-host
-      />
+      {siteKey && isMd ? (
+        <div
+          ref={widgetHostRef}
+          aria-hidden
+          className="pointer-events-none fixed left-0 top-0 z-0 h-px w-px overflow-hidden opacity-0"
+          data-purepdf-turnstile-host
+        />
+      ) : null}
     </BotProtectionContext.Provider>
   );
 }

@@ -13,10 +13,6 @@ body {
   position: relative;
 }
 
-#purepdf-portal-root {
-  display: contents;
-}
-
 #purepdf-app-root {
   position: relative;
   z-index: 1;
@@ -75,7 +71,7 @@ canvas {
   }
 }
 
-/* --- Mobile (<768px): full UI must receive taps; no banner DOM --- */
+/* --- Mobile (<768px): app above third-party; sponsors not mounted --- */
 @media (max-width: 767px) {
   html,
   body,
@@ -86,8 +82,11 @@ canvas {
 
   #purepdf-app-root.purepdf-mobile-ui {
     position: relative;
-    z-index: 2147483000;
-    isolation: isolate;
+    z-index: 50;
+  }
+
+  #purepdf-app-root #purepdf-portal-root {
+    display: contents;
   }
 
   #purepdf-app-root.purepdf-mobile-ui .purepdf-page-shell,
@@ -97,7 +96,10 @@ canvas {
   #purepdf-app-root.purepdf-mobile-ui header,
   #purepdf-app-root.purepdf-mobile-ui footer,
   #purepdf-app-root.purepdf-mobile-ui section,
+  #purepdf-app-root.purepdf-mobile-ui article,
   #purepdf-app-root.purepdf-mobile-ui nav,
+  #purepdf-app-root.purepdf-mobile-ui ul,
+  #purepdf-app-root.purepdf-mobile-ui li,
   #purepdf-app-root.purepdf-mobile-ui details,
   #purepdf-app-root.purepdf-mobile-ui summary,
   #purepdf-app-root.purepdf-mobile-ui .purepdf-touch-target,
@@ -107,16 +109,23 @@ canvas {
   #purepdf-app-root.purepdf-mobile-ui input,
   #purepdf-app-root.purepdf-mobile-ui select,
   #purepdf-app-root.purepdf-mobile-ui textarea,
-  #purepdf-app-root.purepdf-mobile-ui [role="button"] {
+  #purepdf-app-root.purepdf-mobile-ui [role="button"],
+  #purepdf-app-root.purepdf-mobile-ui [role="link"] {
     pointer-events: auto !important;
-    cursor: pointer;
     touch-action: manipulation !important;
     position: relative;
-    z-index: 100;
+    z-index: 50;
+  }
+
+  #purepdf-app-root.purepdf-mobile-ui button,
+  #purepdf-app-root.purepdf-mobile-ui summary,
+  #purepdf-app-root.purepdf-mobile-ui a[href],
+  #purepdf-app-root.purepdf-mobile-ui [role="button"] {
+    cursor: pointer;
   }
 
   #purepdf-tool-catalog a[href] {
-    z-index: 101;
+    z-index: 51;
   }
 
   /* iOS: backdrop-filter on glass cards steals taps */
@@ -125,24 +134,27 @@ canvas {
     -webkit-backdrop-filter: none;
   }
 
-  /* Third-party layers must not cover the app (remove hit target, not layout ghost) */
-  body > iframe,
-  body > div:not(#purepdf-app-root):not(#purepdf-portal-root):not(
-      [data-purepdf-overlay][data-open="true"]
-    ) {
+  /* Nothing outside the app may intercept taps */
+  body > *:not(#purepdf-app-root):not(script):not(link):not(style):not(noscript) {
     pointer-events: none !important;
+    max-height: 0 !important;
+    overflow: hidden !important;
   }
 
-  body > iframe {
+  body > iframe,
+  iframe:not(#purepdf-app-root iframe):not([data-purepdf-overlay] iframe) {
+    pointer-events: none !important;
     position: absolute !important;
     width: 0 !important;
     height: 0 !important;
     overflow: hidden !important;
     opacity: 0 !important;
+    visibility: hidden !important;
   }
 
-  #purepdf-portal-root > [data-purepdf-overlay][data-open="true"] {
+  #purepdf-portal-root > [data-purepdf-overlay][data-open="true"],
+  #purepdf-app-root [data-purepdf-overlay][data-open="true"] {
     pointer-events: auto !important;
-    z-index: 2147483646;
+    z-index: 200;
   }
 }

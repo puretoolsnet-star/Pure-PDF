@@ -17,6 +17,15 @@ function isExemptBodyNode(node: HTMLElement): boolean {
   return false;
 }
 
+const AD_SCRIPT_HINT =
+  /adsterra|highperformanceformat|bauval\.org|clickadu|propellerads/i;
+
+function isInsideAppOrOpenOverlay(node: HTMLElement): boolean {
+  if (node.closest("#purepdf-app-root")) return true;
+  const overlay = node.closest<HTMLElement>("[data-purepdf-overlay]");
+  return Boolean(overlay && overlay.dataset.open === "true");
+}
+
 /** Removes stale overlays and full-screen third-party blockers (mobile-first). */
 export function scrubOrphanedBlockers() {
   if (typeof document === "undefined") return;
@@ -28,6 +37,26 @@ export function scrubOrphanedBlockers() {
   });
 
   const mobile = isMobileViewport();
+
+  if (mobile) {
+    document.querySelectorAll("script").forEach((script) => {
+      const id = script.id ?? "";
+      const src = script.getAttribute("src") ?? "";
+      if (AD_SCRIPT_HINT.test(id) || AD_SCRIPT_HINT.test(src)) {
+        script.remove();
+      }
+    });
+
+    const appRoot = document.getElementById("purepdf-app-root");
+    document.querySelectorAll<HTMLElement>("body *").forEach((node) => {
+      if (appRoot?.contains(node)) return;
+      if (isInsideAppOrOpenOverlay(node)) return;
+      const position = getComputedStyle(node).position;
+      if (position !== "fixed" && position !== "absolute") return;
+      if (!coversSignificantViewport(node)) return;
+      node.remove();
+    });
+  }
 
   for (const child of document.body.children) {
     if (!(child instanceof HTMLElement)) continue;

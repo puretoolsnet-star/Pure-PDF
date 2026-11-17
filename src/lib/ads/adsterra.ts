@@ -1,3 +1,5 @@
+import { isMobileSponsorBlocked } from "@/lib/ads/mobile-ad-gate";
+
 const NATIVE_SRC = process.env.NEXT_PUBLIC_ADSTERRA_NATIVE_SRC?.trim() ?? "";
 const NATIVE_ID = process.env.NEXT_PUBLIC_ADSTERRA_NATIVE_ID?.trim() ?? "";
 /** Opt-in only — default off so Social Bar cannot block UI before env is set. */
@@ -49,6 +51,7 @@ export function mountAdsterraRectangleBanner(
   host: HTMLElement,
   instanceId: string,
 ): () => void {
+  if (isMobileSponsorBlocked()) return () => {};
   const cfg = adsterraRectangleBanner;
   if (!cfg.src || !cfg.key) return () => {};
 
@@ -81,6 +84,7 @@ export function mountAdsterraRectangleBanner(
 
 function ensureScript(src: string, id: string) {
   if (!src || typeof document === "undefined") return;
+  if (isMobileSponsorBlocked()) return;
   if (document.getElementById(id)) return;
   const script = document.createElement("script");
   script.id = id;
