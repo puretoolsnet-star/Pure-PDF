@@ -37,11 +37,8 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     >
       <body className="pointer-events-auto touch-manipulation flex min-h-dvh flex-col antialiased">
         <Providers>{children}</Providers>
-        <div
-          id="purepdf-portal-root"
-          aria-hidden
-          className="contents [&>*]:pointer-events-auto"
-        />
+        {/* Portal host: display:contents in globals.css — no full-screen hit layer */}
+        <div id="purepdf-portal-root" />
       </body>
     </html>
   );

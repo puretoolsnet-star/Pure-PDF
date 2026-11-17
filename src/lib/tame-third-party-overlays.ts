@@ -3,12 +3,16 @@ const AD_PASS_THROUGH_ATTR = "data-purepdf-ad-pass-through";
 const AD_HIT_ATTR = "data-purepdf-ad-hit";
 
 const AD_INTERACTIVE_SELECTOR =
-  "a, button, img, video, input, [role='button'], [onclick], svg, iframe";
+  "a, button, img, video, input, [role='button'], [onclick], svg";
 
 function isOpenPurepdfOverlay(node: HTMLElement): boolean {
   return (
     node.hasAttribute("data-purepdf-overlay") && node.dataset.open === "true"
   );
+}
+
+function containsAppRoot(node: HTMLElement): boolean {
+  return Boolean(node.querySelector("#purepdf-app-root"));
 }
 
 function shouldExemptOverlay(node: HTMLElement): boolean {
@@ -17,6 +21,7 @@ function shouldExemptOverlay(node: HTMLElement): boolean {
   if (isOpenPurepdfOverlay(node)) return true;
   if (node.closest("#purepdf-app-root, #purepdf-portal-root")) return true;
   if (node.closest("[data-purepdf-overlay][data-open='true']")) return true;
+  if (containsAppRoot(node)) return true;
   return false;
 }
 
@@ -46,6 +51,7 @@ function isCompactAdControl(node: HTMLElement): boolean {
 
 function markCompactClickTargets(shell: HTMLElement) {
   shell.querySelectorAll<HTMLElement>(AD_INTERACTIVE_SELECTOR).forEach((el) => {
+    if (el.closest("#purepdf-app-root")) return;
     el.removeAttribute(AD_HIT_ATTR);
     el.style.removeProperty("pointer-events");
 
@@ -60,6 +66,11 @@ function markCompactClickTargets(shell: HTMLElement) {
 }
 
 function neuterPassThrough(node: HTMLElement) {
+  if (containsAppRoot(node)) {
+    node.style.pointerEvents = "none";
+    return;
+  }
+
   if (node.hasAttribute(AD_PASS_THROUGH_ATTR)) {
     markCompactClickTargets(node);
     return;
@@ -68,6 +79,13 @@ function neuterPassThrough(node: HTMLElement) {
   node.style.pointerEvents = "none";
   node.setAttribute(AD_PASS_THROUGH_ATTR, "true");
   markCompactClickTargets(node);
+
+  node.querySelectorAll<HTMLElement>("iframe").forEach((frame) => {
+    if (coversSignificantViewport(frame) || coversSignificantViewport(node)) {
+      frame.style.pointerEvents = "none";
+      frame.removeAttribute(AD_HIT_ATTR);
+    }
+  });
 }
 
 /** Removes stray full-screen blockers that are not marked as open app overlays. */
@@ -80,10 +98,15 @@ export function scrubOrphanedBlockers() {
     }
   });
 
+  document.querySelectorAll<HTMLElement>("body > iframe").forEach((frame) => {
+    if (coversSignificantViewport(frame)) {
+      frame.style.pointerEvents = "none";
+    }
+  });
+
   for (const child of document.body.children) {
     if (!(child instanceof HTMLElement)) continue;
     if (shouldExemptOverlay(child)) continue;
-    if (child.hasAttribute(AD_PASS_THROUGH_ATTR)) continue;
 
     const position = getComputedStyle(child).position;
     if (position !== "fixed" && position !== "absolute") continue;
@@ -99,10 +122,6 @@ export function scrubOrphanedBlockers() {
   }
 }
 
-/**
- * Ad widgets inject full-viewport `fixed` layers (and giant iframes) that steal
- * every click. Shells stay inert; only compact ad controls remain clickable.
- */
 export function tameThirdPartyOverlays() {
   if (typeof document === "undefined" || typeof window === "undefined") return;
 

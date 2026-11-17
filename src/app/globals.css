@@ -3,12 +3,12 @@
 
 html {
   touch-action: manipulation;
-  pointer-events: auto;
+  pointer-events: auto !important;
 }
 
 body {
   touch-action: manipulation;
-  pointer-events: auto;
+  pointer-events: auto !important;
   background-color: #090d16;
   color: #e5e7eb;
   position: relative;
@@ -24,53 +24,40 @@ body {
 
 #purepdf-app-root {
   position: relative;
-  z-index: 100;
+  z-index: 2147483000;
   isolation: isolate;
-  pointer-events: auto;
-  touch-action: manipulation;
-}
-
-#purepdf-app-root :where(
-  a,
-  button,
-  input,
-  select,
-  textarea,
-  label,
-  summary,
-  [role="button"],
-  [tabindex]:not([tabindex="-1"])
-) {
-  position: relative;
-  z-index: 2;
   pointer-events: auto !important;
   touch-action: manipulation;
 }
 
-[data-purepdf-ad-pass-through="true"],
-[data-purepdf-ad-pass-through="true"] * {
+/* In-page ad slots: shell ignores clicks; slot content receives them */
+.purepdf-ad-shell {
   pointer-events: none !important;
 }
 
-/* Only compact ad controls (marked in tame-third-party-overlays.ts) stay clickable */
-[data-purepdf-ad-hit="true"] {
+.purepdf-ad-shell .purepdf-ad-slot,
+.purepdf-ad-shell .purepdf-ad-slot * {
   pointer-events: auto !important;
 }
 
 .purepdf-ad-slot {
-  pointer-events: auto;
   position: relative;
-  z-index: 0;
+  z-index: 1;
+  pointer-events: auto !important;
 }
 
-button,
-a,
-[role="button"],
-input,
-select,
-textarea,
-label {
-  touch-action: manipulation;
+/* Third-party injectors on <body> — never steal the viewport (shell only, no descendant *) */
+[data-purepdf-ad-pass-through="true"] {
+  pointer-events: none !important;
+}
+
+[data-purepdf-ad-hit="true"] {
+  pointer-events: auto !important;
+}
+
+/* Rogue full-page iframes injected by ad scripts */
+body > iframe {
+  pointer-events: none !important;
 }
 
 .glass-card {
@@ -96,4 +83,34 @@ label {
 canvas {
   touch-action: none;
   max-width: 100%;
+}
+
+/* --- Global interaction shield (highest priority) --- */
+button,
+a,
+input,
+select,
+textarea,
+label,
+[role="button"] {
+  pointer-events: auto !important;
+  cursor: pointer;
+  position: relative;
+  z-index: 9999;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="search"],
+input[type="number"],
+textarea,
+select {
+  cursor: text;
+}
+
+button:disabled,
+[role="button"][aria-disabled="true"],
+a[aria-disabled="true"] {
+  cursor: not-allowed;
 }

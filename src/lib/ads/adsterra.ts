@@ -1,8 +1,7 @@
 const NATIVE_SRC = process.env.NEXT_PUBLIC_ADSTERRA_NATIVE_SRC?.trim() ?? "";
 const NATIVE_ID = process.env.NEXT_PUBLIC_ADSTERRA_NATIVE_ID?.trim() ?? "";
-const SOCIAL_SRC =
-  process.env.NEXT_PUBLIC_ADSTERRA_SOCIAL_SRC?.trim() ??
-  "https://bauval.org/14/8cc419c72887c043207d271ed49d67ef";
+/** Opt-in only — default off so Social Bar cannot block UI before env is set. */
+const SOCIAL_SRC = process.env.NEXT_PUBLIC_ADSTERRA_SOCIAL_SRC?.trim() ?? "";
 const POPUNDER_SRC = process.env.NEXT_PUBLIC_ADSTERRA_POPUNDER_SRC?.trim() ?? "";
 
 /** Tool rewarded flow (process / download). */

@@ -8,48 +8,40 @@ import { tameThirdPartyOverlays } from "@/lib/tame-third-party-overlays";
 function scheduleAdTaming() {
   tameThirdPartyOverlays();
   window.setTimeout(tameThirdPartyOverlays, 0);
-  window.setTimeout(tameThirdPartyOverlays, 300);
-  window.setTimeout(tameThirdPartyOverlays, 1500);
-  window.setTimeout(tameThirdPartyOverlays, 4000);
+  window.setTimeout(tameThirdPartyOverlays, 500);
+  window.setTimeout(tameThirdPartyOverlays, 2000);
 }
 
-/** Loads Social Bar after first interaction so ad iframes cannot block the initial UI. */
+/**
+ * Optional Social Bar — loads only when `NEXT_PUBLIC_ADSTERRA_SOCIAL_SRC` is set.
+ * Container is inert; compact ad controls are marked in tame-third-party-overlays.
+ */
 export function AdsterraSocialBarLoader() {
   useEffect(() => {
     const src = adsterraSocialBar.src;
-    if (!src || document.getElementById("adsterra-social-bar")) return;
+    if (!src) return;
+    if (document.getElementById("adsterra-social-bar")) return;
 
-    let loaded = false;
+    let host = document.getElementById("purepdf-ad-external-host");
+    if (!host) {
+      host = document.createElement("div");
+      host.id = "purepdf-ad-external-host";
+      host.setAttribute("data-purepdf-ad-pass-through", "true");
+      host.className = "pointer-events-none relative z-0 min-h-0 w-full";
+      document.body.appendChild(host);
+    }
 
-    const inject = () => {
-      if (loaded || document.getElementById("adsterra-social-bar")) return;
-      loaded = true;
-
-      const script = document.createElement("script");
-      script.id = "adsterra-social-bar";
-      script.async = true;
-      script.src = src.startsWith("//") ? `https:${src}` : src;
-      script.setAttribute("data-cfasync", "false");
-      script.addEventListener("load", scheduleAdTaming);
-      document.body.appendChild(script);
-      scheduleAdTaming();
-    };
-
-    const onFirstInteract = () => {
-      window.setTimeout(inject, 400);
-    };
-
-    window.addEventListener("pointerdown", onFirstInteract, {
-      once: true,
-      passive: true,
-    });
-    window.addEventListener("keydown", onFirstInteract, { once: true });
-    const fallback = window.setTimeout(inject, 12_000);
+    const script = document.createElement("script");
+    script.id = "adsterra-social-bar";
+    script.async = true;
+    script.src = src.startsWith("//") ? `https:${src}` : src;
+    script.setAttribute("data-cfasync", "false");
+    script.addEventListener("load", scheduleAdTaming);
+    host.appendChild(script);
+    scheduleAdTaming();
 
     return () => {
-      window.clearTimeout(fallback);
-      window.removeEventListener("pointerdown", onFirstInteract);
-      window.removeEventListener("keydown", onFirstInteract);
+      script.removeEventListener("load", scheduleAdTaming);
     };
   }, []);
 
