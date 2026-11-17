@@ -1,10 +1,32 @@
 import type { MetadataRoute } from "next";
 
-import { LOCALES, TOOL_IDS } from "@/i18n/locales";
+import { DEFAULT_LOCALE, LOCALES, TOOL_IDS } from "@/i18n/locales";
 import { localizedPath } from "@/lib/i18n/routing";
-import { buildHreflangAlternates } from "@/lib/seo/hreflang";
 import { buildExternalEcosystemAlternates } from "@/lib/seo/structured-data";
-import { absoluteUrl } from "@/lib/seo/site";
+import { HREFLANG_MAP } from "@/lib/seo/site";
+
+const baseUrl = "https://pdf.kixt.net";
+
+function sitemapAbsoluteUrl(path: string): string {
+  const normalized = path.startsWith("/") ? path : `/${path}`;
+  return `${baseUrl}${normalized}`;
+}
+
+function buildSitemapHreflangAlternates(path: string): Record<string, string> {
+  const languages: Record<string, string> = {};
+
+  for (const locale of LOCALES) {
+    languages[HREFLANG_MAP[locale]] = sitemapAbsoluteUrl(
+      localizedPath(locale, path),
+    );
+  }
+
+  languages["x-default"] = sitemapAbsoluteUrl(
+    localizedPath(DEFAULT_LOCALE, path),
+  );
+
+  return languages;
+}
 
 function sitemapLastModified(): Date {
   return new Date();
@@ -19,12 +41,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   for (const locale of LOCALES) {
     entries.push({
-      url: absoluteUrl(localizedPath(locale, "/")),
+      url: sitemapAbsoluteUrl(localizedPath(locale, "/")),
       lastModified: sitemapLastModified(),
       changeFrequency: "weekly",
       priority: 1,
       alternates: {
-        languages: buildHreflangAlternates("/"),
+        languages: buildSitemapHreflangAlternates("/"),
       },
     });
   }
@@ -33,12 +55,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     const path = `/tools/${toolId}`;
     for (const locale of LOCALES) {
       entries.push({
-        url: absoluteUrl(localizedPath(locale, path)),
+        url: sitemapAbsoluteUrl(localizedPath(locale, path)),
         lastModified: sitemapLastModified(),
         changeFrequency: "monthly",
         priority: 0.9,
         alternates: {
-          languages: buildHreflangAlternates(path),
+          languages: buildSitemapHreflangAlternates(path),
         },
       });
     }

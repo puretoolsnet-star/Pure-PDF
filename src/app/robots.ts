@@ -1,7 +1,8 @@
 import type { MetadataRoute } from "next";
 
 import { LOCALES } from "@/i18n/locales";
-import { absoluteUrl, getSiteUrl } from "@/lib/seo/site";
+
+const baseUrl = "https://pdf.kixt.net";
 
 export default function robots(): MetadataRoute.Robots {
   const localizedAllow = LOCALES.map((locale) => `/${locale}/`);
@@ -14,7 +15,7 @@ export default function robots(): MetadataRoute.Robots {
         disallow: ["/api/", "/og"],
       },
     ],
-    sitemap: absoluteUrl("/sitemap.xml"),
-    host: getSiteUrl().replace(/^https?:\/\//, ""),
+    sitemap: `${baseUrl}/sitemap.xml`,
+    host: baseUrl.replace(/^https?:\/\//, ""),
   };
 }
