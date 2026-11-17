@@ -23,25 +23,30 @@ export const SUBDOMAIN_SLUGS = Object.keys(
 
 const SUBDOMAIN_SET = new Set<string>(SUBDOMAIN_SLUGS);
 
+export function normalizeSubdomainSlug(value: string): string {
+  return value.trim().toLowerCase();
+}
+
 export function isKnownSubdomain(
   value: string,
 ): value is KnownSubdomain {
-  return SUBDOMAIN_SET.has(value);
+  return SUBDOMAIN_SET.has(normalizeSubdomainSlug(value));
 }
 
 export function isHubSubdomain(subdomain: string): boolean {
-  return subdomain === "hub";
+  return normalizeSubdomainSlug(subdomain) === "hub";
 }
 
 export function subdomainEyebrow(subdomain: string): string {
-  if (isHubSubdomain(subdomain)) {
+  const slug = normalizeSubdomainSlug(subdomain);
+  if (isHubSubdomain(slug)) {
     return ROOT_DOMAIN;
   }
-  return `${subdomain}.${ROOT_DOMAIN}`;
+  return `${slug}.${ROOT_DOMAIN}`;
 }
 
 export function subdomainAdSlot(subdomain: string): string {
-  return `subdomain-${subdomain}`;
+  return `subdomain-${normalizeSubdomainSlug(subdomain)}`;
 }
 
 function humanizeSubdomainSlug(slug: string): string {
@@ -53,23 +58,37 @@ function humanizeSubdomainSlug(slug: string): string {
 }
 
 export function getSubdomainToolTitle(subdomain: string): string {
-  if (isHubSubdomain(subdomain)) {
+  const slug = normalizeSubdomainSlug(subdomain);
+  if (isHubSubdomain(slug)) {
     return "Kixt Tools Hub";
   }
-  if (isKnownSubdomain(subdomain)) {
-    return SUBDOMAIN_TOOL_LABELS[subdomain];
+  if (isKnownSubdomain(slug)) {
+    return SUBDOMAIN_TOOL_LABELS[slug];
   }
-  return humanizeSubdomainSlug(subdomain);
+  return humanizeSubdomainSlug(slug);
 }
 
 export function getSubdomainToolDescription(subdomain: string): string {
-  if (isHubSubdomain(subdomain)) {
+  const slug = normalizeSubdomainSlug(subdomain);
+  if (isHubSubdomain(slug)) {
     return "Choose a tool below. Each product lives on its own subdomain.";
   }
-  if (isKnownSubdomain(subdomain)) {
-    return SUBDOMAIN_TOOL_DESCRIPTIONS[subdomain];
+  if (isKnownSubdomain(slug)) {
+    return SUBDOMAIN_TOOL_DESCRIPTIONS[slug];
   }
-  return `Workspace for ${humanizeSubdomainSlug(subdomain)}. Mount your tool UI in the main column.`;
+  return `Workspace for ${humanizeSubdomainSlug(slug)}. Mount your tool UI in the main column.`;
+}
+
+/** Single source for `MicroToolLayout` copy + ad slot from the active slug. */
+export function getSubdomainPageContext(subdomain: string) {
+  const slug = normalizeSubdomainSlug(subdomain);
+  return {
+    subdomain: slug,
+    title: getSubdomainToolTitle(slug),
+    description: getSubdomainToolDescription(slug),
+    eyebrow: subdomainEyebrow(slug),
+    adSlot: subdomainAdSlot(slug),
+  };
 }
 
 export function getSubdomainFromHost(host: string): string | null {
@@ -100,4 +119,8 @@ export function getSubdomainFromHost(host: string): string | null {
   }
 
   return null;
+}
+
+export function subdomainRoutePath(subdomain: string): string {
+  return `/subdomains/${normalizeSubdomainSlug(subdomain)}`;
 }

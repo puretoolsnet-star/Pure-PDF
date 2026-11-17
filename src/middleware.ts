@@ -3,7 +3,11 @@ import { NextResponse } from "next/server";
 
 import { DEFAULT_LOCALE, LOCALES } from "@/i18n/locales";
 import { localizedPath } from "@/lib/i18n/routing";
-import { getSubdomainFromHost } from "@/lib/subdomains";
+import {
+  getSubdomainFromHost,
+  normalizeSubdomainSlug,
+  subdomainRoutePath,
+} from "@/lib/subdomains";
 
 const LOCALE_PREFIX = new RegExp(`^/(${LOCALES.join("|")})(/|$)`);
 
@@ -14,6 +18,14 @@ function shouldBypass(pathname: string): boolean {
     pathname.startsWith("/og") ||
     /\.[a-zA-Z0-9]+$/.test(pathname)
   );
+}
+
+function pathSubdomainSlug(pathname: string): string | null {
+  if (!pathname.startsWith("/subdomains/")) {
+    return null;
+  }
+  const slug = pathname.split("/")[2];
+  return slug ? normalizeSubdomainSlug(slug) : null;
 }
 
 export function middleware(request: NextRequest) {
@@ -27,26 +39,36 @@ export function middleware(request: NextRequest) {
     request.headers.get("x-forwarded-host") ??
     request.headers.get("host") ??
     "";
-  const subdomain = getSubdomainFromHost(host);
+  const hostSubdomain = getSubdomainFromHost(host);
 
-  if (subdomain) {
+  if (hostSubdomain) {
+    const active = normalizeSubdomainSlug(hostSubdomain);
+    const canonicalPath = subdomainRoutePath(active);
+    const pathSlug = pathSubdomainSlug(pathname);
+
+    if (pathSlug && pathSlug !== active) {
+      const url = request.nextUrl.clone();
+      url.pathname = canonicalPath;
+      return NextResponse.redirect(url);
+    }
+
     if (pathname.startsWith("/subdomains/")) {
       const response = NextResponse.next();
-      response.headers.set("x-purepdf-subdomain", subdomain);
+      response.headers.set("x-purepdf-subdomain", active);
       return response;
     }
 
     const rewriteUrl = request.nextUrl.clone();
-    rewriteUrl.pathname = `/subdomains/${subdomain}${pathname === "/" ? "" : pathname}`;
-
+    rewriteUrl.pathname = canonicalPath;
     const response = NextResponse.rewrite(rewriteUrl);
-    response.headers.set("x-purepdf-subdomain", subdomain);
+    response.headers.set("x-purepdf-subdomain", active);
     return response;
   }
 
   if (pathname.startsWith("/subdomains/")) {
+    const slug = pathSubdomainSlug(pathname) ?? "hub";
     const response = NextResponse.next();
-    response.headers.set("x-purepdf-subdomain", "hub");
+    response.headers.set("x-purepdf-subdomain", slug);
     return response;
   }
 

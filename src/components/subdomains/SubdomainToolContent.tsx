@@ -1,13 +1,12 @@
 "use client";
 
-import type { ReactNode } from "react";
-
 import { SignPdfTool } from "@/components/pdf/tools/SignPdfTool";
 import { PdfSubdomainHub } from "@/components/subdomains/PdfSubdomainHub";
 import { QrGeneratorTool } from "@/components/subdomains/QrGeneratorTool";
 import { TableEditorTool } from "@/components/subdomains/TableEditorTool";
 import {
   isKnownSubdomain,
+  normalizeSubdomainSlug,
   ROOT_DOMAIN,
   type KnownSubdomain,
 } from "@/lib/subdomains";
@@ -16,21 +15,16 @@ type SubdomainToolContentProps = {
   subdomain: string;
 };
 
-const TOOL_BY_SUBDOMAIN: Record<KnownSubdomain, () => ReactNode> = {
-  qr: () => <QrGeneratorTool />,
-  table: () => <TableEditorTool />,
-  sign: () => <SignPdfTool embedded />,
-  pdf: () => <PdfSubdomainHub />,
-};
-
 export function SubdomainToolContent({ subdomain }: SubdomainToolContentProps) {
-  if (!isKnownSubdomain(subdomain)) {
+  const slug = normalizeSubdomainSlug(subdomain);
+
+  if (!isKnownSubdomain(slug)) {
     return (
       <div className="glass-card rounded-2xl p-6 sm:p-8">
         <p className="text-sm leading-relaxed text-gray-400">
           No tool is mapped for{" "}
           <span className="text-gray-200">
-            {subdomain}.{ROOT_DOMAIN}
+            {slug}.{ROOT_DOMAIN}
           </span>{" "}
           yet.
         </p>
@@ -38,6 +32,22 @@ export function SubdomainToolContent({ subdomain }: SubdomainToolContentProps) {
     );
   }
 
-  const render = TOOL_BY_SUBDOMAIN[subdomain];
-  return <>{render()}</>;
+  return renderSubdomainTool(slug);
+}
+
+function renderSubdomainTool(slug: KnownSubdomain) {
+  switch (slug) {
+    case "qr":
+      return <QrGeneratorTool />;
+    case "table":
+      return <TableEditorTool />;
+    case "sign":
+      return <SignPdfTool embedded />;
+    case "pdf":
+      return <PdfSubdomainHub />;
+    default: {
+      const exhaustive: never = slug;
+      return exhaustive;
+    }
+  }
 }

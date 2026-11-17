@@ -4,14 +4,15 @@ import Link from "next/link";
 import { MicroToolLayout } from "@/components/layout/MicroToolLayout";
 import { SubdomainToolContent } from "@/components/subdomains/SubdomainToolContent";
 import {
+  getSubdomainPageContext,
   getSubdomainToolDescription,
   getSubdomainToolTitle,
   isHubSubdomain,
+  normalizeSubdomainSlug,
   ROOT_DOMAIN,
-  subdomainAdSlot,
   subdomainEyebrow,
+  subdomainRoutePath,
   SUBDOMAIN_SLUGS,
-  SUBDOMAIN_TOOL_LABELS,
   type KnownSubdomain,
 } from "@/lib/subdomains";
 
@@ -27,7 +28,8 @@ export function generateStaticParams() {
 export async function generateMetadata({
   params,
 }: SubdomainPageProps): Promise<Metadata> {
-  const { subdomain } = await params;
+  const { subdomain: raw } = await params;
+  const subdomain = normalizeSubdomainSlug(raw);
   const title = getSubdomainToolTitle(subdomain);
   return {
     title: `${title} | ${ROOT_DOMAIN}`,
@@ -36,21 +38,24 @@ export async function generateMetadata({
 }
 
 export default async function SubdomainToolPage({ params }: SubdomainPageProps) {
-  const { subdomain } = await params;
+  const { subdomain: raw } = await params;
+  const subdomain = normalizeSubdomainSlug(raw);
+  const layout = getSubdomainPageContext(subdomain);
   const isHub = isHubSubdomain(subdomain);
-  const title = getSubdomainToolTitle(subdomain);
-  const description = getSubdomainToolDescription(subdomain);
-  const eyebrow = subdomainEyebrow(subdomain);
-  const adSlot = subdomainAdSlot(subdomain);
 
   return (
     <MicroToolLayout
-      title={title}
-      description={description}
-      eyebrow={eyebrow}
-      adSlot={adSlot}
+      key={subdomain}
+      title={layout.title}
+      description={layout.description}
+      eyebrow={layout.eyebrow}
+      adSlot={layout.adSlot}
     >
-      {isHub ? <HubToolGrid /> : <SubdomainToolContent subdomain={subdomain} />}
+      {isHub ? (
+        <HubToolGrid />
+      ) : (
+        <SubdomainToolContent key={subdomain} subdomain={subdomain} />
+      )}
     </MicroToolLayout>
   );
 }
@@ -63,18 +68,16 @@ function HubToolGrid() {
       {tools.map((id) => (
         <li key={id}>
           <Link
-            href={`/subdomains/${id}`}
+            href={subdomainRoutePath(id)}
             className="glass-card block h-full rounded-2xl p-6 transition hover:border-cyan-400/40 hover:bg-white/5"
           >
             <h2 className="text-lg font-semibold text-white">
-              {SUBDOMAIN_TOOL_LABELS[id]}
+              {getSubdomainToolTitle(id)}
             </h2>
             <p className="mt-2 text-sm text-gray-400">
               {getSubdomainToolDescription(id)}
             </p>
-            <p className="mt-4 text-xs text-cyan-300/80">
-              {id}.{ROOT_DOMAIN}
-            </p>
+            <p className="mt-4 text-xs text-cyan-300/80">{subdomainEyebrow(id)}</p>
           </Link>
         </li>
       ))}
