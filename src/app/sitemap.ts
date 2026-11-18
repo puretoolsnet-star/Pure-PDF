@@ -1,19 +1,20 @@
 import type { MetadataRoute } from "next";
 
 /**
- * Sitemap for pdf.kixt.net (via `NEXT_PUBLIC_SITE_URL`): home + every tool route
- * in all six locales, each entry with full hreflang alternates.
+ * Sitemap for https://pdf.kixt.net: home + every tool route in all six locales,
+ * each entry with full hreflang alternates. Base URL is fixed so preview/Vercel
+ * hosts never appear in Search Console.
  */
 import { DEFAULT_LOCALE, LOCALES, TOOL_IDS } from "@/i18n/locales";
 import { localizedPath } from "@/lib/i18n/routing";
 import { buildExternalEcosystemAlternates } from "@/lib/seo/structured-data";
-import { getSiteUrl, HREFLANG_MAP } from "@/lib/seo/site";
+import { HREFLANG_MAP } from "@/lib/seo/site";
 
-const baseUrl = getSiteUrl();
+const SITEMAP_BASE_URL = "https://pdf.kixt.net";
 
 function sitemapAbsoluteUrl(path: string): string {
   const normalized = path.startsWith("/") ? path : `/${path}`;
-  return `${baseUrl}${normalized}`;
+  return `${SITEMAP_BASE_URL}${normalized}`;
 }
 
 function buildSitemapHreflangAlternates(path: string): Record<string, string> {
