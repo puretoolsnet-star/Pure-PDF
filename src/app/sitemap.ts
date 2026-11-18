@@ -1,5 +1,9 @@
 import type { MetadataRoute } from "next";
 
+/**
+ * Sitemap for pdf.kixt.net (via `NEXT_PUBLIC_SITE_URL`): home + every tool route
+ * in all six locales, each entry with full hreflang alternates.
+ */
 import { DEFAULT_LOCALE, LOCALES, TOOL_IDS } from "@/i18n/locales";
 import { localizedPath } from "@/lib/i18n/routing";
 import { buildExternalEcosystemAlternates } from "@/lib/seo/structured-data";

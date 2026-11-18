@@ -14,7 +14,7 @@ type SeoCatalog = Record<SeoPageId, Record<Locale, SeoCopy>>;
 export const SEO_COPY: SeoCatalog = {
   home: {
     uk: {
-      title: "PurePDF — безкоштовні PDF-інструменти в браузері",
+      title: "PurePDF — безкоштовні PDF-інструменти онлайн в браузері",
       description:
         "13 безкоштовних PDF-інструментів у браузері: об’єднання, розділення, стиснення, конвертація, підпис і захист. Локальна обробка — файли не завантажуються на сервер.",
       keywords: [
@@ -27,7 +27,7 @@ export const SEO_COPY: SeoCatalog = {
       ],
     },
     en: {
-      title: "PurePDF — Free private PDF tools in your browser",
+      title: "PurePDF — Free PDF tools online in your browser",
       description:
         "13 free PDF tools in your browser: merge, split, compress, convert, sign, protect, and more. Local processing with six language versions — no server uploads.",
       keywords: [
@@ -142,13 +142,13 @@ export const SEO_COPY: SeoCatalog = {
   },
   "merge-pdf": {
     uk: {
-      title: "Об’єднати PDF — онлайн безкоштовно | PurePDF",
+      title: "Об’єднати PDF онлайн безкоштовно — з’єднати файли | PurePDF",
       description:
         "З’єднайте кілька PDF у правильному порядку в браузері. Локальне об’єднання без завантаження файлів на сервер.",
       keywords: ["об’єднати PDF", "склеїти PDF", "merge PDF", "PurePDF"],
     },
     en: {
-      title: "Merge PDF — Combine files free online | PurePDF",
+      title: "Merge PDF online free — combine files | PurePDF",
       description:
         "Join multiple PDFs in the order you choose, entirely in your browser. Local merge with no server upload.",
       keywords: ["merge PDF", "combine PDF", "join PDF files", "PurePDF"],
@@ -180,13 +180,13 @@ export const SEO_COPY: SeoCatalog = {
   },
   "compress-pdf": {
     uk: {
-      title: "Стиснути PDF — зменшити розмір онлайн | PurePDF",
+      title: "Стиснути PDF онлайн безкоштовно — зменшити розмір | PurePDF",
       description:
         "Зменште розмір PDF у браузері з балансом якості. Локальне стиснення — файли не покидають ваш пристрій.",
       keywords: ["стиснути PDF", "зменшити PDF", "compress PDF", "PurePDF"],
     },
     en: {
-      title: "Compress PDF — Reduce file size online | PurePDF",
+      title: "Compress PDF online free — reduce file size | PurePDF",
       description:
         "Shrink PDF file size in your browser with balanced or maximum compression. Files never leave your device.",
       keywords: ["compress PDF", "reduce PDF size", "optimize PDF", "PurePDF"],

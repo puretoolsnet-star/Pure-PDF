@@ -28,7 +28,7 @@ export function buildPageMetadata(page: SeoPageId, locale: Locale): Metadata {
   const publisherUrl = absoluteUrl(homeRoute(locale));
 
   return {
-    title: copy.title,
+    title: { absolute: copy.title },
     description: copy.description,
     keywords: copy.keywords,
     authors: [{ name: "PurePDF", url: publisherUrl }],

@@ -21,30 +21,34 @@ export const PLANNED_TOOL_SEO: PlannedSeoCatalog = {
       keywords: ["розділити PDF", "split PDF", "PurePDF"],
     },
     en: {
-      title: "Split PDF — free online | PurePDF",
+      title: "Split PDF online free | PurePDF",
       description:
         "Split a PDF by page range or into separate files locally in your browser. No server upload.",
       keywords: ["split PDF", "divide PDF", "PurePDF"],
     },
     pl: {
-      title: "Podziel PDF — wkrótce | PurePDF",
-      description: "Dzielenie PDF lokalnie w przeglądarce. Wkrótce w PurePDF.",
-      keywords: ["podziel PDF", "PurePDF"],
+      title: "Podziel PDF online za darmo | PurePDF",
+      description:
+        "Podziel PDF na pliki lub zakresy stron lokalnie w przeglądarce. Bez wysyłania na serwer.",
+      keywords: ["podziel PDF", "PDF online", "PurePDF"],
     },
     de: {
-      title: "PDF teilen — demnächst | PurePDF",
-      description: "PDFs lokal im Browser teilen. Demnächst bei PurePDF.",
-      keywords: ["PDF teilen", "PurePDF"],
+      title: "PDF online kostenlos teilen | PurePDF",
+      description:
+        "PDFs nach Seitenbereich oder in Dateien im Browser teilen. Kein Server-Upload.",
+      keywords: ["PDF teilen", "PurePDF", "online"],
     },
     es: {
-      title: "Dividir PDF — próximamente | PurePDF",
-      description: "Divide PDF en local en el navegador. Próximamente en PurePDF.",
-      keywords: ["dividir PDF", "PurePDF"],
+      title: "Dividir PDF online gratis | PurePDF",
+      description:
+        "Divide un PDF por rango o en archivos en el navegador. Sin subida al servidor.",
+      keywords: ["dividir PDF", "PurePDF", "online"],
     },
     fr: {
-      title: "Scinder PDF — bientôt | PurePDF",
-      description: "Scindez des PDF localement dans le navigateur. Bientôt sur PurePDF.",
-      keywords: ["scinder PDF", "PurePDF"],
+      title: "Scinder PDF gratuitement en ligne | PurePDF",
+      description:
+        "Scindez un PDF par plage ou en fichiers dans le navigateur. Sans envoi serveur.",
+      keywords: ["scinder PDF", "PurePDF", "en ligne"],
     },
   },
   "remove-pages": {
@@ -61,24 +65,28 @@ export const PLANNED_TOOL_SEO: PlannedSeoCatalog = {
       keywords: ["remove PDF pages", "PurePDF"],
     },
     pl: {
-      title: "Usuń strony PDF — wkrótce | PurePDF",
-      description: "Usuwaj strony z PDF lokalnie. Wkrótce w PurePDF.",
-      keywords: ["usuń strony PDF", "PurePDF"],
+      title: "Usuń strony PDF online | PurePDF",
+      description:
+        "Zaznacz strony w siatce i pobierz przycięty PDF lokalnie w przeglądarce.",
+      keywords: ["usuń strony PDF", "PurePDF", "online"],
     },
     de: {
-      title: "PDF-Seiten entfernen — demnächst | PurePDF",
-      description: "Seiten lokal aus PDF entfernen. Demnächst bei PurePDF.",
-      keywords: ["PDF Seiten löschen", "PurePDF"],
+      title: "PDF-Seiten online entfernen | PurePDF",
+      description:
+        "Seiten in der Miniaturansicht markieren und PDF lokal im Browser herunterladen.",
+      keywords: ["PDF Seiten löschen", "PurePDF", "online"],
     },
     es: {
-      title: "Eliminar páginas PDF — próximamente | PurePDF",
-      description: "Elimina páginas de PDF en local. Próximamente en PurePDF.",
-      keywords: ["eliminar páginas PDF", "PurePDF"],
+      title: "Eliminar páginas PDF online | PurePDF",
+      description:
+        "Marca páginas en la cuadrícula y descarga el PDF recortado en el navegador.",
+      keywords: ["eliminar páginas PDF", "PurePDF", "online"],
     },
     fr: {
-      title: "Supprimer des pages PDF — bientôt | PurePDF",
-      description: "Supprimez des pages localement. Bientôt sur PurePDF.",
-      keywords: ["supprimer pages PDF", "PurePDF"],
+      title: "Supprimer des pages PDF en ligne | PurePDF",
+      description:
+        "Marquez des pages dans la grille et téléchargez le PDF épuré dans le navigateur.",
+      keywords: ["supprimer pages PDF", "PurePDF", "en ligne"],
     },
   },
   "organize-pdf": {
@@ -95,24 +103,28 @@ export const PLANNED_TOOL_SEO: PlannedSeoCatalog = {
       keywords: ["organize PDF", "reorder pages", "PurePDF"],
     },
     pl: {
-      title: "Organizuj PDF — wkrótce | PurePDF",
-      description: "Układaj strony PDF lokalnie. Wkrótce w PurePDF.",
-      keywords: ["organizuj PDF", "PurePDF"],
+      title: "Organizuj PDF — kolejność stron online | PurePDF",
+      description:
+        "Zmieniaj kolejność i usuwaj strony w siatce miniatur — lokalnie w przeglądarce.",
+      keywords: ["organizuj PDF", "PurePDF", "online"],
     },
     de: {
-      title: "PDF organisieren — demnächst | PurePDF",
-      description: "PDF-Seiten sortieren — lokal. Demnächst bei PurePDF.",
-      keywords: ["PDF sortieren", "PurePDF"],
+      title: "PDF organisieren — Seiten online sortieren | PurePDF",
+      description:
+        "Seiten in der Miniaturansicht umsortieren und entfernen — lokal im Browser.",
+      keywords: ["PDF sortieren", "PurePDF", "online"],
     },
     es: {
-      title: "Organizar PDF — próximamente | PurePDF",
-      description: "Reordena páginas en local. Próximamente en PurePDF.",
-      keywords: ["organizar PDF", "PurePDF"],
+      title: "Organizar PDF — reordenar páginas online | PurePDF",
+      description:
+        "Reordena y elimina páginas en miniaturas — localmente en el navegador.",
+      keywords: ["organizar PDF", "PurePDF", "online"],
     },
     fr: {
-      title: "Organiser PDF — bientôt | PurePDF",
-      description: "Réordonnez les pages localement. Bientôt sur PurePDF.",
-      keywords: ["organiser PDF", "PurePDF"],
+      title: "Organiser PDF — réordonner les pages en ligne | PurePDF",
+      description:
+        "Réordonnez et supprimez des pages en miniatures — localement dans le navigateur.",
+      keywords: ["organiser PDF", "PurePDF", "en ligne"],
     },
   },
   "rotate-pdf": {
@@ -129,24 +141,28 @@ export const PLANNED_TOOL_SEO: PlannedSeoCatalog = {
       keywords: ["rotate PDF", "turn PDF pages", "PurePDF"],
     },
     pl: {
-      title: "Obróć PDF — wkrótce | PurePDF",
-      description: "Obracaj strony PDF lokalnie. Wkrótce w PurePDF.",
-      keywords: ["obróć PDF", "PurePDF"],
+      title: "Obróć PDF online za darmo | PurePDF",
+      description:
+        "Obracaj strony lub cały PDF o 90° i 180° lokalnie w przeglądarce. Bez serwera.",
+      keywords: ["obróć PDF", "PurePDF", "online"],
     },
     de: {
-      title: "PDF drehen — demnächst | PurePDF",
-      description: "PDF-Seiten lokal drehen. Demnächst bei PurePDF.",
-      keywords: ["PDF drehen", "PurePDF"],
+      title: "PDF online drehen — kostenlos | PurePDF",
+      description:
+        "Seiten oder gesamtes PDF um 90° und 180° im Browser drehen. Kein Server-Upload.",
+      keywords: ["PDF drehen", "PurePDF", "online"],
     },
     es: {
-      title: "Rotar PDF — próximamente | PurePDF",
-      description: "Gira páginas PDF en local. Próximamente en PurePDF.",
-      keywords: ["rotar PDF", "PurePDF"],
+      title: "Rotar PDF online gratis | PurePDF",
+      description:
+        "Gira páginas o el PDF completo 90° y 180° en el navegador. Sin subida al servidor.",
+      keywords: ["rotar PDF", "PurePDF", "online"],
     },
     fr: {
-      title: "Pivoter PDF — bientôt | PurePDF",
-      description: "Faites pivoter des pages localement. Bientôt sur PurePDF.",
-      keywords: ["pivoter PDF", "PurePDF"],
+      title: "Pivoter PDF gratuitement en ligne | PurePDF",
+      description:
+        "Faites pivoter des pages ou tout le PDF de 90° et 180° dans le navigateur.",
+      keywords: ["pivoter PDF", "PurePDF", "en ligne"],
     },
   },
   "protect-pdf": {
@@ -163,24 +179,28 @@ export const PLANNED_TOOL_SEO: PlannedSeoCatalog = {
       keywords: ["protect PDF", "password PDF", "PurePDF"],
     },
     pl: {
-      title: "Chroń PDF — wkrótce | PurePDF",
-      description: "Hasło na PDF lokalnie. Wkrótce w PurePDF.",
-      keywords: ["chroń PDF", "PurePDF"],
+      title: "Chroń PDF hasłem online | PurePDF",
+      description:
+        "Dodaj hasło otwarcia PDF lokalnie w przeglądarce (AES-256). Plik nie trafia na serwer.",
+      keywords: ["chroń PDF", "hasło PDF", "PurePDF"],
     },
     de: {
-      title: "PDF schützen — demnächst | PurePDF",
-      description: "PDF mit Passwort lokal schützen. Demnächst.",
-      keywords: ["PDF Passwort", "PurePDF"],
+      title: "PDF mit Passwort schützen — online | PurePDF",
+      description:
+        "Öffnungspasswort für PDF lokal im Browser (AES-256). Kein Upload von Datei oder Passwort.",
+      keywords: ["PDF Passwort", "PurePDF", "online"],
     },
     es: {
-      title: "Proteger PDF — próximamente | PurePDF",
-      description: "Protege PDF con contraseña en local. Próximamente.",
-      keywords: ["proteger PDF", "PurePDF"],
+      title: "Proteger PDF con contraseña online | PurePDF",
+      description:
+        "Añade contraseña de apertura al PDF en el navegador (AES-256). Sin subir archivo.",
+      keywords: ["proteger PDF", "PurePDF", "online"],
     },
     fr: {
-      title: "Protéger PDF — bientôt | PurePDF",
-      description: "Mot de passe PDF en local. Bientôt sur PurePDF.",
-      keywords: ["protéger PDF", "PurePDF"],
+      title: "Protéger PDF par mot de passe en ligne | PurePDF",
+      description:
+        "Ajoutez un mot de passe d'ouverture au PDF dans le navigateur (AES-256). Sans envoi de fichier.",
+      keywords: ["protéger PDF", "PurePDF", "en ligne"],
     },
   },
   "unlock-pdf": {
@@ -197,24 +217,28 @@ export const PLANNED_TOOL_SEO: PlannedSeoCatalog = {
       keywords: ["unlock PDF", "remove PDF password", "PurePDF"],
     },
     pl: {
-      title: "Odblokuj PDF — wkrótce | PurePDF",
-      description: "Usuń hasło PDF lokalnie. Wkrótce w PurePDF.",
-      keywords: ["odblokuj PDF", "PurePDF"],
+      title: "Odblokuj PDF — usuń hasło online | PurePDF",
+      description:
+        "Usuń hasło otwarcia PDF lokalnie w przeglądarce (AES-256 / RC4), jeśli je znasz.",
+      keywords: ["odblokuj PDF", "PurePDF", "online"],
     },
     de: {
-      title: "PDF entsperren — demnächst | PurePDF",
-      description: "PDF-Passwort lokal entfernen. Demnächst.",
-      keywords: ["PDF entsperren", "PurePDF"],
+      title: "PDF entsperren — Passwort online entfernen | PurePDF",
+      description:
+        "Öffnungspasswort lokal im Browser entfernen (AES-256 / RC4), wenn bekannt.",
+      keywords: ["PDF entsperren", "PurePDF", "online"],
     },
     es: {
-      title: "Desbloquear PDF — próximamente | PurePDF",
-      description: "Quita contraseña de PDF en local. Próximamente.",
-      keywords: ["desbloquear PDF", "PurePDF"],
+      title: "Desbloquear PDF — quitar contraseña online | PurePDF",
+      description:
+        "Quita la contraseña de apertura en el navegador (AES-256 / RC4) si la conoces.",
+      keywords: ["desbloquear PDF", "PurePDF", "online"],
     },
     fr: {
-      title: "Déverrouiller PDF — bientôt | PurePDF",
-      description: "Retirez le mot de passe en local. Bientôt sur PurePDF.",
-      keywords: ["déverrouiller PDF", "PurePDF"],
+      title: "Déverrouiller PDF — retirer le mot de passe en ligne | PurePDF",
+      description:
+        "Retirez le mot de passe d'ouverture dans le navigateur (AES-256 / RC4) si vous le connaissez.",
+      keywords: ["déverrouiller PDF", "PurePDF", "en ligne"],
     },
   },
   "sign-pdf": {
@@ -231,24 +255,28 @@ export const PLANNED_TOOL_SEO: PlannedSeoCatalog = {
       keywords: ["sign PDF", "PDF signature", "PurePDF"],
     },
     pl: {
-      title: "Podpisz PDF — wkrótce | PurePDF",
-      description: "Podpis wizualny PDF lokalnie. Wkrótce w PurePDF.",
-      keywords: ["podpisz PDF", "PurePDF"],
+      title: "Podpisz PDF online — podpis wizualny | PurePDF",
+      description:
+        "Narysuj lub wpisz podpis i umieść go na stronie PDF lokalnie w przeglądarce.",
+      keywords: ["podpisz PDF", "PurePDF", "online"],
     },
     de: {
-      title: "PDF signieren — demnächst | PurePDF",
-      description: "Visuelle PDF-Signatur lokal. Demnächst.",
-      keywords: ["PDF signieren", "PurePDF"],
+      title: "PDF online signieren — Unterschrift zeichnen | PurePDF",
+      description:
+        "Unterschrift zeichnen oder tippen und auf eine PDF-Seite im Browser platzieren.",
+      keywords: ["PDF signieren", "PurePDF", "online"],
     },
     es: {
-      title: "Firmar PDF — próximamente | PurePDF",
-      description: "Firma visual en PDF en local. Próximamente.",
-      keywords: ["firmar PDF", "PurePDF"],
+      title: "Firmar PDF online — firma visual | PurePDF",
+      description:
+        "Dibuja o escribe una firma y colócala en una página PDF en el navegador.",
+      keywords: ["firmar PDF", "PurePDF", "online"],
     },
     fr: {
-      title: "Signer PDF — bientôt | PurePDF",
-      description: "Signature visuelle PDF en local. Bientôt sur PurePDF.",
-      keywords: ["signer PDF", "PurePDF"],
+      title: "Signer PDF en ligne — signature visuelle | PurePDF",
+      description:
+        "Dessinez ou saisissez une signature et placez-la sur une page PDF dans le navigateur.",
+      keywords: ["signer PDF", "PurePDF", "en ligne"],
     },
   },
 };

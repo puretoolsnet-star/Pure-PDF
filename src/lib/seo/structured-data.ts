@@ -6,6 +6,7 @@ import {
   type ToolId,
 } from "@/i18n/locales";
 import { getSeoCopy } from "@/i18n/seo/copy";
+import type { SeoFaqItem } from "@/i18n/seo/page-content-types";
 import { homeRoute, localizedPath, toolRoute } from "@/lib/i18n/routing";
 import { buildHreflangAlternates } from "@/lib/seo/hreflang";
 import { absoluteUrl, HREFLANG_MAP } from "@/lib/seo/site";
@@ -19,6 +20,23 @@ function ecosystemRelatedUrls(): string[] {
     ),
     ecosystemLocalizedUrl("pdf", DEFAULT_LOCALE, "/"),
   ];
+}
+
+export function buildFaqPageStructuredData(faq: SeoFaqItem[]) {
+  if (faq.length === 0) return null;
+
+  return {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faq.map((item) => ({
+      "@type": "Question",
+      name: item.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: item.answer,
+      },
+    })),
+  };
 }
 
 export function buildHomeStructuredData(locale: Locale) {
