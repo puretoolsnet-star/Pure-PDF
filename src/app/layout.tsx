@@ -35,6 +35,13 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       suppressHydrationWarning
       className={`${geistSans.variable} ${geistMono.variable} dark min-h-dvh antialiased`}
     >
+      <head>
+        <script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2698771783613767"
+          crossOrigin="anonymous"
+        />
+      </head>
       <body className="touch-manipulation flex min-h-dvh flex-col antialiased">
         <Providers>{children}</Providers>
       </body>
