@@ -43,6 +43,10 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         />
         <script
           async
+          src="https://www.googletagmanager.com/gtag/js?id=G-FQM5D8R348"
+        />
+        <script
+          async
           src="https://www.googletagmanager.com/gtm.js?id=GTM-NLRHWF83"
         />
         <script
@@ -51,6 +55,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
               window.dataLayer = window.dataLayer || [];
               function gtag(){dataLayer.push(arguments);}
               gtag('js', new Date());
+              gtag('config', 'G-FQM5D8R348');
             `,
           }}
         />
