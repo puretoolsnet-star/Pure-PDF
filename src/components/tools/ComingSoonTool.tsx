@@ -2,7 +2,6 @@
 
 import { Construction } from "lucide-react";
 
-import { AdBanner } from "@/components/ads/AdBanner";
 import { ToolShell } from "@/components/tools/ToolShell";
 import { useI18n } from "@/i18n/context";
 import type { ToolId } from "@/i18n/locales";
@@ -28,7 +27,6 @@ export function ComingSoonTool({ toolId }: ComingSoonToolProps) {
         <p className="text-sm leading-relaxed text-gray-300 sm:text-base">
           {t.catalogUi.comingSoonBody}
         </p>
-        <AdBanner layout="inline" slot={`tool-${toolId}-inline`} />
       </div>
     </ToolShell>
   );

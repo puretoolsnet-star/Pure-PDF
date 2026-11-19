@@ -14,7 +14,6 @@ import { FileDropzone } from "@/components/tools/FileDropzone";
 import { ToolShell } from "@/components/tools/ToolShell";
 import { useI18n } from "@/i18n/context";
 import { SIGN_STROKE_COLORS } from "@/i18n/sign-tool-ui";
-import { AD_SIGN_TOOL_WATCH_MS } from "@/lib/ads/adsterra";
 import { useProtectedGeneration } from "@/lib/bot-protection/use-protected-generation";
 import { cn } from "@/lib/cn";
 import { downloadBytes } from "@/lib/download";
@@ -37,10 +36,7 @@ type SignPdfToolProps = {
 export function SignPdfTool({ embedded = false }: SignPdfToolProps) {
   const { t } = useI18n();
   const { runProtected, ready } = useProtectedGeneration();
-  const { requestAction, modal } = useRewardedAction("sign-pdf", {
-    watchMs: AD_SIGN_TOOL_WATCH_MS,
-    autoContinueWhenReady: true,
-  });
+  const { requestAction, modal } = useRewardedAction("sign-pdf");
 
   const copy = t.tools["sign-pdf"];
   const ui = t.signUi;

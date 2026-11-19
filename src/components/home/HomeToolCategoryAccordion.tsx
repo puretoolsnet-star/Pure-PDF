@@ -100,7 +100,6 @@ export function HomeToolCategoryAccordion() {
                     icon={tool.icon}
                     accent={tool.accent}
                     status={tool.status}
-                    rewardedHeavy={tool.rewardedHeavy}
                     compact
                   />
                 ))}

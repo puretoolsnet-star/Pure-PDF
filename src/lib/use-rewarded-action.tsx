@@ -1,21 +1,25 @@
 "use client";
 
-import { useCallback, useRef, useState, type ReactNode } from "react";
+import { useCallback, type ReactNode } from "react";
 
-import { RewardedActionModal } from "@/components/ads/RewardedActionModal";
+import { RewardedVideoHost } from "@/components/ads/RewardedVideoHost";
+import {
+  REWARDED_VIDEO_SDK_ENABLED,
+  requestRewardedVideo,
+} from "@/lib/ads/rewarded-video-sdk";
 import type { ToolId } from "@/i18n/locales";
 
 export type RewardedIntent = "process" | "download";
 
 export type RewardedActionOptions = {
   watchMs?: number;
-  /** After the timer ends, run the pending action without an extra tap. */
+  /** Reserved for SDK — no-op while rewarded video is disabled. */
   autoContinueWhenReady?: boolean;
 };
 
 export function useRewardedAction(
   toolId: ToolId,
-  options?: RewardedActionOptions,
+  _options?: RewardedActionOptions,
 ): {
   requestAction: (
     action: () => void | Promise<void>,
@@ -23,53 +27,19 @@ export function useRewardedAction(
   ) => void;
   modal: ReactNode;
 } {
-  const [open, setOpen] = useState(false);
-  const [sessionKey, setSessionKey] = useState(0);
-  const [intent, setIntent] = useState<RewardedIntent>("process");
-  const unlockedRef = useRef(false);
-  const pendingRef = useRef<(() => void | Promise<void>) | null>(null);
-
   const requestAction = useCallback(
-    (action: () => void | Promise<void>, nextIntent: RewardedIntent) => {
-      if (unlockedRef.current) {
-        void action();
-        return;
-      }
-      pendingRef.current = action;
-      setIntent(nextIntent);
-      setSessionKey((key) => key + 1);
-      setOpen(true);
+    (action: () => void | Promise<void>, intent: RewardedIntent) => {
+      void (async () => {
+        const allowed = await requestRewardedVideo({ toolId, intent });
+        if (allowed) await action();
+      })();
     },
-    [],
+    [toolId],
   );
-
-  const close = useCallback(() => {
-    pendingRef.current = null;
-    setOpen(false);
-  }, []);
-
-  const complete = useCallback(async () => {
-    const action = pendingRef.current;
-    pendingRef.current = null;
-    unlockedRef.current = true;
-    if (action) await action();
-    setOpen(false);
-  }, []);
 
   return {
     requestAction,
-    modal: (
-      <RewardedActionModal
-        open={open}
-        sessionKey={sessionKey}
-        toolId={toolId}
-        intent={intent}
-        watchMs={options?.watchMs}
-        autoContinueWhenReady={options?.autoContinueWhenReady}
-        onClose={close}
-        onUnlocked={complete}
-      />
-    ),
+    modal: REWARDED_VIDEO_SDK_ENABLED ? <RewardedVideoHost /> : null,
   };
 }
 

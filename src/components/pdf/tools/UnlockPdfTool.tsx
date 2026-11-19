@@ -13,7 +13,6 @@ import { useCallback, useRef, useState } from "react";
 import { FileDropzone } from "@/components/tools/FileDropzone";
 import { ToolShell } from "@/components/tools/ToolShell";
 import { useI18n } from "@/i18n/context";
-import { AD_UNLOCK_TOOL_WATCH_MS } from "@/lib/ads/adsterra";
 import { useProtectedGeneration } from "@/lib/bot-protection/use-protected-generation";
 import { downloadBytes } from "@/lib/download";
 import { probePdfForUnlock, unlockPdfWithPassword } from "@/lib/pdf/unlock-pdf";
@@ -22,10 +21,7 @@ import { useRewardedAction } from "@/lib/use-rewarded-action";
 export function UnlockPdfTool() {
   const { t } = useI18n();
   const { runProtected, ready } = useProtectedGeneration();
-  const { requestAction, modal } = useRewardedAction("unlock-pdf", {
-    watchMs: AD_UNLOCK_TOOL_WATCH_MS,
-    autoContinueWhenReady: true,
-  });
+  const { requestAction, modal } = useRewardedAction("unlock-pdf");
 
   const copy = t.tools["unlock-pdf"];
   const ui = t.unlockUi;

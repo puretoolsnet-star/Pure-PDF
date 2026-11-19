@@ -7,7 +7,6 @@ import { PdfPagePreviewModal } from "@/components/pdf/PdfPagePreviewModal";
 import { FileDropzone } from "@/components/tools/FileDropzone";
 import { ToolShell } from "@/components/tools/ToolShell";
 import { useI18n } from "@/i18n/context";
-import { AD_SPLIT_TOOL_WATCH_MS } from "@/lib/ads/adsterra";
 import { useProtectedGeneration } from "@/lib/bot-protection/use-protected-generation";
 import { cn } from "@/lib/cn";
 import { downloadBytes, downloadZip } from "@/lib/download";
@@ -35,10 +34,7 @@ function clampPageInputs(pageCount: number, from: number, to: number) {
 export function SplitPdfTool() {
   const { t } = useI18n();
   const { runProtected, ready } = useProtectedGeneration();
-  const { requestAction, modal } = useRewardedAction("split-pdf", {
-    watchMs: AD_SPLIT_TOOL_WATCH_MS,
-    autoContinueWhenReady: true,
-  });
+  const { requestAction, modal } = useRewardedAction("split-pdf");
 
   const copy = t.tools["split-pdf"];
   const ui = t.splitUi;

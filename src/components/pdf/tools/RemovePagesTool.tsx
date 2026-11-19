@@ -7,7 +7,6 @@ import { PdfPagePreviewModal } from "@/components/pdf/PdfPagePreviewModal";
 import { FileDropzone } from "@/components/tools/FileDropzone";
 import { ToolShell } from "@/components/tools/ToolShell";
 import { useI18n } from "@/i18n/context";
-import { AD_REMOVE_TOOL_WATCH_MS } from "@/lib/ads/adsterra";
 import { useProtectedGeneration } from "@/lib/bot-protection/use-protected-generation";
 import { cn } from "@/lib/cn";
 import { downloadBytes } from "@/lib/download";
@@ -18,10 +17,7 @@ import { useRewardedAction } from "@/lib/use-rewarded-action";
 export function RemovePagesTool() {
   const { t } = useI18n();
   const { runProtected, ready } = useProtectedGeneration();
-  const { requestAction, modal } = useRewardedAction("remove-pages", {
-    watchMs: AD_REMOVE_TOOL_WATCH_MS,
-    autoContinueWhenReady: true,
-  });
+  const { requestAction, modal } = useRewardedAction("remove-pages");
 
   const copy = t.tools["remove-pages"];
   const ui = t.removeUi;

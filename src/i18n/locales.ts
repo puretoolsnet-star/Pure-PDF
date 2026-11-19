@@ -302,9 +302,9 @@ const uk: LocaleDictionaryDraft = {
     watch: "Переглянути спонсорське відео",
     watching: "Триває спонсорський перегляд…",
     waitHint:
-      "Натисніть кнопку нижче, щоб запустити спонсорський блок Adsterra. Продовжити без перегляду неможливо.",
+      "Спонсорський блок з’явиться тут, коли буде підключено.",
     progress: (seconds) => `${seconds} с`,
-    slotLabel: "Спонсорський блок Adsterra",
+    slotLabel: "Спонсорський блок",
   },
   rewardedAd: {
     sponsored: "Підтримка проєкту",
@@ -315,11 +315,11 @@ const uk: LocaleDictionaryDraft = {
     watching: "Триває спонсорський перегляд…",
     download: "Завантажити файл",
     waitHint:
-      "Натисніть кнопку нижче, щоб запустити спонсорський блок Adsterra. Продовжити без перегляду неможливо.",
+      "Спонсорський блок з’явиться тут, коли буде підключено.",
     progress: (seconds) => `${seconds} с`,
     thanks: "Дякуємо за підтримку. Натисніть кнопку нижче, щоб зберегти файл на пристрої.",
     close: "Закрити",
-    slotLabel: "Спонсорський блок Adsterra",
+    slotLabel: "Спонсорський блок",
   },
   toolAd: {
     sponsored: "Реклама",
@@ -523,9 +523,9 @@ const en: LocaleDictionaryDraft = {
     watch: "Watch sponsor video",
     watching: "Sponsor view in progress…",
     waitHint:
-      "Tap the button below to start the Adsterra sponsor block. There is no way to continue without watching.",
+      "A sponsor placement will appear here when enabled.",
     progress: (seconds) => `${seconds}s`,
-    slotLabel: "Adsterra sponsor block",
+    slotLabel: "Sponsor placement",
   },
   rewardedAd: {
     sponsored: "Support the project",
@@ -536,11 +536,11 @@ const en: LocaleDictionaryDraft = {
     watching: "Sponsor view in progress…",
     download: "Download file",
     waitHint:
-      "Tap the button below to start the Adsterra sponsor block. There is no way to continue without watching.",
+      "A sponsor placement will appear here when enabled.",
     progress: (seconds) => `${seconds}s`,
     thanks: "Thanks for watching. Tap the button below to save the file to your device.",
     close: "Close",
-    slotLabel: "Adsterra sponsor block",
+    slotLabel: "Sponsor placement",
   },
   toolAd: {
     sponsored: "Sponsored",
@@ -743,9 +743,9 @@ const pl: LocaleDictionaryDraft = {
     watch: "Obejrzyj wideo sponsora",
     watching: "Trwa odtwarzanie sponsora…",
     waitHint:
-      "Kliknij przycisk poniżej, aby uruchomić blok Adsterra. Nie można kontynuować bez obejrzenia.",
+      "Miejsce sponsora pojawi się tutaj po włączeniu.",
     progress: (seconds) => `${seconds} s`,
-    slotLabel: "Blok sponsora Adsterra",
+    slotLabel: "Blok sponsora",
   },
   rewardedAd: {
     sponsored: "Wesprzyj projekt",
@@ -756,12 +756,12 @@ const pl: LocaleDictionaryDraft = {
     watching: "Trwa odtwarzanie sponsora…",
     download: "Pobierz plik",
     waitHint:
-      "Kliknij przycisk poniżej, aby uruchomić blok Adsterra. Nie można kontynuować bez obejrzenia.",
+      "Miejsce sponsora pojawi się tutaj po włączeniu.",
     progress: (seconds) => `${seconds} s`,
     thanks:
       "Dziękujemy za obejrzenie. Kliknij przycisk poniżej, aby zapisać plik na urządzeniu.",
     close: "Zamknij",
-    slotLabel: "Blok sponsora Adsterra",
+    slotLabel: "Blok sponsora",
   },
   common: {
     backToTools: "Wróć do narzędzi",
@@ -961,9 +961,9 @@ const de: LocaleDictionaryDraft = {
     watch: "Sponsor-Video ansehen",
     watching: "Sponsor-Ansicht läuft…",
     waitHint:
-      "Tippen Sie unten, um den Adsterra-Sponsorblock zu starten. Ein Fortfahren ohne Ansehen ist nicht möglich.",
+      "Ein Sponsorplatz erscheint hier, sobald er aktiviert ist.",
     progress: (seconds) => `${seconds} s`,
-    slotLabel: "Adsterra-Sponsorblock",
+    slotLabel: "Sponsorplatz",
   },
   rewardedAd: {
     sponsored: "Projekt unterstützen",
@@ -974,12 +974,12 @@ const de: LocaleDictionaryDraft = {
     watching: "Sponsor-Ansicht läuft…",
     download: "Datei herunterladen",
     waitHint:
-      "Tippen Sie unten, um den Adsterra-Sponsorblock zu starten. Ein Fortfahren ohne Ansehen ist nicht möglich.",
+      "Ein Sponsorplatz erscheint hier, sobald er aktiviert ist.",
     progress: (seconds) => `${seconds} s`,
     thanks:
       "Danke fürs Ansehen. Tippen Sie unten, um die Datei auf Ihrem Gerät zu speichern.",
     close: "Schließen",
-    slotLabel: "Adsterra-Sponsorblock",
+    slotLabel: "Sponsorplatz",
   },
   common: {
     backToTools: "Zurück zu den Tools",
@@ -1178,9 +1178,9 @@ const es: LocaleDictionaryDraft = {
     watch: "Ver vídeo del patrocinador",
     watching: "Reproducción del patrocinador en curso…",
     waitHint:
-      "Pulsa el botón para iniciar el bloque Adsterra. No se puede continuar sin verlo.",
+      "El espacio del patrocinador aparecerá aquí cuando esté activo.",
     progress: (seconds) => `${seconds} s`,
-    slotLabel: "Bloque patrocinador Adsterra",
+    slotLabel: "Bloque patrocinador",
   },
   rewardedAd: {
     sponsored: "Apoya el proyecto",
@@ -1191,12 +1191,12 @@ const es: LocaleDictionaryDraft = {
     watching: "Reproducción del patrocinador en curso…",
     download: "Descargar archivo",
     waitHint:
-      "Pulsa el botón para iniciar el bloque Adsterra. No se puede continuar sin verlo.",
+      "El espacio del patrocinador aparecerá aquí cuando esté activo.",
     progress: (seconds) => `${seconds} s`,
     thanks:
       "Gracias por ver el anuncio. Pulsa el botón de abajo para guardar el archivo en tu dispositivo.",
     close: "Cerrar",
-    slotLabel: "Bloque patrocinador Adsterra",
+    slotLabel: "Bloque patrocinador",
   },
   common: {
     backToTools: "Volver a herramientas",
@@ -1395,9 +1395,9 @@ const fr: LocaleDictionaryDraft = {
     watch: "Regarder la vidéo sponsor",
     watching: "Visionnage sponsor en cours…",
     waitHint:
-      "Appuyez ci-dessous pour lancer le bloc Adsterra. Impossible de continuer sans le regarder.",
+      "L’emplacement sponsor apparaîtra ici une fois activé.",
     progress: (seconds) => `${seconds} s`,
-    slotLabel: "Bloc sponsor Adsterra",
+    slotLabel: "Bloc sponsor",
   },
   rewardedAd: {
     sponsored: "Soutenir le projet",
@@ -1408,12 +1408,12 @@ const fr: LocaleDictionaryDraft = {
     watching: "Visionnage sponsor en cours…",
     download: "Télécharger le fichier",
     waitHint:
-      "Appuyez ci-dessous pour lancer le bloc Adsterra. Impossible de continuer sans le regarder.",
+      "L’emplacement sponsor apparaîtra ici une fois activé.",
     progress: (seconds) => `${seconds} s`,
     thanks:
       "Merci d’avoir regardé. Appuyez sur le bouton ci-dessous pour enregistrer le fichier.",
     close: "Fermer",
-    slotLabel: "Bloc sponsor Adsterra",
+    slotLabel: "Bloc sponsor",
   },
   common: {
     backToTools: "Retour aux outils",

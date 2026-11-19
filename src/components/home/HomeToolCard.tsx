@@ -1,7 +1,6 @@
 "use client";
 
 import type { LucideIcon } from "lucide-react";
-import { Sparkles } from "lucide-react";
 import Link from "next/link";
 
 import { useI18n } from "@/i18n/context";
@@ -16,7 +15,6 @@ type HomeToolCardProps = {
   icon: LucideIcon;
   accent: string;
   status: ToolCatalogStatus;
-  rewardedHeavy?: boolean;
   compact?: boolean;
 };
 
@@ -26,7 +24,6 @@ export function HomeToolCard({
   icon: Icon,
   accent,
   status,
-  rewardedHeavy,
   compact,
 }: HomeToolCardProps) {
   const { t, locale } = useI18n();
@@ -72,12 +69,6 @@ export function HomeToolCard({
           {isSoon && (
             <span className="rounded-md bg-white/5 px-1.5 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-gray-400 ring-1 ring-white/10">
               {t.catalogUi.comingSoonBadge}
-            </span>
-          )}
-          {rewardedHeavy && !isSoon && (
-            <span className="inline-flex items-center gap-1 rounded-md bg-emerald-500/10 px-1.5 py-0.5 text-[10px] font-medium text-emerald-200/90 ring-1 ring-emerald-400/20">
-              <Sparkles className="h-3 w-3" aria-hidden />
-              {t.catalogUi.rewardedHeavyBadge}
             </span>
           )}
         </div>

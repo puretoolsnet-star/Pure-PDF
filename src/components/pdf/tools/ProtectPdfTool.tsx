@@ -14,7 +14,6 @@ import { useCallback, useMemo, useRef, useState } from "react";
 import { FileDropzone } from "@/components/tools/FileDropzone";
 import { ToolShell } from "@/components/tools/ToolShell";
 import { useI18n } from "@/i18n/context";
-import { AD_PROTECT_TOOL_WATCH_MS } from "@/lib/ads/adsterra";
 import { useProtectedGeneration } from "@/lib/bot-protection/use-protected-generation";
 import { cn } from "@/lib/cn";
 import { downloadBytes } from "@/lib/download";
@@ -56,10 +55,7 @@ function strengthWidth(strength: ReturnType<typeof assessPasswordStrength>) {
 export function ProtectPdfTool() {
   const { t } = useI18n();
   const { runProtected, ready } = useProtectedGeneration();
-  const { requestAction, modal } = useRewardedAction("protect-pdf", {
-    watchMs: AD_PROTECT_TOOL_WATCH_MS,
-    autoContinueWhenReady: true,
-  });
+  const { requestAction, modal } = useRewardedAction("protect-pdf");
 
   const copy = t.tools["protect-pdf"];
   const ui = t.protectUi;

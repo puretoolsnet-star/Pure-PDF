@@ -1,7 +1,6 @@
 "use client";
 
 import { HomeToolCategoryAccordion } from "@/components/home/HomeToolCategoryAccordion";
-import { AdBanner } from "@/components/ads/AdBanner";
 import { PrivacyBanner } from "@/components/layout/PrivacyBanner";
 import { SiteHeader } from "@/components/layout/SiteHeader";
 import { SupportBlock } from "@/components/layout/SupportBlock";
@@ -26,16 +25,9 @@ export function HomePage() {
           </p>
         </section>
 
-        <div className="grid w-full min-w-0 gap-8 lg:grid-cols-[minmax(0,1fr)_min(100%,17rem)] lg:items-start">
-          <div className="relative z-20 min-w-0">
-            <HomeToolCategoryAccordion />
-            <SupportBlock />
-          </div>
-          <AdBanner
-            layout="sidebar"
-            slot="home-sidebar"
-            className="lg:sticky lg:top-6"
-          />
+        <div className="relative z-20 w-full min-w-0">
+          <HomeToolCategoryAccordion />
+          <SupportBlock />
         </div>
       </main>
     </div>

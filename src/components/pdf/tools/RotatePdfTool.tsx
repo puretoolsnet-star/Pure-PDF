@@ -15,7 +15,6 @@ import { PdfPagePreviewModal } from "@/components/pdf/PdfPagePreviewModal";
 import { FileDropzone } from "@/components/tools/FileDropzone";
 import { ToolShell } from "@/components/tools/ToolShell";
 import { useI18n } from "@/i18n/context";
-import { AD_ROTATE_TOOL_WATCH_MS } from "@/lib/ads/adsterra";
 import { useProtectedGeneration } from "@/lib/bot-protection/use-protected-generation";
 import { cn } from "@/lib/cn";
 import { downloadBytes } from "@/lib/download";
@@ -34,10 +33,7 @@ function addDelta(current: number, delta: number) {
 export function RotatePdfTool() {
   const { t } = useI18n();
   const { runProtected, ready } = useProtectedGeneration();
-  const { requestAction, modal } = useRewardedAction("rotate-pdf", {
-    watchMs: AD_ROTATE_TOOL_WATCH_MS,
-    autoContinueWhenReady: true,
-  });
+  const { requestAction, modal } = useRewardedAction("rotate-pdf");
 
   const copy = t.tools["rotate-pdf"];
   const ui = t.rotateUi;

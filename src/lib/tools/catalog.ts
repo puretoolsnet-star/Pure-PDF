@@ -26,8 +26,6 @@ export type ToolCatalogEntry = {
   icon: LucideIcon;
   accent: string;
   status: ToolCatalogStatus;
-  /** Heavy jobs may require rewarded ad before download. */
-  rewardedHeavy?: boolean;
 };
 
 export type ToolCategoryCatalog = {
@@ -46,28 +44,24 @@ export const TOOL_CATEGORIES: ToolCategoryCatalog[] = [
         icon: GitMerge,
         accent: "from-cyan-500/25 to-cyan-500/5",
         status: "live",
-        rewardedHeavy: true,
       },
       {
         id: "split-pdf",
         icon: Scissors,
         accent: "from-violet-500/20 to-violet-500/5",
         status: "live",
-        rewardedHeavy: true,
       },
       {
         id: "remove-pages",
         icon: Trash2,
         accent: "from-rose-500/20 to-rose-500/5",
         status: "live",
-        rewardedHeavy: true,
       },
       {
         id: "organize-pdf",
         icon: FolderOpen,
         accent: "from-sky-500/20 to-sky-500/5",
         status: "live",
-        rewardedHeavy: true,
       },
     ],
   },
@@ -80,42 +74,36 @@ export const TOOL_CATEGORIES: ToolCategoryCatalog[] = [
         icon: Minimize2,
         accent: "from-emerald-500/25 to-emerald-500/5",
         status: "live",
-        rewardedHeavy: true,
       },
       {
         id: "images-to-pdf",
         icon: Images,
         accent: "from-cyan-500/20 to-cyan-500/5",
         status: "live",
-        rewardedHeavy: true,
       },
       {
         id: "pdf-to-images",
         icon: FileImage,
         accent: "from-teal-500/20 to-teal-500/5",
         status: "live",
-        rewardedHeavy: true,
       },
       {
         id: "rotate-pdf",
         icon: RotateCw,
         accent: "from-amber-500/20 to-amber-500/5",
         status: "live",
-        rewardedHeavy: true,
       },
       {
         id: "word-to-pdf",
         icon: FileText,
         accent: "from-emerald-500/15 to-emerald-500/5",
         status: "live",
-        rewardedHeavy: true,
       },
       {
         id: "text-to-pdf",
         icon: Type,
         accent: "from-blue-500/15 to-blue-500/5",
         status: "live",
-        rewardedHeavy: true,
       },
     ],
   },
@@ -128,21 +116,18 @@ export const TOOL_CATEGORIES: ToolCategoryCatalog[] = [
         icon: Lock,
         accent: "from-emerald-500/20 to-emerald-500/5",
         status: "live",
-        rewardedHeavy: true,
       },
       {
         id: "unlock-pdf",
         icon: LockOpen,
         accent: "from-cyan-500/20 to-cyan-500/5",
         status: "live",
-        rewardedHeavy: true,
       },
       {
         id: "sign-pdf",
         icon: FileSignature,
         accent: "from-indigo-500/20 to-indigo-500/5",
         status: "live",
-        rewardedHeavy: true,
       },
     ],
   },
