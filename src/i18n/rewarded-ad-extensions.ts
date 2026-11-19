@@ -9,45 +9,45 @@ export type RewardedAdProcessCopy = {
 
 export const REWARDED_AD_PROCESS_COPY: Record<Locale, RewardedAdProcessCopy> = {
   uk: {
-    titleProcess: "Прискорена обробка без черги",
+    titleProcess: "Обробка локально у браузері",
     messageProcess:
-      "Перегляньте коротке спонсорське відео — після нього важка операція (злиття, стискання, конвертація) запуститься без затримок і лімітів. Файли лишаються на вашому пристрої.",
+      "Важка операція (злиття, стискання, конвертація) виконується безкоштовно і повністю локально у браузері — без завантаження файлів на сервер і без реєстрації.",
     continueProcess: "Запустити обробку",
-    thanksProcess: "Дякуємо! Натисніть нижче, щоб почати обробку у браузері.",
+    thanksProcess: "Натисніть нижче, щоб почати обробку у браузері.",
   },
   en: {
-    titleProcess: "Faster processing, no queue",
+    titleProcess: "Processing in your browser",
     messageProcess:
-      "Watch a short sponsor video — then heavy work (merge, compress, convert) starts without delays or limits. Files stay on your device.",
+      "Heavy work (merge, compress, convert) runs free and entirely in your browser — files are never uploaded to a server, and no registration is required.",
     continueProcess: "Start processing",
-    thanksProcess: "Thanks! Tap below to start processing in your browser.",
+    thanksProcess: "Tap below to start processing in your browser.",
   },
   pl: {
-    titleProcess: "Szybsze przetwarzanie",
+    titleProcess: "Przetwarzanie w przeglądarce",
     messageProcess:
-      "Obejrzyj krótkie wideo sponsora — potem merge, kompresja lub konwersja startuje bez limitów. Pliki zostają lokalnie.",
+      "Duże operacje (łączenie, kompresja, konwersja) są darmowe i działają lokalnie w przeglądarce — bez wysyłania plików na serwer i bez rejestracji.",
     continueProcess: "Rozpocznij przetwarzanie",
-    thanksProcess: "Dzięki! Kliknij poniżej, aby rozpocząć przetwarzanie.",
+    thanksProcess: "Kliknij poniżej, aby rozpocząć przetwarzanie.",
   },
   de: {
-    titleProcess: "Schnellere Verarbeitung",
+    titleProcess: "Verarbeitung im Browser",
     messageProcess:
-      "Kurzes Sponsor-Video ansehen — danach starten Merge, Komprimieren oder Konvertieren ohne Limits. Dateien bleiben lokal.",
+      "Aufwändige Aufgaben (Zusammenführen, Komprimieren, Konvertieren) laufen kostenlos vollständig in Ihrem Browser — ohne Server-Upload und ohne Registrierung.",
     continueProcess: "Verarbeitung starten",
-    thanksProcess: "Danke! Unten tippen, um die Verarbeitung zu starten.",
+    thanksProcess: "Unten tippen, um die Verarbeitung zu starten.",
   },
   es: {
-    titleProcess: "Procesamiento más rápido",
+    titleProcess: "Procesamiento en el navegador",
     messageProcess:
-      "Mira un vídeo patrocinado breve — luego merge, compresión o conversión sin límites. Los archivos permanecen en el dispositivo.",
+      "Las tareas pesadas (unir, comprimir, convertir) son gratis y se ejecutan por completo en tu navegador — sin subir archivos a un servidor y sin registro.",
     continueProcess: "Iniciar procesamiento",
-    thanksProcess: "¡Gracias! Pulsa abajo para empezar el procesamiento.",
+    thanksProcess: "Pulsa abajo para empezar el procesamiento.",
   },
   fr: {
-    titleProcess: "Traitement accéléré",
+    titleProcess: "Traitement dans le navigateur",
     messageProcess:
-      "Regardez une courte vidéo sponsor — puis fusion, compression ou conversion sans limites. Les fichiers restent sur l’appareil.",
+      "Les tâches lourdes (fusion, compression, conversion) sont gratuites et s’exécutent entièrement dans votre navigateur — sans envoi de fichiers vers un serveur et sans inscription.",
     continueProcess: "Lancer le traitement",
-    thanksProcess: "Merci ! Appuyez ci-dessous pour démarrer le traitement.",
+    thanksProcess: "Appuyez ci-dessous pour démarrer le traitement.",
   },
 };
