@@ -1,6 +1,6 @@
 "use client";
 
-import { PenLine, QrCode, Sparkles, Table2 } from "lucide-react";
+import { Image as ImageIcon, PenLine, QrCode, Sparkles, Table2 } from "lucide-react";
 import { useI18n } from "@/i18n/context";
 import { useLocalizedPath } from "@/lib/i18n/use-localized-path";
 import {
@@ -18,6 +18,7 @@ const PROJECT_ICONS: Record<EcosystemProjectId, typeof Sparkles> = {
   pureQr: QrCode,
   pureSign: PenLine,
   pureTable: Table2,
+  pureImage: ImageIcon,
 };
 
 type EcosystemProjectListProps = {

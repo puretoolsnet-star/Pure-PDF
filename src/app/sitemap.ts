@@ -73,6 +73,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const pureQrBase = process.env.NEXT_PUBLIC_PUREQR_URL?.trim();
   const pureSignBase = process.env.NEXT_PUBLIC_PURESIGN_URL?.trim();
+  const pureImageBase = (
+    process.env.NEXT_PUBLIC_IMG_URL ?? process.env.NEXT_PUBLIC_PUREIMAGE_URL
+  )?.trim();
 
   if (pureQrBase) {
     const base = stripTrailingSlash(pureQrBase);
@@ -92,6 +95,22 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   if (pureSignBase) {
     const base = stripTrailingSlash(pureSignBase);
+    for (const locale of LOCALES) {
+      const path = localizedPath(locale, "/");
+      entries.push({
+        url: `${base}${path}`,
+        lastModified: sitemapLastModified(),
+        changeFrequency: "weekly",
+        priority: 0.6,
+        alternates: {
+          languages: buildExternalEcosystemAlternates(base, "/"),
+        },
+      });
+    }
+  }
+
+  if (pureImageBase) {
+    const base = stripTrailingSlash(pureImageBase);
     for (const locale of LOCALES) {
       const path = localizedPath(locale, "/");
       entries.push({

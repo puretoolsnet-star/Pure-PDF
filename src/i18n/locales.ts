@@ -269,6 +269,10 @@ const uk: LocaleDictionaryDraft = {
         name: "PureTable",
         tagline: "Бізнес-утиліта для парсингу накладних у Excel/CSV.",
       },
+      pureImage: {
+        name: "PureImage",
+        tagline: "Інструменти для зображень — локально у браузері.",
+      },
     },
   },
   security: {
@@ -488,6 +492,10 @@ const en: LocaleDictionaryDraft = {
         name: "PureTable",
         tagline: "Business utility for parsing invoices into Excel/CSV.",
       },
+      pureImage: {
+        name: "PureImage",
+        tagline: "Image tools — processed locally in your browser.",
+      },
     },
   },
   security: {
@@ -706,6 +714,10 @@ const pl: LocaleDictionaryDraft = {
         name: "PureTable",
         tagline: "Narzędzie biznesowe do parsowania faktur.",
       },
+      pureImage: {
+        name: "PureImage",
+        tagline: "Narzędzia do obrazów — lokalnie w przeglądarce.",
+      },
     },
   },
   security: {
@@ -922,6 +934,10 @@ const de: LocaleDictionaryDraft = {
         name: "PureTable",
         tagline: "Geschäftsdienstprogramm zum Parsen von Rechnungen.",
       },
+      pureImage: {
+        name: "PureImage",
+        tagline: "Bildtools — lokal in Ihrem Browser.",
+      },
     },
   },
   security: {
@@ -1137,6 +1153,10 @@ const es: LocaleDictionaryDraft = {
         name: "PureTable",
         tagline: "Utilidad de negocio para procesar facturas.",
       },
+      pureImage: {
+        name: "PureImage",
+        tagline: "Herramientas de imagen — en el navegador, de forma local.",
+      },
     },
   },
   security: {
@@ -1351,6 +1371,10 @@ const fr: LocaleDictionaryDraft = {
       pureTable: {
         name: "PureTable",
         tagline: "Utilitaire métier pour analyser les factures.",
+      },
+      pureImage: {
+        name: "PureImage",
+        tagline: "Outils image — traitement local dans le navigateur.",
       },
     },
   },

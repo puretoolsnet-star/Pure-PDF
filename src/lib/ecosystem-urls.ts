@@ -12,7 +12,7 @@ import {
 } from "@/lib/subdomains";
 import { getSiteUrl } from "@/lib/seo/site";
 
-export type EcosystemOriginKey = "pdf" | KnownSubdomain;
+export type EcosystemOriginKey = "pdf" | KnownSubdomain | "img";
 
 function trimOrigin(value: string | undefined): string | undefined {
   const trimmed = value?.trim().replace(/\/$/, "");
@@ -26,6 +26,14 @@ export function ecosystemOrigin(key: EcosystemOriginKey): string {
       trimOrigin(process.env.NEXT_PUBLIC_SITE_URL) ??
       trimOrigin(process.env.NEXT_PUBLIC_PDF_URL) ??
       `https://pdf.${ROOT_DOMAIN}`
+    );
+  }
+
+  if (key === "img") {
+    return (
+      trimOrigin(process.env.NEXT_PUBLIC_IMG_URL) ??
+      trimOrigin(process.env.NEXT_PUBLIC_PUREIMAGE_URL) ??
+      `https://img.${ROOT_DOMAIN}`
     );
   }
 
@@ -59,16 +67,17 @@ export function ecosystemLocalizedUrl(
 }
 
 export function ecosystemExternalUrl(
-  projectId: "pureQr" | "pureSign" | "pureTable",
+  projectId: "pureQr" | "pureSign" | "pureTable" | "pureImage",
   locale: Locale,
 ): string {
   const map = {
     pureQr: "qr",
     pureSign: "sign",
     pureTable: "table",
+    pureImage: "img",
   } as const satisfies Record<
-    "pureQr" | "pureSign" | "pureTable",
-    KnownSubdomain
+    "pureQr" | "pureSign" | "pureTable" | "pureImage",
+    EcosystemOriginKey
   >;
   return ecosystemLocalizedUrl(map[projectId], locale, "/");
 }
@@ -83,7 +92,7 @@ export function ecosystemPurePdfOrigin(): string {
 
 /** All sibling origins (for JSON-LD `sameAs`). */
 export function ecosystemSiblingOrigins(): string[] {
-  const keys: EcosystemOriginKey[] = ["qr", "sign", "table"];
+  const keys: EcosystemOriginKey[] = ["qr", "sign", "table", "img"];
   return keys.map((key) => ecosystemOrigin(key));
 }
 
