@@ -273,6 +273,10 @@ const uk: LocaleDictionaryDraft = {
         name: "PureImage",
         tagline: "Інструменти для зображень — локально у браузері.",
       },
+      pureText: {
+        name: "PureText",
+        tagline: "Інструменти для тексту — локально у браузері.",
+      },
     },
   },
   security: {
@@ -496,6 +500,10 @@ const en: LocaleDictionaryDraft = {
         name: "PureImage",
         tagline: "Image tools — processed locally in your browser.",
       },
+      pureText: {
+        name: "PureText",
+        tagline: "Text tools — processed locally in your browser.",
+      },
     },
   },
   security: {
@@ -718,6 +726,10 @@ const pl: LocaleDictionaryDraft = {
         name: "PureImage",
         tagline: "Narzędzia do obrazów — lokalnie w przeglądarce.",
       },
+      pureText: {
+        name: "PureText",
+        tagline: "Narzędzia tekstowe — lokalnie w przeglądarce.",
+      },
     },
   },
   security: {
@@ -938,6 +950,10 @@ const de: LocaleDictionaryDraft = {
         name: "PureImage",
         tagline: "Bildtools — lokal in Ihrem Browser.",
       },
+      pureText: {
+        name: "PureText",
+        tagline: "Texttools — lokal in Ihrem Browser.",
+      },
     },
   },
   security: {
@@ -1157,6 +1173,10 @@ const es: LocaleDictionaryDraft = {
         name: "PureImage",
         tagline: "Herramientas de imagen — en el navegador, de forma local.",
       },
+      pureText: {
+        name: "PureText",
+        tagline: "Herramientas de texto — en el navegador, de forma local.",
+      },
     },
   },
   security: {
@@ -1375,6 +1395,10 @@ const fr: LocaleDictionaryDraft = {
       pureImage: {
         name: "PureImage",
         tagline: "Outils image — traitement local dans le navigateur.",
+      },
+      pureText: {
+        name: "PureText",
+        tagline: "Outils texte — traitement local dans le navigateur.",
       },
     },
   },
