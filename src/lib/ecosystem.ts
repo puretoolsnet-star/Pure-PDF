@@ -1,5 +1,6 @@
 export type EcosystemProjectId =
   | "purepdf"
+  | "pureConvert"
   | "pureQr"
   | "pureSign"
   | "pureTable"
@@ -15,6 +16,7 @@ export type EcosystemProjectMeta = {
   href?: string;
   /** If set, project opens on another origin with `/{locale}` appended. */
   external?:
+    | "pureConvert"
     | "pureQr"
     | "pureSign"
     | "pureTable"
@@ -23,10 +25,11 @@ export type EcosystemProjectMeta = {
 };
 
 /**
- * Order: PurePDF → PureQR → PureSign → PureTable → PureImage → PureText.
+ * Order: PurePDF → PureConvert → PureQR → PureSign → PureTable → PureImage → PureText.
  */
 export const ECOSYSTEM_PROJECTS: EcosystemProjectMeta[] = [
   { id: "purepdf", status: "active", href: "/" },
+  { id: "pureConvert", status: "active", external: "pureConvert" },
   { id: "pureQr", status: "active", external: "pureQr" },
   { id: "pureSign", status: "active", external: "pureSign" },
   { id: "pureTable", status: "active", external: "pureTable" },

@@ -257,6 +257,10 @@ const uk: LocaleDictionaryDraft = {
         name: "PurePDF",
         tagline: "Інструменти для роботи з PDF.",
       },
+      pureConvert: {
+        name: "PureConvert",
+        tagline: "Конвертація форматів файлів — локально у браузері.",
+      },
       pureQr: {
         name: "PureQR",
         tagline: "Генератор та менеджер QR-кодів.",
@@ -484,6 +488,10 @@ const en: LocaleDictionaryDraft = {
         name: "PurePDF",
         tagline: "Fast PDF processing tools.",
       },
+      pureConvert: {
+        name: "PureConvert",
+        tagline: "File format conversion — processed locally in your browser.",
+      },
       pureQr: {
         name: "PureQR",
         tagline: "Modern QR code generator & manager.",
@@ -710,6 +718,10 @@ const pl: LocaleDictionaryDraft = {
         name: "PurePDF",
         tagline: "Szybkie narzędzia do obsługi plików PDF.",
       },
+      pureConvert: {
+        name: "PureConvert",
+        tagline: "Konwersja formatów plików — lokalnie w przeglądarce.",
+      },
       pureQr: {
         name: "PureQR",
         tagline: "Nowoczesny generator i menedżer kodów QR.",
@@ -934,6 +946,10 @@ const de: LocaleDictionaryDraft = {
         name: "PurePDF",
         tagline: "Schnelle PDF-Verarbeitungstools.",
       },
+      pureConvert: {
+        name: "PureConvert",
+        tagline: "Dateiformat-Konvertierung — lokal in Ihrem Browser.",
+      },
       pureQr: {
         name: "PureQR",
         tagline: "Moderne QR-Code-Erstellung & Verwaltung.",
@@ -1157,6 +1173,10 @@ const es: LocaleDictionaryDraft = {
         name: "PurePDF",
         tagline: "Herramientas rápidas para archivos PDF.",
       },
+      pureConvert: {
+        name: "PureConvert",
+        tagline: "Conversión de formatos de archivo — localmente en el navegador.",
+      },
       pureQr: {
         name: "PureQR",
         tagline: "Generador y gestor de códigos QR.",
@@ -1379,6 +1399,10 @@ const fr: LocaleDictionaryDraft = {
       purepdf: {
         name: "PurePDF",
         tagline: "Outils de traitement PDF rapides.",
+      },
+      pureConvert: {
+        name: "PureConvert",
+        tagline: "Conversion de formats de fichiers — localement dans le navigateur.",
       },
       pureQr: {
         name: "PureQR",

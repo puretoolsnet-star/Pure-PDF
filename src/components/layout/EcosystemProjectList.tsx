@@ -1,6 +1,7 @@
 "use client";
 
 import {
+  ArrowLeftRight,
   Image as ImageIcon,
   PenLine,
   QrCode,
@@ -22,6 +23,7 @@ import { cn } from "@/lib/cn";
 
 const PROJECT_ICONS: Record<EcosystemProjectId, typeof Sparkles> = {
   purepdf: Sparkles,
+  pureConvert: ArrowLeftRight,
   pureQr: QrCode,
   pureSign: PenLine,
   pureTable: Table2,

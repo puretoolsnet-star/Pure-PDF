@@ -12,7 +12,12 @@ import {
 } from "@/lib/subdomains";
 import { getSiteUrl } from "@/lib/seo/site";
 
-export type EcosystemOriginKey = "pdf" | KnownSubdomain | "img" | "text";
+export type EcosystemOriginKey =
+  | "pdf"
+  | KnownSubdomain
+  | "img"
+  | "text"
+  | "convert";
 
 function trimOrigin(value: string | undefined): string | undefined {
   const trimmed = value?.trim().replace(/\/$/, "");
@@ -42,6 +47,14 @@ export function ecosystemOrigin(key: EcosystemOriginKey): string {
       trimOrigin(process.env.NEXT_PUBLIC_TEXT_URL) ??
       trimOrigin(process.env.NEXT_PUBLIC_PURETEXT_URL) ??
       `https://text.${ROOT_DOMAIN}`
+    );
+  }
+
+  if (key === "convert") {
+    return (
+      trimOrigin(process.env.NEXT_PUBLIC_CONVERT_URL) ??
+      trimOrigin(process.env.NEXT_PUBLIC_PURECONVERT_URL) ??
+      `https://convert.${ROOT_DOMAIN}`
     );
   }
 
@@ -76,6 +89,7 @@ export function ecosystemLocalizedUrl(
 
 export function ecosystemExternalUrl(
   projectId:
+    | "pureConvert"
     | "pureQr"
     | "pureSign"
     | "pureTable"
@@ -84,13 +98,19 @@ export function ecosystemExternalUrl(
   locale: Locale,
 ): string {
   const map = {
+    pureConvert: "convert",
     pureQr: "qr",
     pureSign: "sign",
     pureTable: "table",
     pureImage: "img",
     pureText: "text",
   } as const satisfies Record<
-    "pureQr" | "pureSign" | "pureTable" | "pureImage" | "pureText",
+    | "pureConvert"
+    | "pureQr"
+    | "pureSign"
+    | "pureTable"
+    | "pureImage"
+    | "pureText",
     EcosystemOriginKey
   >;
   return ecosystemLocalizedUrl(map[projectId], locale, "/");
@@ -106,7 +126,14 @@ export function ecosystemPurePdfOrigin(): string {
 
 /** All sibling origins (for JSON-LD `sameAs`). */
 export function ecosystemSiblingOrigins(): string[] {
-  const keys: EcosystemOriginKey[] = ["qr", "sign", "table", "img", "text"];
+  const keys: EcosystemOriginKey[] = [
+    "convert",
+    "qr",
+    "sign",
+    "table",
+    "img",
+    "text",
+  ];
   return keys.map((key) => ecosystemOrigin(key));
 }
 
