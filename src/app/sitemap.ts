@@ -7,7 +7,6 @@ import type { MetadataRoute } from "next";
  */
 import { DEFAULT_LOCALE, LOCALES, TOOL_IDS } from "@/i18n/locales";
 import { localizedPath } from "@/lib/i18n/routing";
-import { buildExternalEcosystemAlternates } from "@/lib/seo/structured-data";
 import { HREFLANG_MAP } from "@/lib/seo/site";
 
 const SITEMAP_BASE_URL = "https://pdf.kixt.net";
@@ -37,10 +36,6 @@ function sitemapLastModified(): Date {
   return new Date();
 }
 
-function stripTrailingSlash(url: string): string {
-  return url.replace(/\/$/, "");
-}
-
 export default function sitemap(): MetadataRoute.Sitemap {
   const entries: MetadataRoute.Sitemap = [];
 
@@ -66,60 +61,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
         priority: 0.9,
         alternates: {
           languages: buildSitemapHreflangAlternates(path),
-        },
-      });
-    }
-  }
-
-  const pureQrBase = process.env.NEXT_PUBLIC_PUREQR_URL?.trim();
-  const pureSignBase = process.env.NEXT_PUBLIC_PURESIGN_URL?.trim();
-  const pureImageBase = (
-    process.env.NEXT_PUBLIC_IMG_URL ?? process.env.NEXT_PUBLIC_PUREIMAGE_URL
-  )?.trim();
-
-  if (pureQrBase) {
-    const base = stripTrailingSlash(pureQrBase);
-    for (const locale of LOCALES) {
-      const path = localizedPath(locale, "/");
-      entries.push({
-        url: `${base}${path}`,
-        lastModified: sitemapLastModified(),
-        changeFrequency: "weekly",
-        priority: 0.6,
-        alternates: {
-          languages: buildExternalEcosystemAlternates(base, "/"),
-        },
-      });
-    }
-  }
-
-  if (pureSignBase) {
-    const base = stripTrailingSlash(pureSignBase);
-    for (const locale of LOCALES) {
-      const path = localizedPath(locale, "/");
-      entries.push({
-        url: `${base}${path}`,
-        lastModified: sitemapLastModified(),
-        changeFrequency: "weekly",
-        priority: 0.6,
-        alternates: {
-          languages: buildExternalEcosystemAlternates(base, "/"),
-        },
-      });
-    }
-  }
-
-  if (pureImageBase) {
-    const base = stripTrailingSlash(pureImageBase);
-    for (const locale of LOCALES) {
-      const path = localizedPath(locale, "/");
-      entries.push({
-        url: `${base}${path}`,
-        lastModified: sitemapLastModified(),
-        changeFrequency: "weekly",
-        priority: 0.6,
-        alternates: {
-          languages: buildExternalEcosystemAlternates(base, "/"),
         },
       });
     }

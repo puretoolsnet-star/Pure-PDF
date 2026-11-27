@@ -29,8 +29,9 @@ export async function generateMetadata({
   const subdomain = normalizeSubdomainSlug(raw);
   const title = getSubdomainToolTitle(subdomain);
   return {
-    title: `${title} | ${ROOT_DOMAIN}`,
+    title: { absolute: `${title} | ${ROOT_DOMAIN}` },
     description: getSubdomainToolDescription(subdomain),
+    robots: { index: false, follow: true },
   };
 }
 

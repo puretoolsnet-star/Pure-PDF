@@ -1,6 +1,7 @@
 import {
   DEFAULT_LOCALE,
   LOCALES,
+  TOOL_IDS,
   dictionaries,
   type Locale,
   type ToolId,
@@ -39,6 +40,23 @@ export function buildFaqPageStructuredData(faq: SeoFaqItem[]) {
   };
 }
 
+function buildHomeToolItemList(locale: Locale) {
+  const t = dictionaries[locale];
+
+  return {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    name: t.home.toolsHeading,
+    numberOfItems: TOOL_IDS.length,
+    itemListElement: TOOL_IDS.map((toolId, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      name: t.tools[toolId].title,
+      url: absoluteUrl(toolRoute(locale, toolId)),
+    })),
+  };
+}
+
 export function buildHomeStructuredData(locale: Locale) {
   const copy = getSeoCopy("home", locale);
   const url = absoluteUrl(homeRoute(locale));
@@ -69,6 +87,7 @@ export function buildHomeStructuredData(locale: Locale) {
       url,
       description: copy.description,
     },
+    buildHomeToolItemList(locale),
   ];
 }
 

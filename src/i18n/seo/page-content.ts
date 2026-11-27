@@ -233,8 +233,8 @@ const TOOLS: Record<ToolId, Record<Locale, PageSeoContent>> = {
       "lead": "Об'єднати PDF онлайн безкоштовно у PurePDF виконується локально у браузері — без обов'язкової реєстрації та без завантаження на сервер.",
       "sections": [
         {
-          "h": "Приватність і швидкість",
-          "b": "Обробка на вашому пристрої зменшує ризик витоку даних і прибирає черги на серверах — зручно для ділових і особистих документів."
+          "heading": "Приватність і швидкість",
+          "body": "Обробка на вашому пристрої зменшує ризик витоку даних і прибирає черги на серверах — зручно для ділових і особистих документів."
         },
         {
           "heading": "Як користуватися",
@@ -266,8 +266,8 @@ const TOOLS: Record<ToolId, Record<Locale, PageSeoContent>> = {
       "lead": "Merge PDF online free with PurePDF runs locally in your browser — no signup and no server upload.",
       "sections": [
         {
-          "h": "Privacy and speed",
-          "b": "On-device processing lowers data-leak risk and skips server queues — ideal for business and personal documents."
+          "heading": "Privacy and speed",
+          "body": "On-device processing lowers data-leak risk and skips server queues — ideal for business and personal documents."
         },
         {
           "heading": "How to use",
@@ -299,8 +299,8 @@ const TOOLS: Record<ToolId, Record<Locale, PageSeoContent>> = {
       "lead": "Połącz PDF online za darmo w PurePDF działa lokalnie w przeglądarce — bez rejestracji i bez wysyłania na serwer.",
       "sections": [
         {
-          "h": "Prywatność i szybkość",
-          "b": "Przetwarzanie na urządzeniu ogranicza ryzyko wycieku i eliminuje kolejki na serwerze."
+          "heading": "Prywatność i szybkość",
+          "body": "Przetwarzanie na urządzeniu ogranicza ryzyko wycieku i eliminuje kolejki na serwerze."
         },
         {
           "heading": "Jak używać",
@@ -332,8 +332,8 @@ const TOOLS: Record<ToolId, Record<Locale, PageSeoContent>> = {
       "lead": "PDF zusammenführen kostenlos online mit PurePDF läuft lokal im Browser — ohne Anmeldung und ohne Server-Upload.",
       "sections": [
         {
-          "h": "Datenschutz und Tempo",
-          "b": "Verarbeitung auf dem Gerät reduziert Datenrisiko und Server-Wartezeiten."
+          "heading": "Datenschutz und Tempo",
+          "body": "Verarbeitung auf dem Gerät reduziert Datenrisiko und Server-Wartezeiten."
         },
         {
           "heading": "So geht's",
@@ -365,8 +365,8 @@ const TOOLS: Record<ToolId, Record<Locale, PageSeoContent>> = {
       "lead": "Unir PDF online gratis con PurePDF se procesa en el navegador — sin registro ni subida al servidor.",
       "sections": [
         {
-          "h": "Privacidad y velocidad",
-          "b": "El procesamiento local reduce fugas de datos y colas en servidor."
+          "heading": "Privacidad y velocidad",
+          "body": "El procesamiento local reduce fugas de datos y colas en servidor."
         },
         {
           "heading": "Cómo usar",
@@ -398,8 +398,8 @@ const TOOLS: Record<ToolId, Record<Locale, PageSeoContent>> = {
       "lead": "Fusionner PDF gratuitement en ligne avec PurePDF s'effectue localement dans le navigateur — sans inscription ni envoi vers un serveur.",
       "sections": [
         {
-          "h": "Confidentialité et rapidité",
-          "b": "Le traitement local limite les fuites et évite les files d'attente serveur."
+          "heading": "Confidentialité et rapidité",
+          "body": "Le traitement local limite les fuites et évite les files d'attente serveur."
         },
         {
           "heading": "Comment utiliser",
@@ -433,8 +433,8 @@ const TOOLS: Record<ToolId, Record<Locale, PageSeoContent>> = {
       "lead": "Розділити PDF онлайн безкоштовно у PurePDF виконується локально у браузері — без обов'язкової реєстрації та без завантаження на сервер.",
       "sections": [
         {
-          "h": "Приватність і швидкість",
-          "b": "Обробка на вашому пристрої зменшує ризик витоку даних і прибирає черги на серверах — зручно для ділових і особистих документів."
+          "heading": "Приватність і швидкість",
+          "body": "Обробка на вашому пристрої зменшує ризик витоку даних і прибирає черги на серверах — зручно для ділових і особистих документів."
         },
         {
           "heading": "Як користуватися",
@@ -466,8 +466,8 @@ const TOOLS: Record<ToolId, Record<Locale, PageSeoContent>> = {
       "lead": "Split PDF online free with PurePDF runs locally in your browser — no signup and no server upload.",
       "sections": [
         {
-          "h": "Privacy and speed",
-          "b": "On-device processing lowers data-leak risk and skips server queues — ideal for business and personal documents."
+          "heading": "Privacy and speed",
+          "body": "On-device processing lowers data-leak risk and skips server queues — ideal for business and personal documents."
         },
         {
           "heading": "How to use",
@@ -499,8 +499,8 @@ const TOOLS: Record<ToolId, Record<Locale, PageSeoContent>> = {
       "lead": "Podziel PDF online za darmo w PurePDF działa lokalnie w przeglądarce — bez rejestracji i bez wysyłania na serwer.",
       "sections": [
         {
-          "h": "Prywatność i szybkość",
-          "b": "Przetwarzanie na urządzeniu ogranicza ryzyko wycieku i eliminuje kolejki na serwerze."
+          "heading": "Prywatność i szybkość",
+          "body": "Przetwarzanie na urządzeniu ogranicza ryzyko wycieku i eliminuje kolejki na serwerze."
         },
         {
           "heading": "Jak używać",
@@ -532,8 +532,8 @@ const TOOLS: Record<ToolId, Record<Locale, PageSeoContent>> = {
       "lead": "PDF teilen kostenlos online mit PurePDF läuft lokal im Browser — ohne Anmeldung und ohne Server-Upload.",
       "sections": [
         {
-          "h": "Datenschutz und Tempo",
-          "b": "Verarbeitung auf dem Gerät reduziert Datenrisiko und Server-Wartezeiten."
+          "heading": "Datenschutz und Tempo",
+          "body": "Verarbeitung auf dem Gerät reduziert Datenrisiko und Server-Wartezeiten."
         },
         {
           "heading": "So geht's",
@@ -565,8 +565,8 @@ const TOOLS: Record<ToolId, Record<Locale, PageSeoContent>> = {
       "lead": "Dividir PDF online gratis con PurePDF se procesa en el navegador — sin registro ni subida al servidor.",
       "sections": [
         {
-          "h": "Privacidad y velocidad",
-          "b": "El procesamiento local reduce fugas de datos y colas en servidor."
+          "heading": "Privacidad y velocidad",
+          "body": "El procesamiento local reduce fugas de datos y colas en servidor."
         },
         {
           "heading": "Cómo usar",
@@ -598,8 +598,8 @@ const TOOLS: Record<ToolId, Record<Locale, PageSeoContent>> = {
       "lead": "Scinder PDF gratuitement en ligne avec PurePDF s'effectue localement dans le navigateur — sans inscription ni envoi vers un serveur.",
       "sections": [
         {
-          "h": "Confidentialité et rapidité",
-          "b": "Le traitement local limite les fuites et évite les files d'attente serveur."
+          "heading": "Confidentialité et rapidité",
+          "body": "Le traitement local limite les fuites et évite les files d'attente serveur."
         },
         {
           "heading": "Comment utiliser",
@@ -633,8 +633,8 @@ const TOOLS: Record<ToolId, Record<Locale, PageSeoContent>> = {
       "lead": "Видалити сторінки PDF онлайн у PurePDF виконується локально у браузері — без обов'язкової реєстрації та без завантаження на сервер.",
       "sections": [
         {
-          "h": "Приватність і швидкість",
-          "b": "Обробка на вашому пристрої зменшує ризик витоку даних і прибирає черги на серверах — зручно для ділових і особистих документів."
+          "heading": "Приватність і швидкість",
+          "body": "Обробка на вашому пристрої зменшує ризик витоку даних і прибирає черги на серверах — зручно для ділових і особистих документів."
         },
         {
           "heading": "Як користуватися",
@@ -666,8 +666,8 @@ const TOOLS: Record<ToolId, Record<Locale, PageSeoContent>> = {
       "lead": "Remove PDF pages online with PurePDF runs locally in your browser — no signup and no server upload.",
       "sections": [
         {
-          "h": "Privacy and speed",
-          "b": "On-device processing lowers data-leak risk and skips server queues — ideal for business and personal documents."
+          "heading": "Privacy and speed",
+          "body": "On-device processing lowers data-leak risk and skips server queues — ideal for business and personal documents."
         },
         {
           "heading": "How to use",
@@ -699,8 +699,8 @@ const TOOLS: Record<ToolId, Record<Locale, PageSeoContent>> = {
       "lead": "Usuń strony PDF online w PurePDF działa lokalnie w przeglądarce — bez rejestracji i bez wysyłania na serwer.",
       "sections": [
         {
-          "h": "Prywatność i szybkość",
-          "b": "Przetwarzanie na urządzeniu ogranicza ryzyko wycieku i eliminuje kolejki na serwerze."
+          "heading": "Prywatność i szybkość",
+          "body": "Przetwarzanie na urządzeniu ogranicza ryzyko wycieku i eliminuje kolejki na serwerze."
         },
         {
           "heading": "Jak używać",
@@ -732,8 +732,8 @@ const TOOLS: Record<ToolId, Record<Locale, PageSeoContent>> = {
       "lead": "PDF-Seiten online entfernen mit PurePDF läuft lokal im Browser — ohne Anmeldung und ohne Server-Upload.",
       "sections": [
         {
-          "h": "Datenschutz und Tempo",
-          "b": "Verarbeitung auf dem Gerät reduziert Datenrisiko und Server-Wartezeiten."
+          "heading": "Datenschutz und Tempo",
+          "body": "Verarbeitung auf dem Gerät reduziert Datenrisiko und Server-Wartezeiten."
         },
         {
           "heading": "So geht's",
@@ -765,8 +765,8 @@ const TOOLS: Record<ToolId, Record<Locale, PageSeoContent>> = {
       "lead": "Eliminar páginas PDF online con PurePDF se procesa en el navegador — sin registro ni subida al servidor.",
       "sections": [
         {
-          "h": "Privacidad y velocidad",
-          "b": "El procesamiento local reduce fugas de datos y colas en servidor."
+          "heading": "Privacidad y velocidad",
+          "body": "El procesamiento local reduce fugas de datos y colas en servidor."
         },
         {
           "heading": "Cómo usar",
@@ -798,8 +798,8 @@ const TOOLS: Record<ToolId, Record<Locale, PageSeoContent>> = {
       "lead": "Supprimer des pages PDF en ligne avec PurePDF s'effectue localement dans le navigateur — sans inscription ni envoi vers un serveur.",
       "sections": [
         {
-          "h": "Confidentialité et rapidité",
-          "b": "Le traitement local limite les fuites et évite les files d'attente serveur."
+          "heading": "Confidentialité et rapidité",
+          "body": "Le traitement local limite les fuites et évite les files d'attente serveur."
         },
         {
           "heading": "Comment utiliser",
@@ -833,8 +833,8 @@ const TOOLS: Record<ToolId, Record<Locale, PageSeoContent>> = {
       "lead": "Організувати сторінки PDF онлайн у PurePDF виконується локально у браузері — без обов'язкової реєстрації та без завантаження на сервер.",
       "sections": [
         {
-          "h": "Приватність і швидкість",
-          "b": "Обробка на вашому пристрої зменшує ризик витоку даних і прибирає черги на серверах — зручно для ділових і особистих документів."
+          "heading": "Приватність і швидкість",
+          "body": "Обробка на вашому пристрої зменшує ризик витоку даних і прибирає черги на серверах — зручно для ділових і особистих документів."
         },
         {
           "heading": "Як користуватися",
@@ -866,8 +866,8 @@ const TOOLS: Record<ToolId, Record<Locale, PageSeoContent>> = {
       "lead": "Organize PDF pages online with PurePDF runs locally in your browser — no signup and no server upload.",
       "sections": [
         {
-          "h": "Privacy and speed",
-          "b": "On-device processing lowers data-leak risk and skips server queues — ideal for business and personal documents."
+          "heading": "Privacy and speed",
+          "body": "On-device processing lowers data-leak risk and skips server queues — ideal for business and personal documents."
         },
         {
           "heading": "How to use",
@@ -899,8 +899,8 @@ const TOOLS: Record<ToolId, Record<Locale, PageSeoContent>> = {
       "lead": "Organizuj strony PDF online w PurePDF działa lokalnie w przeglądarce — bez rejestracji i bez wysyłania na serwer.",
       "sections": [
         {
-          "h": "Prywatność i szybkość",
-          "b": "Przetwarzanie na urządzeniu ogranicza ryzyko wycieku i eliminuje kolejki na serwerze."
+          "heading": "Prywatność i szybkość",
+          "body": "Przetwarzanie na urządzeniu ogranicza ryzyko wycieku i eliminuje kolejki na serwerze."
         },
         {
           "heading": "Jak używać",
@@ -932,8 +932,8 @@ const TOOLS: Record<ToolId, Record<Locale, PageSeoContent>> = {
       "lead": "PDF-Seiten online sortieren mit PurePDF läuft lokal im Browser — ohne Anmeldung und ohne Server-Upload.",
       "sections": [
         {
-          "h": "Datenschutz und Tempo",
-          "b": "Verarbeitung auf dem Gerät reduziert Datenrisiko und Server-Wartezeiten."
+          "heading": "Datenschutz und Tempo",
+          "body": "Verarbeitung auf dem Gerät reduziert Datenrisiko und Server-Wartezeiten."
         },
         {
           "heading": "So geht's",
@@ -965,8 +965,8 @@ const TOOLS: Record<ToolId, Record<Locale, PageSeoContent>> = {
       "lead": "Organizar páginas PDF online con PurePDF se procesa en el navegador — sin registro ni subida al servidor.",
       "sections": [
         {
-          "h": "Privacidad y velocidad",
-          "b": "El procesamiento local reduce fugas de datos y colas en servidor."
+          "heading": "Privacidad y velocidad",
+          "body": "El procesamiento local reduce fugas de datos y colas en servidor."
         },
         {
           "heading": "Cómo usar",
@@ -998,8 +998,8 @@ const TOOLS: Record<ToolId, Record<Locale, PageSeoContent>> = {
       "lead": "Organiser les pages PDF en ligne avec PurePDF s'effectue localement dans le navigateur — sans inscription ni envoi vers un serveur.",
       "sections": [
         {
-          "h": "Confidentialité et rapidité",
-          "b": "Le traitement local limite les fuites et évite les files d'attente serveur."
+          "heading": "Confidentialité et rapidité",
+          "body": "Le traitement local limite les fuites et évite les files d'attente serveur."
         },
         {
           "heading": "Comment utiliser",
@@ -1033,8 +1033,8 @@ const TOOLS: Record<ToolId, Record<Locale, PageSeoContent>> = {
       "lead": "Стиснути PDF онлайн безкоштовно у PurePDF виконується локально у браузері — без обов'язкової реєстрації та без завантаження на сервер.",
       "sections": [
         {
-          "h": "Приватність і швидкість",
-          "b": "Обробка на вашому пристрої зменшує ризик витоку даних і прибирає черги на серверах — зручно для ділових і особистих документів."
+          "heading": "Приватність і швидкість",
+          "body": "Обробка на вашому пристрої зменшує ризик витоку даних і прибирає черги на серверах — зручно для ділових і особистих документів."
         },
         {
           "heading": "Як користуватися",
@@ -1066,8 +1066,8 @@ const TOOLS: Record<ToolId, Record<Locale, PageSeoContent>> = {
       "lead": "Compress PDF online free with PurePDF runs locally in your browser — no signup and no server upload.",
       "sections": [
         {
-          "h": "Privacy and speed",
-          "b": "On-device processing lowers data-leak risk and skips server queues — ideal for business and personal documents."
+          "heading": "Privacy and speed",
+          "body": "On-device processing lowers data-leak risk and skips server queues — ideal for business and personal documents."
         },
         {
           "heading": "How to use",
@@ -1099,8 +1099,8 @@ const TOOLS: Record<ToolId, Record<Locale, PageSeoContent>> = {
       "lead": "Kompresuj PDF online za darmo w PurePDF działa lokalnie w przeglądarce — bez rejestracji i bez wysyłania na serwer.",
       "sections": [
         {
-          "h": "Prywatność i szybkość",
-          "b": "Przetwarzanie na urządzeniu ogranicza ryzyko wycieku i eliminuje kolejki na serwerze."
+          "heading": "Prywatność i szybkość",
+          "body": "Przetwarzanie na urządzeniu ogranicza ryzyko wycieku i eliminuje kolejki na serwerze."
         },
         {
           "heading": "Jak używać",
@@ -1132,8 +1132,8 @@ const TOOLS: Record<ToolId, Record<Locale, PageSeoContent>> = {
       "lead": "PDF online komprimieren kostenlos mit PurePDF läuft lokal im Browser — ohne Anmeldung und ohne Server-Upload.",
       "sections": [
         {
-          "h": "Datenschutz und Tempo",
-          "b": "Verarbeitung auf dem Gerät reduziert Datenrisiko und Server-Wartezeiten."
+          "heading": "Datenschutz und Tempo",
+          "body": "Verarbeitung auf dem Gerät reduziert Datenrisiko und Server-Wartezeiten."
         },
         {
           "heading": "So geht's",
@@ -1165,8 +1165,8 @@ const TOOLS: Record<ToolId, Record<Locale, PageSeoContent>> = {
       "lead": "Comprimir PDF online gratis con PurePDF se procesa en el navegador — sin registro ni subida al servidor.",
       "sections": [
         {
-          "h": "Privacidad y velocidad",
-          "b": "El procesamiento local reduce fugas de datos y colas en servidor."
+          "heading": "Privacidad y velocidad",
+          "body": "El procesamiento local reduce fugas de datos y colas en servidor."
         },
         {
           "heading": "Cómo usar",
@@ -1198,8 +1198,8 @@ const TOOLS: Record<ToolId, Record<Locale, PageSeoContent>> = {
       "lead": "Compresser PDF gratuitement en ligne avec PurePDF s'effectue localement dans le navigateur — sans inscription ni envoi vers un serveur.",
       "sections": [
         {
-          "h": "Confidentialité et rapidité",
-          "b": "Le traitement local limite les fuites et évite les files d'attente serveur."
+          "heading": "Confidentialité et rapidité",
+          "body": "Le traitement local limite les fuites et évite les files d'attente serveur."
         },
         {
           "heading": "Comment utiliser",
@@ -1233,8 +1233,8 @@ const TOOLS: Record<ToolId, Record<Locale, PageSeoContent>> = {
       "lead": "Зображення в PDF онлайн у PurePDF виконується локально у браузері — без обов'язкової реєстрації та без завантаження на сервер.",
       "sections": [
         {
-          "h": "Приватність і швидкість",
-          "b": "Обробка на вашому пристрої зменшує ризик витоку даних і прибирає черги на серверах — зручно для ділових і особистих документів."
+          "heading": "Приватність і швидкість",
+          "body": "Обробка на вашому пристрої зменшує ризик витоку даних і прибирає черги на серверах — зручно для ділових і особистих документів."
         },
         {
           "heading": "Як користуватися",
@@ -1266,8 +1266,8 @@ const TOOLS: Record<ToolId, Record<Locale, PageSeoContent>> = {
       "lead": "Convert images to PDF online with PurePDF runs locally in your browser — no signup and no server upload.",
       "sections": [
         {
-          "h": "Privacy and speed",
-          "b": "On-device processing lowers data-leak risk and skips server queues — ideal for business and personal documents."
+          "heading": "Privacy and speed",
+          "body": "On-device processing lowers data-leak risk and skips server queues — ideal for business and personal documents."
         },
         {
           "heading": "How to use",
@@ -1299,8 +1299,8 @@ const TOOLS: Record<ToolId, Record<Locale, PageSeoContent>> = {
       "lead": "Zdjęcia do PDF online w PurePDF działa lokalnie w przeglądarce — bez rejestracji i bez wysyłania na serwer.",
       "sections": [
         {
-          "h": "Prywatność i szybkość",
-          "b": "Przetwarzanie na urządzeniu ogranicza ryzyko wycieku i eliminuje kolejki na serwerze."
+          "heading": "Prywatność i szybkość",
+          "body": "Przetwarzanie na urządzeniu ogranicza ryzyko wycieku i eliminuje kolejki na serwerze."
         },
         {
           "heading": "Jak używać",
@@ -1332,8 +1332,8 @@ const TOOLS: Record<ToolId, Record<Locale, PageSeoContent>> = {
       "lead": "Bilder in PDF online mit PurePDF läuft lokal im Browser — ohne Anmeldung und ohne Server-Upload.",
       "sections": [
         {
-          "h": "Datenschutz und Tempo",
-          "b": "Verarbeitung auf dem Gerät reduziert Datenrisiko und Server-Wartezeiten."
+          "heading": "Datenschutz und Tempo",
+          "body": "Verarbeitung auf dem Gerät reduziert Datenrisiko und Server-Wartezeiten."
         },
         {
           "heading": "So geht's",
@@ -1365,8 +1365,8 @@ const TOOLS: Record<ToolId, Record<Locale, PageSeoContent>> = {
       "lead": "Imágenes a PDF online con PurePDF se procesa en el navegador — sin registro ni subida al servidor.",
       "sections": [
         {
-          "h": "Privacidad y velocidad",
-          "b": "El procesamiento local reduce fugas de datos y colas en servidor."
+          "heading": "Privacidad y velocidad",
+          "body": "El procesamiento local reduce fugas de datos y colas en servidor."
         },
         {
           "heading": "Cómo usar",
@@ -1398,8 +1398,8 @@ const TOOLS: Record<ToolId, Record<Locale, PageSeoContent>> = {
       "lead": "Images en PDF en ligne avec PurePDF s'effectue localement dans le navigateur — sans inscription ni envoi vers un serveur.",
       "sections": [
         {
-          "h": "Confidentialité et rapidité",
-          "b": "Le traitement local limite les fuites et évite les files d'attente serveur."
+          "heading": "Confidentialité et rapidité",
+          "body": "Le traitement local limite les fuites et évite les files d'attente serveur."
         },
         {
           "heading": "Comment utiliser",
@@ -1433,8 +1433,8 @@ const TOOLS: Record<ToolId, Record<Locale, PageSeoContent>> = {
       "lead": "PDF у зображення онлайн у PurePDF виконується локально у браузері — без обов'язкової реєстрації та без завантаження на сервер.",
       "sections": [
         {
-          "h": "Приватність і швидкість",
-          "b": "Обробка на вашому пристрої зменшує ризик витоку даних і прибирає черги на серверах — зручно для ділових і особистих документів."
+          "heading": "Приватність і швидкість",
+          "body": "Обробка на вашому пристрої зменшує ризик витоку даних і прибирає черги на серверах — зручно для ділових і особистих документів."
         },
         {
           "heading": "Як користуватися",
@@ -1466,8 +1466,8 @@ const TOOLS: Record<ToolId, Record<Locale, PageSeoContent>> = {
       "lead": "Convert PDF to images online with PurePDF runs locally in your browser — no signup and no server upload.",
       "sections": [
         {
-          "h": "Privacy and speed",
-          "b": "On-device processing lowers data-leak risk and skips server queues — ideal for business and personal documents."
+          "heading": "Privacy and speed",
+          "body": "On-device processing lowers data-leak risk and skips server queues — ideal for business and personal documents."
         },
         {
           "heading": "How to use",
@@ -1499,8 +1499,8 @@ const TOOLS: Record<ToolId, Record<Locale, PageSeoContent>> = {
       "lead": "PDF na obrazy online w PurePDF działa lokalnie w przeglądarce — bez rejestracji i bez wysyłania na serwer.",
       "sections": [
         {
-          "h": "Prywatność i szybkość",
-          "b": "Przetwarzanie na urządzeniu ogranicza ryzyko wycieku i eliminuje kolejki na serwerze."
+          "heading": "Prywatność i szybkość",
+          "body": "Przetwarzanie na urządzeniu ogranicza ryzyko wycieku i eliminuje kolejki na serwerze."
         },
         {
           "heading": "Jak używać",
@@ -1532,8 +1532,8 @@ const TOOLS: Record<ToolId, Record<Locale, PageSeoContent>> = {
       "lead": "PDF in Bilder online mit PurePDF läuft lokal im Browser — ohne Anmeldung und ohne Server-Upload.",
       "sections": [
         {
-          "h": "Datenschutz und Tempo",
-          "b": "Verarbeitung auf dem Gerät reduziert Datenrisiko und Server-Wartezeiten."
+          "heading": "Datenschutz und Tempo",
+          "body": "Verarbeitung auf dem Gerät reduziert Datenrisiko und Server-Wartezeiten."
         },
         {
           "heading": "So geht's",
@@ -1565,8 +1565,8 @@ const TOOLS: Record<ToolId, Record<Locale, PageSeoContent>> = {
       "lead": "PDF a imágenes online con PurePDF se procesa en el navegador — sin registro ni subida al servidor.",
       "sections": [
         {
-          "h": "Privacidad y velocidad",
-          "b": "El procesamiento local reduce fugas de datos y colas en servidor."
+          "heading": "Privacidad y velocidad",
+          "body": "El procesamiento local reduce fugas de datos y colas en servidor."
         },
         {
           "heading": "Cómo usar",
@@ -1598,8 +1598,8 @@ const TOOLS: Record<ToolId, Record<Locale, PageSeoContent>> = {
       "lead": "PDF en images en ligne avec PurePDF s'effectue localement dans le navigateur — sans inscription ni envoi vers un serveur.",
       "sections": [
         {
-          "h": "Confidentialité et rapidité",
-          "b": "Le traitement local limite les fuites et évite les files d'attente serveur."
+          "heading": "Confidentialité et rapidité",
+          "body": "Le traitement local limite les fuites et évite les files d'attente serveur."
         },
         {
           "heading": "Comment utiliser",
@@ -1633,8 +1633,8 @@ const TOOLS: Record<ToolId, Record<Locale, PageSeoContent>> = {
       "lead": "Повернути PDF онлайн у PurePDF виконується локально у браузері — без обов'язкової реєстрації та без завантаження на сервер.",
       "sections": [
         {
-          "h": "Приватність і швидкість",
-          "b": "Обробка на вашому пристрої зменшує ризик витоку даних і прибирає черги на серверах — зручно для ділових і особистих документів."
+          "heading": "Приватність і швидкість",
+          "body": "Обробка на вашому пристрої зменшує ризик витоку даних і прибирає черги на серверах — зручно для ділових і особистих документів."
         },
         {
           "heading": "Як користуватися",
@@ -1666,8 +1666,8 @@ const TOOLS: Record<ToolId, Record<Locale, PageSeoContent>> = {
       "lead": "Rotate PDF pages online with PurePDF runs locally in your browser — no signup and no server upload.",
       "sections": [
         {
-          "h": "Privacy and speed",
-          "b": "On-device processing lowers data-leak risk and skips server queues — ideal for business and personal documents."
+          "heading": "Privacy and speed",
+          "body": "On-device processing lowers data-leak risk and skips server queues — ideal for business and personal documents."
         },
         {
           "heading": "How to use",
@@ -1699,8 +1699,8 @@ const TOOLS: Record<ToolId, Record<Locale, PageSeoContent>> = {
       "lead": "Obróć PDF online w PurePDF działa lokalnie w przeglądarce — bez rejestracji i bez wysyłania na serwer.",
       "sections": [
         {
-          "h": "Prywatność i szybkość",
-          "b": "Przetwarzanie na urządzeniu ogranicza ryzyko wycieku i eliminuje kolejki na serwerze."
+          "heading": "Prywatność i szybkość",
+          "body": "Przetwarzanie na urządzeniu ogranicza ryzyko wycieku i eliminuje kolejki na serwerze."
         },
         {
           "heading": "Jak używać",
@@ -1732,8 +1732,8 @@ const TOOLS: Record<ToolId, Record<Locale, PageSeoContent>> = {
       "lead": "PDF drehen online mit PurePDF läuft lokal im Browser — ohne Anmeldung und ohne Server-Upload.",
       "sections": [
         {
-          "h": "Datenschutz und Tempo",
-          "b": "Verarbeitung auf dem Gerät reduziert Datenrisiko und Server-Wartezeiten."
+          "heading": "Datenschutz und Tempo",
+          "body": "Verarbeitung auf dem Gerät reduziert Datenrisiko und Server-Wartezeiten."
         },
         {
           "heading": "So geht's",
@@ -1765,8 +1765,8 @@ const TOOLS: Record<ToolId, Record<Locale, PageSeoContent>> = {
       "lead": "Rotar PDF online con PurePDF se procesa en el navegador — sin registro ni subida al servidor.",
       "sections": [
         {
-          "h": "Privacidad y velocidad",
-          "b": "El procesamiento local reduce fugas de datos y colas en servidor."
+          "heading": "Privacidad y velocidad",
+          "body": "El procesamiento local reduce fugas de datos y colas en servidor."
         },
         {
           "heading": "Cómo usar",
@@ -1798,8 +1798,8 @@ const TOOLS: Record<ToolId, Record<Locale, PageSeoContent>> = {
       "lead": "Pivoter PDF en ligne avec PurePDF s'effectue localement dans le navigateur — sans inscription ni envoi vers un serveur.",
       "sections": [
         {
-          "h": "Confidentialité et rapidité",
-          "b": "Le traitement local limite les fuites et évite les files d'attente serveur."
+          "heading": "Confidentialité et rapidité",
+          "body": "Le traitement local limite les fuites et évite les files d'attente serveur."
         },
         {
           "heading": "Comment utiliser",
@@ -1833,8 +1833,8 @@ const TOOLS: Record<ToolId, Record<Locale, PageSeoContent>> = {
       "lead": "Word у PDF онлайн у PurePDF виконується локально у браузері — без обов'язкової реєстрації та без завантаження на сервер.",
       "sections": [
         {
-          "h": "Приватність і швидкість",
-          "b": "Обробка на вашому пристрої зменшує ризик витоку даних і прибирає черги на серверах — зручно для ділових і особистих документів."
+          "heading": "Приватність і швидкість",
+          "body": "Обробка на вашому пристрої зменшує ризик витоку даних і прибирає черги на серверах — зручно для ділових і особистих документів."
         },
         {
           "heading": "Як користуватися",
@@ -1866,8 +1866,8 @@ const TOOLS: Record<ToolId, Record<Locale, PageSeoContent>> = {
       "lead": "Convert Word to PDF online with PurePDF runs locally in your browser — no signup and no server upload.",
       "sections": [
         {
-          "h": "Privacy and speed",
-          "b": "On-device processing lowers data-leak risk and skips server queues — ideal for business and personal documents."
+          "heading": "Privacy and speed",
+          "body": "On-device processing lowers data-leak risk and skips server queues — ideal for business and personal documents."
         },
         {
           "heading": "How to use",
@@ -1899,8 +1899,8 @@ const TOOLS: Record<ToolId, Record<Locale, PageSeoContent>> = {
       "lead": "Word do PDF online w PurePDF działa lokalnie w przeglądarce — bez rejestracji i bez wysyłania na serwer.",
       "sections": [
         {
-          "h": "Prywatność i szybkość",
-          "b": "Przetwarzanie na urządzeniu ogranicza ryzyko wycieku i eliminuje kolejki na serwerze."
+          "heading": "Prywatność i szybkość",
+          "body": "Przetwarzanie na urządzeniu ogranicza ryzyko wycieku i eliminuje kolejki na serwerze."
         },
         {
           "heading": "Jak używać",
@@ -1932,8 +1932,8 @@ const TOOLS: Record<ToolId, Record<Locale, PageSeoContent>> = {
       "lead": "Word in PDF online mit PurePDF läuft lokal im Browser — ohne Anmeldung und ohne Server-Upload.",
       "sections": [
         {
-          "h": "Datenschutz und Tempo",
-          "b": "Verarbeitung auf dem Gerät reduziert Datenrisiko und Server-Wartezeiten."
+          "heading": "Datenschutz und Tempo",
+          "body": "Verarbeitung auf dem Gerät reduziert Datenrisiko und Server-Wartezeiten."
         },
         {
           "heading": "So geht's",
@@ -1965,8 +1965,8 @@ const TOOLS: Record<ToolId, Record<Locale, PageSeoContent>> = {
       "lead": "Word a PDF online con PurePDF se procesa en el navegador — sin registro ni subida al servidor.",
       "sections": [
         {
-          "h": "Privacidad y velocidad",
-          "b": "El procesamiento local reduce fugas de datos y colas en servidor."
+          "heading": "Privacidad y velocidad",
+          "body": "El procesamiento local reduce fugas de datos y colas en servidor."
         },
         {
           "heading": "Cómo usar",
@@ -1998,8 +1998,8 @@ const TOOLS: Record<ToolId, Record<Locale, PageSeoContent>> = {
       "lead": "Word en PDF en ligne avec PurePDF s'effectue localement dans le navigateur — sans inscription ni envoi vers un serveur.",
       "sections": [
         {
-          "h": "Confidentialité et rapidité",
-          "b": "Le traitement local limite les fuites et évite les files d'attente serveur."
+          "heading": "Confidentialité et rapidité",
+          "body": "Le traitement local limite les fuites et évite les files d'attente serveur."
         },
         {
           "heading": "Comment utiliser",
@@ -2033,8 +2033,8 @@ const TOOLS: Record<ToolId, Record<Locale, PageSeoContent>> = {
       "lead": "Текст у PDF онлайн безкоштовно у PurePDF виконується локально у браузері — без обов'язкової реєстрації та без завантаження на сервер.",
       "sections": [
         {
-          "h": "Приватність і швидкість",
-          "b": "Обробка на вашому пристрої зменшує ризик витоку даних і прибирає черги на серверах — зручно для ділових і особистих документів."
+          "heading": "Приватність і швидкість",
+          "body": "Обробка на вашому пристрої зменшує ризик витоку даних і прибирає черги на серверах — зручно для ділових і особистих документів."
         },
         {
           "heading": "Як користуватися",
@@ -2066,8 +2066,8 @@ const TOOLS: Record<ToolId, Record<Locale, PageSeoContent>> = {
       "lead": "Text to PDF online free with PurePDF runs locally in your browser — no signup and no server upload.",
       "sections": [
         {
-          "h": "Privacy and speed",
-          "b": "On-device processing lowers data-leak risk and skips server queues — ideal for business and personal documents."
+          "heading": "Privacy and speed",
+          "body": "On-device processing lowers data-leak risk and skips server queues — ideal for business and personal documents."
         },
         {
           "heading": "How to use",
@@ -2099,8 +2099,8 @@ const TOOLS: Record<ToolId, Record<Locale, PageSeoContent>> = {
       "lead": "Tekst do PDF online w PurePDF działa lokalnie w przeglądarce — bez rejestracji i bez wysyłania na serwer.",
       "sections": [
         {
-          "h": "Prywatność i szybkość",
-          "b": "Przetwarzanie na urządzeniu ogranicza ryzyko wycieku i eliminuje kolejki na serwerze."
+          "heading": "Prywatność i szybkość",
+          "body": "Przetwarzanie na urządzeniu ogranicza ryzyko wycieku i eliminuje kolejki na serwerze."
         },
         {
           "heading": "Jak używać",
@@ -2132,8 +2132,8 @@ const TOOLS: Record<ToolId, Record<Locale, PageSeoContent>> = {
       "lead": "Text in PDF online mit PurePDF läuft lokal im Browser — ohne Anmeldung und ohne Server-Upload.",
       "sections": [
         {
-          "h": "Datenschutz und Tempo",
-          "b": "Verarbeitung auf dem Gerät reduziert Datenrisiko und Server-Wartezeiten."
+          "heading": "Datenschutz und Tempo",
+          "body": "Verarbeitung auf dem Gerät reduziert Datenrisiko und Server-Wartezeiten."
         },
         {
           "heading": "So geht's",
@@ -2165,8 +2165,8 @@ const TOOLS: Record<ToolId, Record<Locale, PageSeoContent>> = {
       "lead": "Texto a PDF online con PurePDF se procesa en el navegador — sin registro ni subida al servidor.",
       "sections": [
         {
-          "h": "Privacidad y velocidad",
-          "b": "El procesamiento local reduce fugas de datos y colas en servidor."
+          "heading": "Privacidad y velocidad",
+          "body": "El procesamiento local reduce fugas de datos y colas en servidor."
         },
         {
           "heading": "Cómo usar",
@@ -2198,8 +2198,8 @@ const TOOLS: Record<ToolId, Record<Locale, PageSeoContent>> = {
       "lead": "Texte en PDF en ligne avec PurePDF s'effectue localement dans le navigateur — sans inscription ni envoi vers un serveur.",
       "sections": [
         {
-          "h": "Confidentialité et rapidité",
-          "b": "Le traitement local limite les fuites et évite les files d'attente serveur."
+          "heading": "Confidentialité et rapidité",
+          "body": "Le traitement local limite les fuites et évite les files d'attente serveur."
         },
         {
           "heading": "Comment utiliser",
@@ -2233,8 +2233,8 @@ const TOOLS: Record<ToolId, Record<Locale, PageSeoContent>> = {
       "lead": "Захистити PDF паролем онлайн у PurePDF виконується локально у браузері — без обов'язкової реєстрації та без завантаження на сервер.",
       "sections": [
         {
-          "h": "Приватність і швидкість",
-          "b": "Обробка на вашому пристрої зменшує ризик витоку даних і прибирає черги на серверах — зручно для ділових і особистих документів."
+          "heading": "Приватність і швидкість",
+          "body": "Обробка на вашому пристрої зменшує ризик витоку даних і прибирає черги на серверах — зручно для ділових і особистих документів."
         },
         {
           "heading": "Як користуватися",
@@ -2266,8 +2266,8 @@ const TOOLS: Record<ToolId, Record<Locale, PageSeoContent>> = {
       "lead": "Protect PDF with password online with PurePDF runs locally in your browser — no signup and no server upload.",
       "sections": [
         {
-          "h": "Privacy and speed",
-          "b": "On-device processing lowers data-leak risk and skips server queues — ideal for business and personal documents."
+          "heading": "Privacy and speed",
+          "body": "On-device processing lowers data-leak risk and skips server queues — ideal for business and personal documents."
         },
         {
           "heading": "How to use",
@@ -2299,8 +2299,8 @@ const TOOLS: Record<ToolId, Record<Locale, PageSeoContent>> = {
       "lead": "Chroń PDF hasłem online w PurePDF działa lokalnie w przeglądarce — bez rejestracji i bez wysyłania na serwer.",
       "sections": [
         {
-          "h": "Prywatność i szybkość",
-          "b": "Przetwarzanie na urządzeniu ogranicza ryzyko wycieku i eliminuje kolejki na serwerze."
+          "heading": "Prywatność i szybkość",
+          "body": "Przetwarzanie na urządzeniu ogranicza ryzyko wycieku i eliminuje kolejki na serwerze."
         },
         {
           "heading": "Jak używać",
@@ -2332,8 +2332,8 @@ const TOOLS: Record<ToolId, Record<Locale, PageSeoContent>> = {
       "lead": "PDF mit Passwort schützen online mit PurePDF läuft lokal im Browser — ohne Anmeldung und ohne Server-Upload.",
       "sections": [
         {
-          "h": "Datenschutz und Tempo",
-          "b": "Verarbeitung auf dem Gerät reduziert Datenrisiko und Server-Wartezeiten."
+          "heading": "Datenschutz und Tempo",
+          "body": "Verarbeitung auf dem Gerät reduziert Datenrisiko und Server-Wartezeiten."
         },
         {
           "heading": "So geht's",
@@ -2365,8 +2365,8 @@ const TOOLS: Record<ToolId, Record<Locale, PageSeoContent>> = {
       "lead": "Proteger PDF con contraseña online con PurePDF se procesa en el navegador — sin registro ni subida al servidor.",
       "sections": [
         {
-          "h": "Privacidad y velocidad",
-          "b": "El procesamiento local reduce fugas de datos y colas en servidor."
+          "heading": "Privacidad y velocidad",
+          "body": "El procesamiento local reduce fugas de datos y colas en servidor."
         },
         {
           "heading": "Cómo usar",
@@ -2398,8 +2398,8 @@ const TOOLS: Record<ToolId, Record<Locale, PageSeoContent>> = {
       "lead": "Protéger PDF par mot de passe en ligne avec PurePDF s'effectue localement dans le navigateur — sans inscription ni envoi vers un serveur.",
       "sections": [
         {
-          "h": "Confidentialité et rapidité",
-          "b": "Le traitement local limite les fuites et évite les files d'attente serveur."
+          "heading": "Confidentialité et rapidité",
+          "body": "Le traitement local limite les fuites et évite les files d'attente serveur."
         },
         {
           "heading": "Comment utiliser",
@@ -2433,8 +2433,8 @@ const TOOLS: Record<ToolId, Record<Locale, PageSeoContent>> = {
       "lead": "Розблокувати PDF онлайн у PurePDF виконується локально у браузері — без обов'язкової реєстрації та без завантаження на сервер.",
       "sections": [
         {
-          "h": "Приватність і швидкість",
-          "b": "Обробка на вашому пристрої зменшує ризик витоку даних і прибирає черги на серверах — зручно для ділових і особистих документів."
+          "heading": "Приватність і швидкість",
+          "body": "Обробка на вашому пристрої зменшує ризик витоку даних і прибирає черги на серверах — зручно для ділових і особистих документів."
         },
         {
           "heading": "Як користуватися",
@@ -2466,8 +2466,8 @@ const TOOLS: Record<ToolId, Record<Locale, PageSeoContent>> = {
       "lead": "Unlock PDF password online with PurePDF runs locally in your browser — no signup and no server upload.",
       "sections": [
         {
-          "h": "Privacy and speed",
-          "b": "On-device processing lowers data-leak risk and skips server queues — ideal for business and personal documents."
+          "heading": "Privacy and speed",
+          "body": "On-device processing lowers data-leak risk and skips server queues — ideal for business and personal documents."
         },
         {
           "heading": "How to use",
@@ -2499,8 +2499,8 @@ const TOOLS: Record<ToolId, Record<Locale, PageSeoContent>> = {
       "lead": "Odblokuj PDF online w PurePDF działa lokalnie w przeglądarce — bez rejestracji i bez wysyłania na serwer.",
       "sections": [
         {
-          "h": "Prywatność i szybkość",
-          "b": "Przetwarzanie na urządzeniu ogranicza ryzyko wycieku i eliminuje kolejki na serwerze."
+          "heading": "Prywatność i szybkość",
+          "body": "Przetwarzanie na urządzeniu ogranicza ryzyko wycieku i eliminuje kolejki na serwerze."
         },
         {
           "heading": "Jak używać",
@@ -2532,8 +2532,8 @@ const TOOLS: Record<ToolId, Record<Locale, PageSeoContent>> = {
       "lead": "PDF-Passwort entfernen online mit PurePDF läuft lokal im Browser — ohne Anmeldung und ohne Server-Upload.",
       "sections": [
         {
-          "h": "Datenschutz und Tempo",
-          "b": "Verarbeitung auf dem Gerät reduziert Datenrisiko und Server-Wartezeiten."
+          "heading": "Datenschutz und Tempo",
+          "body": "Verarbeitung auf dem Gerät reduziert Datenrisiko und Server-Wartezeiten."
         },
         {
           "heading": "So geht's",
@@ -2565,8 +2565,8 @@ const TOOLS: Record<ToolId, Record<Locale, PageSeoContent>> = {
       "lead": "Desbloquear PDF online con PurePDF se procesa en el navegador — sin registro ni subida al servidor.",
       "sections": [
         {
-          "h": "Privacidad y velocidad",
-          "b": "El procesamiento local reduce fugas de datos y colas en servidor."
+          "heading": "Privacidad y velocidad",
+          "body": "El procesamiento local reduce fugas de datos y colas en servidor."
         },
         {
           "heading": "Cómo usar",
@@ -2598,8 +2598,8 @@ const TOOLS: Record<ToolId, Record<Locale, PageSeoContent>> = {
       "lead": "Déverrouiller PDF en ligne avec PurePDF s'effectue localement dans le navigateur — sans inscription ni envoi vers un serveur.",
       "sections": [
         {
-          "h": "Confidentialité et rapidité",
-          "b": "Le traitement local limite les fuites et évite les files d'attente serveur."
+          "heading": "Confidentialité et rapidité",
+          "body": "Le traitement local limite les fuites et évite les files d'attente serveur."
         },
         {
           "heading": "Comment utiliser",
@@ -2633,8 +2633,8 @@ const TOOLS: Record<ToolId, Record<Locale, PageSeoContent>> = {
       "lead": "Підписати PDF онлайн безкоштовно у PurePDF виконується локально у браузері — без обов'язкової реєстрації та без завантаження на сервер.",
       "sections": [
         {
-          "h": "Приватність і швидкість",
-          "b": "Обробка на вашому пристрої зменшує ризик витоку даних і прибирає черги на серверах — зручно для ділових і особистих документів."
+          "heading": "Приватність і швидкість",
+          "body": "Обробка на вашому пристрої зменшує ризик витоку даних і прибирає черги на серверах — зручно для ділових і особистих документів."
         },
         {
           "heading": "Як користуватися",
@@ -2666,8 +2666,8 @@ const TOOLS: Record<ToolId, Record<Locale, PageSeoContent>> = {
       "lead": "Sign PDF online free with PurePDF runs locally in your browser — no signup and no server upload.",
       "sections": [
         {
-          "h": "Privacy and speed",
-          "b": "On-device processing lowers data-leak risk and skips server queues — ideal for business and personal documents."
+          "heading": "Privacy and speed",
+          "body": "On-device processing lowers data-leak risk and skips server queues — ideal for business and personal documents."
         },
         {
           "heading": "How to use",
@@ -2699,8 +2699,8 @@ const TOOLS: Record<ToolId, Record<Locale, PageSeoContent>> = {
       "lead": "Podpisz PDF online w PurePDF działa lokalnie w przeglądarce — bez rejestracji i bez wysyłania na serwer.",
       "sections": [
         {
-          "h": "Prywatność i szybkość",
-          "b": "Przetwarzanie na urządzeniu ogranicza ryzyko wycieku i eliminuje kolejki na serwerze."
+          "heading": "Prywatność i szybkość",
+          "body": "Przetwarzanie na urządzeniu ogranicza ryzyko wycieku i eliminuje kolejki na serwerze."
         },
         {
           "heading": "Jak używać",
@@ -2732,8 +2732,8 @@ const TOOLS: Record<ToolId, Record<Locale, PageSeoContent>> = {
       "lead": "PDF online signieren mit PurePDF läuft lokal im Browser — ohne Anmeldung und ohne Server-Upload.",
       "sections": [
         {
-          "h": "Datenschutz und Tempo",
-          "b": "Verarbeitung auf dem Gerät reduziert Datenrisiko und Server-Wartezeiten."
+          "heading": "Datenschutz und Tempo",
+          "body": "Verarbeitung auf dem Gerät reduziert Datenrisiko und Server-Wartezeiten."
         },
         {
           "heading": "So geht's",
@@ -2765,8 +2765,8 @@ const TOOLS: Record<ToolId, Record<Locale, PageSeoContent>> = {
       "lead": "Firmar PDF online gratis con PurePDF se procesa en el navegador — sin registro ni subida al servidor.",
       "sections": [
         {
-          "h": "Privacidad y velocidad",
-          "b": "El procesamiento local reduce fugas de datos y colas en servidor."
+          "heading": "Privacidad y velocidad",
+          "body": "El procesamiento local reduce fugas de datos y colas en servidor."
         },
         {
           "heading": "Cómo usar",
@@ -2798,8 +2798,8 @@ const TOOLS: Record<ToolId, Record<Locale, PageSeoContent>> = {
       "lead": "Signer PDF gratuitement en ligne avec PurePDF s'effectue localement dans le navigateur — sans inscription ni envoi vers un serveur.",
       "sections": [
         {
-          "h": "Confidentialité et rapidité",
-          "b": "Le traitement local limite les fuites et évite les files d'attente serveur."
+          "heading": "Confidentialité et rapidité",
+          "body": "Le traitement local limite les fuites et évite les files d'attente serveur."
         },
         {
           "heading": "Comment utiliser",

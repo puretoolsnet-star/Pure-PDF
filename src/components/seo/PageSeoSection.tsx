@@ -18,7 +18,7 @@ export function PageSeoSection({ pageId, locale, className }: PageSeoSectionProp
     <section
       aria-labelledby={`seo-${pageId}-heading`}
       className={cn(
-        "border-t border-white/10 pt-10",
+        "min-w-0 border-t border-white/10 pt-10 [overflow-wrap:anywhere]",
         className,
       )}
     >
